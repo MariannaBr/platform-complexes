@@ -1,24 +1,12 @@
-// schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
-
-model Complex {
-  id        String   @id @default(cuid())
-  title     String
-  content   String?
-  link      String
-  rating    Int?
-  image     String?
-  favUsers  UsersOnComplexes[]
-  }
 
 model Account {
   id                 String  @id @default(cuid())
@@ -35,31 +23,30 @@ model Account {
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
-
   user User @relation(fields:[userId], references:[id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
-  }
+}
 
 model Session {
   id           String   @id @default(cuid())
-  sessionToken String   @unique@map("session_token")
+  sessionToken String   @unique @map("session_token")
   userId       String   @map("user_id")
   expires      DateTime
   user         User     @relation(fields:[userId], references:[id], onDelete: Cascade)
-  }
+}
 
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String?@unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
-  favorites     UsersOnComplexes[]
+favorites     UsersOnComplexes[]
   accounts      Account[]
   sessions      Session[]
   @@map(name: "users")
-  }
+}
 
 model VerificationToken {
   id         Int      @id @default(autoincrement())
@@ -68,6 +55,16 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Complex {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  link      String
+  rating    Int?
+  image     String?
+  favUsers  UsersOnComplexes[]
   }
 
 model UsersOnComplexes {

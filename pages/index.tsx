@@ -1,12 +1,16 @@
 import React from "react"
 import { GetStaticProps } from "next"
 import Layout from "../components/Layout"
-import Post, { PostProps } from "../components/Post"
+import Complex, { ComplexProps } from "../components/Complex"
 import prisma from '../lib/prisma';
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
-        select: { title: true },
+        select: { id: true,
+                  title: true,
+                  rating: true,
+                  link: true,
+                  image: true },
   });
   return {
     props: { feed },
@@ -15,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type Props = {
-  feed: PostProps[]
+  feed: ComplexProps[]
 }
 
 const Blog: React.FC<Props> = (props) => {
@@ -23,9 +27,9 @@ const Blog: React.FC<Props> = (props) => {
     <Layout>
       <div className="">
         <main>
-          {props.feed.map((post) => (
-            <div key={post.id} className="post">
-              <Post post={post} />
+          {props.feed.map((complex) => (
+            <div key={complex.id} className="">
+              <Complex complex={complex} />
             </div>
           ))}
         </main>

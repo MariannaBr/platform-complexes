@@ -10,13 +10,14 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model Post {
-  id        String     @default(cuid()) @id
+model Complex {
+  id        String   @id @default(cuid())
   title     String
   content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  String?
+  link      String
+  rating    Int?
+  image     String?
+  favUsers  UsersOnComplexes[]
   }
 
 model Account {
@@ -54,7 +55,7 @@ model User {
   email         String?@unique
   emailVerified DateTime?
   image         String?
-  posts         Post[]
+  favorites     UsersOnComplexes[]
   accounts      Account[]
   sessions      Session[]
   @@map(name: "users")
@@ -68,3 +69,13 @@ model VerificationToken {
 
   @@unique([identifier, token])
   }
+
+model UsersOnComplexes {
+  complex       Complex @relation(fields: [complexId], references: [id])
+  complexId     String
+  user          User @relation(fields: [userId], references: [id])
+  userId        String
+  assignedAt DateTime @default(now())
+
+  @@id([complexId, userId])
+}

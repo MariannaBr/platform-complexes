@@ -1,6 +1,6 @@
 import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef } from "react";
-import { createRoot } from "react-dom/client";
+//import { createRoot } from "react-dom/client";
 
 // mine token
 // mapboxgl.accessToken =
@@ -15,7 +15,10 @@ const Marker = ({ onClick, children, feature }) => {
   };
 
   return (
-    <button onClick={_onClick} className="marker">
+    <button
+      onClick={_onClick}
+      className="bg-green-500 border border-blue-500 text-white py-5 px-5 text-center no-underline inline-block text-base m-1 rounded-full"
+    >
       {children}
     </button>
   );
@@ -33,22 +36,27 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
       zoom: 12,
     });
 
-    // Render custom marker components
-    complexes.forEach((complex) => {
-      // Create a React ref
-      const ref = React.createRef();
-      // Create a new DOM node and save it to the React ref
-      ref.current = document.createElement("div");
-      // Render a Marker Component on our new DOM node
-      createRoot(ref.current).render(
-        <Marker onClick={markerClicked} feature={complex} />
-      );
+    //  // Render custom marker components
+    //  complexes.forEach((complex) => {
+    //     // Create a React ref
+    //     const ref = React.createRef();
+    //     // Create a new DOM node and save it to the React ref
+    //     ref.current = document.createElement("div");
+    //     // Render a Marker Component on our new DOM node
+    //     createRoot(ref.current).render(
+    //       <Marker onClick={markerClicked} feature={complex} />
+    //     );
 
-      // Create a Mapbox Marker at our new DOM node
-      new mapboxgl.Marker(ref.current)
-        .setLngLat(complex.coordinates)
-        .addTo(map);
-    });
+    //     // Create a Mapbox Marker at our new DOM node
+    //     new mapboxgl.Marker(ref.current)
+    //       .setLngLat(complex.coordinates)
+    //       .addTo(map);
+    //   });
+
+    // Create default markers
+    complexes.map((complex) =>
+      new mapboxgl.Marker().setLngLat(complex.coordinates).addTo(map)
+    );
 
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
@@ -61,7 +69,12 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
     window.alert(title);
   };
 
-  return <div className="map-container" ref={mapContainerRef} />;
+  return (
+    <div
+      className="absolute top-24 bottom-0 right-0 w-1/2"
+      ref={mapContainerRef}
+    />
+  );
 };
 
 export default Map;

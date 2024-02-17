@@ -2,7 +2,7 @@ import React from "react";
 import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import Complex, { ComplexProps } from "../components/Complex";
-import Map2 from "../components/Map2";
+import Map from "../components/Map";
 import prisma from "../lib/prisma";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -45,7 +45,7 @@ const Blog: React.FC<Props> = (props) => {
           </div>
         </div>
         <div className="w-1/2">
-          <Map2 complexes={props.feed} />
+          <Map complexes={props.feed} />
         </div>
       </div>
     </Layout>

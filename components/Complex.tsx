@@ -45,7 +45,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
               href={`https://search.google.com/local/reviews?placeid=${complex.placeId}`}
             >
               <span>
-                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} className="w-3 h-3" />
               </span>
               <span className="px-1">{complex.rating}</span>
               <span>Google ratings</span>

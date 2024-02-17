@@ -62,7 +62,9 @@ model Complex {
   title     String
   content   String?
   link      String
-  rating    Int?
+  rating    String?
+  placeId   String?
+  coordinates Float[]
   image     String?
   favUsers  UsersOnComplexes[]
   }

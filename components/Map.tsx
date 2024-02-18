@@ -1,6 +1,5 @@
 import mapboxgl from "mapbox-gl";
 import React, { useState, useEffect, useRef } from "react";
-import markers from "./markers.json";
 //import { createRoot } from "react-dom/client";
 
 // mine token
@@ -38,7 +37,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-122.3968239, 37.7580916],
-      zoom: 12,
+      zoom: 14,
     });
 
     //  // Render custom marker components
@@ -59,12 +58,8 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
     //   });
 
     // // Create default markers
-    // complexes.map((complex) =>
-    //   new mapboxgl.Marker().setLngLat(complex.coordinates).addTo(map)
-    // );
-
-    markers.features.map((complex) =>
-      new mapboxgl.Marker().setLngLat(complex.geometry.coordinates).addTo(map)
+    complexes.map((complex) =>
+      new mapboxgl.Marker().setLngLat(complex.coordinates).addTo(map)
     );
 
     // Add navigation control (the +/- zoom buttons)

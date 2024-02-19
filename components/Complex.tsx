@@ -56,7 +56,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
               <span>(number)</span>
             </a>
           </div>
-          <p className="mt-2 mx-1 line-clamp-3 text-sm leading-6 text-gray-600">
+          <p className="mt-2 mx-1 line-clamp-2 text-left text-sm leading-6 text-gray-600">
             {complex.description}
           </p>
         </div>

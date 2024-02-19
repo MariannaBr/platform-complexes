@@ -62,11 +62,11 @@ const Header: React.FC = () => {
   return (
     <nav className="p-6">
       <div className="md:flex md:items-center md:justify-between">
-        <div className="min-w-0 flex-1">
+        <a href="/" className="min-w-0 flex-1">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
             Dogpatch Apartment communities
           </h2>
-        </div>
+        </a>
         {right}
       </div>
     </nav>

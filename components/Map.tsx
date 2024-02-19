@@ -9,21 +9,6 @@ import React, { useState, useEffect, useRef } from "react";
 mapboxgl.accessToken =
   "pk.eyJ1IjoibWFyaWFubmFiciIsImEiOiJjbHNwNjFpbzAwbXh5MnFtcjRhNDZ4dXR6In0.TAwVve-HQ72yu4Vnl_i_EA";
 
-const Marker = ({ onClick, children, feature }) => {
-  const _onClick = () => {
-    onClick(feature.properties.description);
-  };
-
-  return (
-    <button
-      onClick={_onClick}
-      className="bg-green-500 border border-blue-500 text-white py-5 px-5 text-center no-underline inline-block text-base m-1 rounded-full"
-    >
-      {children}
-    </button>
-  );
-};
-
 const Map: React.FC<{ complexes }> = ({ complexes }) => {
   const mapContainerRef = useRef(null);
 
@@ -40,26 +25,19 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
       zoom: 14,
     });
 
-    //  // Render custom marker components
-    //  complexes.forEach((complex) => {
-    //     // Create a React ref
-    //     const ref = React.createRef();
-    //     // Create a new DOM node and save it to the React ref
-    //     ref.current = document.createElement("div");
-    //     // Render a Marker Component on our new DOM node
-    //     createRoot(ref.current).render(
-    //       <Marker onClick={markerClicked} feature={complex} />
-    //     );
-
-    //     // Create a Mapbox Marker at our new DOM node
-    //     new mapboxgl.Marker(ref.current)
-    //       .setLngLat(complex.coordinates)
-    //       .addTo(map);
-    //   });
-
-    // // Create default markers
+    // Create markers
     complexes.map((complex) =>
-      new mapboxgl.Marker().setLngLat(complex.coordinates).addTo(map)
+      new mapboxgl.Marker({
+        color: "#E31C5F",
+        draggable: false,
+      })
+        .setPopup(
+          new mapboxgl.Popup().setText(
+            "Construction on the Washington Monument began in 1848."
+          )
+        )
+        .setLngLat(complex.coordinates)
+        .addTo(map)
     );
 
     // Add navigation control (the +/- zoom buttons)
@@ -74,10 +52,6 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
     // Clean up on unmount
     return () => map.remove();
   }, []);
-
-  const markerClicked = (title) => {
-    window.alert(title);
-  };
 
   return (
     <div

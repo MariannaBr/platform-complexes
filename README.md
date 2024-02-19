@@ -10,3 +10,17 @@ This is the starter project for the fullstack tutorial with Next.js and Prisma. 
 npx prisma generate
 npx prisma db push
 ```
+
+## Open Prisma studio
+
+```
+npx prisma studio
+```
+
+# Mapbox maps
+
+## Documentation to markers in map
+
+```
+https://docs.mapbox.com/mapbox-gl-js/api/markers/
+```

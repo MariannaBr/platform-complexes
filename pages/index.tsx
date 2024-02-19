@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
       rating: true,
       link: true,
       image: true,
-      content: true,
+      description: true,
       placeId: true,
       coordinates: true,
     },

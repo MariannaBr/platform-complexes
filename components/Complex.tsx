@@ -7,7 +7,7 @@ import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 export type ComplexProps = {
   id: string;
   title: string;
-  content: string;
+  description: string;
   link: string;
   image: string;
   rating: string;
@@ -17,7 +17,7 @@ export type ComplexProps = {
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
   return (
-    <div
+    <button
       onClick={() => Router.push("/p/[id]", `/p/${complex.id}`)}
       className=""
     >
@@ -41,10 +41,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
         <div className="group relative">
           <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
             <h3 className="text-lg font-semibold leading-6 text-gray-900">
-              <a href={complex.link}>
-                <span className="absolute inset-0" />
-                {complex.title}
-              </a>
+              {complex.title}
             </h3>
             <a
               target="_blank"
@@ -60,11 +57,11 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
             </a>
           </div>
           <p className="mt-2 mx-1 line-clamp-3 text-sm leading-6 text-gray-600">
-            {complex.content}
+            {complex.description}
           </p>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

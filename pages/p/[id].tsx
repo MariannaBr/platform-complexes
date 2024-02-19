@@ -1,16 +1,16 @@
-import React from "react"
-import { GetServerSideProps } from "next"
-import ReactMarkdown from "react-markdown"
-import Layout from "../../components/Layout"
-import { ComplexProps } from "../../components/Complex"
-import prisma from '../../lib/prisma';
+import React from "react";
+import { GetServerSideProps } from "next";
+import ReactMarkdown from "react-markdown";
+import Layout from "../../components/Layout";
+import { ComplexProps } from "../../components/Complex";
+import prisma from "../../lib/prisma";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const complex = await prisma.complex.findUnique({
     where: {
       id: String(params?.id),
     },
-        select: { title: true },
+    select: { title: true },
   });
   return {
     props: complex,
@@ -18,16 +18,16 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 const Complex: React.FC<ComplexProps> = (props) => {
-  let title = props.title
+  let title = props.title;
 
   return (
     <Layout>
       <div>
         <h2>{title}</h2>
-        <ReactMarkdown children={props.content} />
+        <ReactMarkdown children={props.description} />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Complex
+export default Complex;

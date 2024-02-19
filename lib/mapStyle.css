@@ -1,0 +1,46 @@
+.mapboxgl-popup {
+  max-width: 200px;
+  @apply rounded-xl shadow-lg;
+}
+
+.mapboxgl-popup-content {
+  @apply p-0 rounded-xl;
+}
+
+.mapboxgl-popup-content .picture {
+  @apply aspect-[16/9] w-full rounded-t-xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2];
+}
+.mapboxgl-popup-content .popup {
+  @apply relative w-full;
+}
+
+.mapboxgl-popup-content .title {
+  @apply px-4 py-2 text-base rounded-b-xl font-semibold text-gray-900 bg-white;
+}
+
+.mapboxgl-popup-content .picture-over {
+  @apply absolute inset-0 rounded-t-xl ring-1 ring-inset ring-gray-900/10;
+}
+
+.mapboxgl-popup-content .title-over {
+  @apply rounded-b-xl flex items-center justify-between gap-x-4;
+}
+
+.mapboxgl-popup-content .rating {
+  @apply font-semibold pr-4 py-2 flex items-center;
+}
+
+.mapboxgl-popup-content .number {
+  @apply pl-1;
+}
+
+.mapboxgl-popup-content .star {
+  @apply w-3 h-3;
+}
+
+.mapboxgl-popup-close-button {
+}
+
+.mapboxgl-popup-tip {
+  @apply border-0;
+}

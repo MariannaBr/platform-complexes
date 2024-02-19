@@ -1,6 +1,5 @@
 import React from "react";
 import Router from "next/router";
-import ReactMarkdown from "react-markdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -41,14 +40,14 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
             <a
               target="_blank"
               rel="noreferrer"
-              className="relative z-1 font-medium text-gray-600 hover:bg-gray-100"
+              className="flex z-1 font-medium text-gray-600 hover:bg-gray-100"
               href={`https://search.google.com/local/reviews?placeid=${complex.placeId}`}
             >
               <span>
                 <FontAwesomeIcon icon={faStar} className="w-3 h-3" />
               </span>
               <span className="px-1">{complex.rating}</span>
-              <span>Google ratings</span>
+              <span>(number)</span>
             </a>
           </div>
           <p className="mt-2 mx-1 line-clamp-3 text-sm leading-6 text-gray-600">
@@ -56,7 +55,6 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
           </p>
         </div>
       </div>
-      {/* <ReactMarkdown children={complex.content} /> */}
     </div>
   );
 };

@@ -39,6 +39,7 @@
 }
 
 .mapboxgl-popup-close-button {
+  @apply rounded-full bg-white h-6 w-6 m-2 shadow-md font-semibold;
 }
 
 .mapboxgl-popup-tip {

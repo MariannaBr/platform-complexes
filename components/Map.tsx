@@ -21,14 +21,14 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [-122.3968239, 37.7580916],
+      center: [-122.38798378427391, 37.76000116642954],
       zoom: 14,
     });
 
     // Create markers
     complexes.map((complex) =>
       new mapboxgl.Marker({
-        color: "#E31C5F",
+        color: "#db2777",
         draggable: false,
       })
         .setPopup(
@@ -76,7 +76,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
 
   return (
     <div
-      className="absolute top-24 bottom-0 right-0 w-1/2"
+      className="absolute top-24 bottom-0 right-0 w-1/3"
       ref={mapContainerRef}
     />
   );

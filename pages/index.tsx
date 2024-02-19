@@ -32,7 +32,7 @@ const Blog: React.FC<Props> = (props) => {
   return (
     <Layout>
       <div className="flex h-full">
-        <div className="mx-auto w-1/2 px-6 lg:px-8">
+        <div className="mx-auto w-2/3 px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {props.feed.map((complex) => (
               <article
@@ -44,7 +44,7 @@ const Blog: React.FC<Props> = (props) => {
             ))}
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="w-1/3">
           <Map complexes={props.feed} />
         </div>
       </div>

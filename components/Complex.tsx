@@ -1,7 +1,8 @@
 import React from "react";
 import Router from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 
 export type ComplexProps = {
   id: string;
@@ -27,6 +28,14 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
           className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
         />
         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+        <FontAwesomeIcon
+          icon={faHeartReg}
+          className="w-6 h-6 absolute right-4 top-4 text-pink-600"
+        />
+        {/* <FontAwesomeIcon
+          icon={faHeart}
+          className="w-6 h-6 absolute right-4 top-4 text-indigo-600"
+        /> */}
       </div>
       <div className="max-w-xl">
         <div className="group relative">

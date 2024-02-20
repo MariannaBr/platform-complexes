@@ -24,10 +24,6 @@ const Carousel: React.FC<PropType> = (props) => {
     () => emblaApi && emblaApi.scrollNext(),
     [emblaApi]
   );
-  const scrollTo = useCallback(
-    (index: number) => emblaApi && emblaApi.scrollTo(index),
-    [emblaApi]
-  );
 
   const onInit = useCallback((emblaApi: EmblaCarouselType) => {
     setScrollSnaps(emblaApi.scrollSnapList());

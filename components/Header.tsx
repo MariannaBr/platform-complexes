@@ -1,9 +1,20 @@
 import React from "react";
 import Link from "next/link";
+import Rating from "./Rating";
+import Button from "./Button";
+import ButtonIcon from "./ButtonIcon";
+import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
-const Header: React.FC = () => {
+type PropType = {
+  title: string;
+  placeId?: string;
+  rating?: string;
+  isHomepage: boolean;
+};
+
+const Header: React.FC<PropType> = ({ title, placeId, rating, isHomepage }) => {
   const router = useRouter();
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname;
@@ -13,7 +24,7 @@ const Header: React.FC = () => {
 
   if (status === "loading") {
     right = (
-      <div className="mt-4 flex md:ml-4 md:mt-0">
+      <div className="mt-4 flex md:ml-6 md:mt-0">
         <p>Validating session ...</p>
       </div>
     );
@@ -21,13 +32,8 @@ const Header: React.FC = () => {
 
   if (!session) {
     right = (
-      <div className="mt-4 flex md:ml-4 md:mt-0">
-        <button
-          type="button"
-          className="iinline-flex items-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
-        >
-          Favorites
-        </button>
+      <div className="mt-4 flex md:ml-6 md:mt-0">
+        <Button title="Favorites" color="pink" />
         {/* <Link href="/api/auth/signin">
           <a
             data-active={isActive("/signup")}
@@ -42,16 +48,11 @@ const Header: React.FC = () => {
 
   if (session) {
     right = (
-      <div className="mt-4 flex md:ml-4 md:mt-0">
+      <div className="mt-4 flex md:ml-6 md:mt-0">
         <p>
           {session.user.name} ({session.user.email})
         </p>
-        <button
-          type="button"
-          className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-        >
-          Favorites
-        </button>
+        <Button title="Favorites" color="pink" />
         <button onClick={() => signOut()}>
           <a>Log out</a>
         </button>
@@ -59,15 +60,43 @@ const Header: React.FC = () => {
     );
   }
 
-  return (
-    <nav className="p-6">
-      <div className="md:flex md:items-center md:justify-between">
-        <a href="/" className="min-w-0 flex-1">
-          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-            Dogpatch Apartment communities
-          </h2>
+  let titleData;
+  const homeTitle = "Dogpatch Apartment Communities";
+  if (!isHomepage) {
+    titleData = (
+      <div>
+        <div className="flex items-center justify-between gap-x-4 text-xs">
+          <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            {title}
+          </h1>
+          <Rating placeId={placeId} rating={rating} />
+        </div>
+        <a
+          href="/"
+          className="inline-flex items-center rounded-md bg-gray-100 px-3 py-2 mt-3 text-xs font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          {homeTitle}
         </a>
-        {right}
+      </div>
+    );
+  } else {
+    titleData = (
+      <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+        {title}
+      </h1>
+    );
+  }
+
+  return (
+    <nav className="py-6 max-w-7xl mx-auto">
+      <div className="md:flex md:items-center md:justify-between">
+        {titleData}
+        <div className="flex">
+          {!isHomepage && (
+            <ButtonIcon iconName={faHeartReg} color="gray" title="Save" />
+          )}
+          {right}
+        </div>
       </div>
     </nav>
   );

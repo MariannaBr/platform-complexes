@@ -1,5 +1,6 @@
 import React from "react";
 import Router from "next/router";
+import Rating from "./Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
@@ -50,18 +51,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
             <h3 className="text-lg font-semibold leading-6 text-gray-900">
               {complex.title}
             </h3>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              className="flex z-1 font-medium text-gray-600 hover:bg-gray-100"
-              href={`https://search.google.com/local/reviews?placeid=${complex.placeId}`}
-            >
-              <span>
-                <FontAwesomeIcon icon={faStar} className="w-3 h-3" />
-              </span>
-              <span className="px-1">{complex.rating}</span>
-              <span>(number)</span>
-            </a>
+            <Rating placeId={complex.placeId} rating={complex.rating} />
           </div>
           <p className="mt-2 mx-1 line-clamp-2 text-left text-sm leading-6 text-gray-600">
             {complex.description}

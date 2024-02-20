@@ -6,6 +6,7 @@ import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
 import prisma from "../lib/prisma";
+import { titleDogpatch } from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -13,6 +14,7 @@ export const getStaticProps: GetStaticProps = async () => {
       id: true,
       title: true,
       rating: true,
+      rateCount: true,
       link: true,
       image: true,
       description: true,
@@ -31,11 +33,9 @@ type Props = {
 };
 
 const Homepage: React.FC<Props> = (props) => {
-  const homepageTitle = "Dogpatch Apartment Communities";
-
   return (
     <Layout>
-      <Header title={homepageTitle} isHomepage={true} />
+      <Header title={titleDogpatch} isHomepage={true} />
       <Devider />
       <div className="flex h-full">
         <div className="mx-auto w-2/3 px-6 lg:px-8">

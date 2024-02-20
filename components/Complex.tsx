@@ -12,6 +12,7 @@ export type ComplexProps = {
   link: string;
   image: string;
   rating: string;
+  rateCount: number;
   placeId: string;
   coordinates: [];
   communityMap: string;
@@ -51,7 +52,11 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
             <h3 className="text-lg font-semibold leading-6 text-gray-900">
               {complex.title}
             </h3>
-            <Rating placeId={complex.placeId} rating={complex.rating} />
+            <Rating
+              placeId={complex.placeId}
+              rating={complex.rating}
+              rateCount={complex.rateCount}
+            />
           </div>
           <p className="mt-2 mx-1 line-clamp-2 text-left text-sm leading-6 text-gray-600">
             {complex.description}

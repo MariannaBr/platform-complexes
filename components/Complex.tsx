@@ -14,6 +14,7 @@ export type ComplexProps = {
   placeId: string;
   coordinates: [];
   amenitiesImgs: string[];
+  amenities: string[];
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {

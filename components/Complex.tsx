@@ -13,8 +13,13 @@ export type ComplexProps = {
   rating: string;
   placeId: string;
   coordinates: [];
+  communityMap: string;
   amenitiesImgs: string[];
   amenities: string[];
+  apartmentAmenitiesImgs: string[];
+  apartmentAmenities: string[];
+  neighborhoodImgs: string[];
+  neighborhood: string[];
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {

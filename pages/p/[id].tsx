@@ -9,6 +9,7 @@ import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "../../components/Carousel";
 import { EmblaOptionsType } from "embla-carousel";
 import ListAmenities from "../../components/ListAmenities";
+import Footer from "../../components/Footer";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const complex = await prisma.complex.findUnique({
@@ -22,6 +23,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       placeId: true,
       amenitiesImgs: true,
       amenities: true,
+      communityMap: true,
+      apartmentAmenitiesImgs: true,
+      apartmentAmenities: true,
+      neighborhoodImgs: true,
+      neighborhood: true,
     },
   });
   return {
@@ -36,12 +42,17 @@ const Complex: React.FC<ComplexProps> = (props) => {
   let webLink = props.link;
   let rating = props.rating;
   let placeId = props.placeId;
+  let communityMap = props.communityMap;
   let amenitiesImgs = props.amenitiesImgs;
   let amenities = props.amenities;
+  let apartmentAmenitiesImgs = props.apartmentAmenitiesImgs;
+  let apartmentAmenities = props.apartmentAmenities;
+  let neighborhoodImgs = props.neighborhoodImgs;
+  let neighborhood = props.neighborhood;
 
   return (
     <Layout>
-      <div className="mt-3 mx-6">
+      <div className="mt-3 max-w-7xl mx-auto">
         <div className="flex items-center justify-between gap-x-4 text-xs">
           <div className="flex">
             <h2 className="text-2xl font-semibold">{title}</h2>
@@ -71,10 +82,19 @@ const Complex: React.FC<ComplexProps> = (props) => {
             Community's website
           </a>
         </div>
-        <div className="text-xl font-semibold mt-6">Community map</div>
-        <div className="text-xl font-semibold mt-6">Comunity Amenities</div>
+        <div className="text-xl font-semibold mt-10">Community map</div>
+        <div className="flex max-w-3xl mx-auto">
+          <img src={communityMap} alt="" className="w-full" />
+        </div>
+        <div className="text-xl font-semibold mt-10">Comunity Amenities</div>
         <Carousel images={amenitiesImgs} options={OPTIONS} />
         <ListAmenities amenities={amenities} />
+        <div className="text-xl font-semibold mt-10">Apartment Amenities</div>
+        <Carousel images={apartmentAmenitiesImgs} options={OPTIONS} />
+        <ListAmenities amenities={apartmentAmenities} />
+        <div className="text-xl font-semibold mt-10">Neighborhhod</div>
+        <Carousel images={neighborhoodImgs} options={OPTIONS} />
+        <ListAmenities amenities={neighborhood} />
       </div>
     </Layout>
   );

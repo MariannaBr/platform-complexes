@@ -23,6 +23,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     },
     select: {
       title: true,
+      description: true,
       link: true,
       rating: true,
       rateCount: true,
@@ -45,6 +46,7 @@ const OPTIONS: EmblaOptionsType = { loop: true };
 
 const Complex: React.FC<ComplexProps> = (props) => {
   let title = props.title;
+  let description = props.description;
   let webLink = props.link;
   let rating = props.rating;
   let rateCount = props.rateCount;
@@ -68,6 +70,9 @@ const Complex: React.FC<ComplexProps> = (props) => {
       />
       <Devider />
       <div className="mt-3 max-w-7xl mx-auto">
+        <div className="mt-3 p-3 rounded-lg">
+          <p className="text-center">{description}</p>
+        </div>
         <div className="mt-3">
           <a href={webLink} className="underline text-pink-500 text-sm">
             {titleCommunityWeb}

@@ -6,24 +6,35 @@ import prisma from "../../lib/prisma";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
+import Carousel from "../../components/Carousel";
+import { EmblaOptionsType } from "embla-carousel";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const complex = await prisma.complex.findUnique({
     where: {
       id: String(params?.id),
     },
-    select: { title: true, link: true, rating: true, placeId: true },
+    select: {
+      title: true,
+      link: true,
+      rating: true,
+      placeId: true,
+      amenitiesImgs: true,
+    },
   });
   return {
     props: complex,
   };
 };
 
+const OPTIONS: EmblaOptionsType = { loop: true };
+
 const Complex: React.FC<ComplexProps> = (props) => {
   let title = props.title;
   let webLink = props.link;
   let rating = props.rating;
   let placeId = props.placeId;
+  let amenitiesImgs = props.amenitiesImgs;
 
   return (
     <Layout>
@@ -58,6 +69,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
           </a>
         </div>
         <div className="text-xl font-semibold mt-6">Community map</div>
+        <Carousel images={amenitiesImgs} options={OPTIONS} />
       </div>
     </Layout>
   );

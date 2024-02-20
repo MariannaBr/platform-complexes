@@ -16,6 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       placeId: true,
       coordinates: true,
+      amenitiesImgs: true,
     },
   });
   return {

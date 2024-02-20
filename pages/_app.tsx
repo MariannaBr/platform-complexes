@@ -5,6 +5,7 @@ import Head from "next/head";
 // These styles apply to every route in the application
 import "./globals.css";
 import "../lib/mapStyle.css";
+import "../lib/emblaStyle.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

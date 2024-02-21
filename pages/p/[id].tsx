@@ -68,18 +68,18 @@ const Complex: React.FC<ComplexProps> = (props) => {
         isHomepage={false}
       />
       <div className="max-w-7xl mx-auto">
-        <div className="">
-          <p className="">{description}</p>
-        </div>
-        <div className="mt-3">
-          <a href={webLink} className="underline text-pink-500 text-sm">
-            {titleCommunityWeb}
-          </a>
-        </div>
-        <CategoryTitle title="Community map" />
-        <div className="flex max-w-7xl mx-auto pt-6">
-          <img src={communityMap} alt="" className="w-full" />
-        </div>
+        <p>{description}</p>
+        <a href={webLink} className="underline text-pink-500 text-sm">
+          {titleCommunityWeb}
+        </a>
+        {communityMap && (
+          <div>
+            <CategoryTitle title="Community map" />
+            <div className="flex max-w-7xl mx-auto pt-6">
+              <img src={communityMap} alt="" className="w-full" />
+            </div>
+          </div>
+        )}
         <Category
           title={titleCommunityAmenities}
           images={amenitiesImgs}

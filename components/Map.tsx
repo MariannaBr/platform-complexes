@@ -1,13 +1,7 @@
 import mapboxgl from "mapbox-gl";
 import React, { useState, useEffect, useRef } from "react";
-//import { createRoot } from "react-dom/client";
 
-// mine token
-// mapboxgl.accessToken =
-//   "pk.eyJ1IjoibWFyaWFubmFiciIsImEiOiJjbHNwNjFpbzAwbXh5MnFtcjRhNDZ4dXR6In0.TAwVve-HQ72yu4Vnl_i_EA";
-
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibWFyaWFubmFiciIsImEiOiJjbHNwNjFpbzAwbXh5MnFtcjRhNDZ4dXR6In0.TAwVve-HQ72yu4Vnl_i_EA";
+mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
 const Map: React.FC<{ complexes }> = ({ complexes }) => {
   const mapContainerRef = useRef(null);

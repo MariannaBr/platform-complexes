@@ -1,7 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
-import Header from "../components/Header";
+import HeaderHome from "../components/HeaderHome";
 import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
@@ -35,10 +35,10 @@ type Props = {
 const Homepage: React.FC<Props> = (props) => {
   return (
     <Layout>
-      <Header title={titleDogpatch} isHomepage={true} />
+      <HeaderHome title={titleDogpatch} isHomepage={true} />
       <Devider />
       <div className="flex h-full">
-        <div className="mx-auto w-2/3 px-6 lg:px-8">
+        <div className="mx-auto w-2/3 px-6">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {props.feed.map((complex) => (
               <article

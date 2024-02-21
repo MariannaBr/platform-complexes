@@ -1,13 +1,12 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import Layout from "../../components/Layout";
-import Header from "../../components/Header";
+import HeaderComplex from "../../components/HeaderComplex";
 import Devider from "../../components/Devider";
+import Category from "../../components/Category";
+import Navigation from "../../components/Navigation";
 import { ComplexProps } from "../../components/Complex";
 import prisma from "../../lib/prisma";
-import Carousel from "../../components/Carousel";
-import { EmblaOptionsType } from "embla-carousel";
-import ListAmenities from "../../components/ListAmenities";
 import CategoryTitle from "../../components/CategoryTitle";
 import {
   titleCommunityWeb,
@@ -42,8 +41,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-const OPTIONS: EmblaOptionsType = { loop: true };
-
 const Complex: React.FC<ComplexProps> = (props) => {
   let title = props.title;
   let description = props.description;
@@ -61,17 +58,18 @@ const Complex: React.FC<ComplexProps> = (props) => {
 
   return (
     <Layout>
-      <Header
+      <Navigation />
+      <Devider />
+      <HeaderComplex
         title={title}
         placeId={placeId}
         rating={rating}
         rateCount={rateCount}
         isHomepage={false}
       />
-      <Devider />
-      <div className="mt-3 max-w-7xl mx-auto">
-        <div className="mt-3 p-3 rounded-lg">
-          <p className="text-center">{description}</p>
+      <div className="max-w-7xl mx-auto">
+        <div className="">
+          <p className="">{description}</p>
         </div>
         <div className="mt-3">
           <a href={webLink} className="underline text-pink-500 text-sm">
@@ -79,18 +77,24 @@ const Complex: React.FC<ComplexProps> = (props) => {
           </a>
         </div>
         <CategoryTitle title="Community map" />
-        <div className="flex max-w-6xl mx-auto pt-6">
+        <div className="flex max-w-7xl mx-auto pt-6">
           <img src={communityMap} alt="" className="w-full" />
         </div>
-        <CategoryTitle title={titleCommunityAmenities} />
-        <Carousel images={amenitiesImgs} options={OPTIONS} />
-        <ListAmenities amenities={amenities} />
-        <CategoryTitle title={titleApartmentAmenities} />
-        <Carousel images={apartmentAmenitiesImgs} options={OPTIONS} />
-        <ListAmenities amenities={apartmentAmenities} />
-        <CategoryTitle title={titleNeighborhood} />
-        <Carousel images={neighborhoodImgs} options={OPTIONS} />
-        <ListAmenities amenities={neighborhood} />
+        <Category
+          title={titleCommunityAmenities}
+          images={amenitiesImgs}
+          amenities={amenities}
+        />
+        <Category
+          title={titleApartmentAmenities}
+          images={apartmentAmenitiesImgs}
+          amenities={apartmentAmenities}
+        />
+        <Category
+          title={titleNeighborhood}
+          images={neighborhoodImgs}
+          amenities={neighborhood}
+        />
       </div>
     </Layout>
   );

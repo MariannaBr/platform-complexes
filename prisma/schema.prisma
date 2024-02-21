@@ -73,7 +73,6 @@ model Complex {
   amenitiesImgs String[]
   apartmentAmenities String[]
   apartmentAmenitiesImgs String[]
-  services String[]
   neighborhood String[]
   neighborhoodImgs String[]
   favUsers  UsersOnComplexes[]

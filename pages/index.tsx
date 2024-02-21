@@ -10,6 +10,9 @@ import { titleDogpatch } from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
+    where: {
+      location: String("Dogpatch"),
+    },
     select: {
       id: true,
       title: true,

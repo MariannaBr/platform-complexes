@@ -16,7 +16,7 @@ const Category: React.FC<PropType> = ({ title, images, amenities }) => {
   return (
     <div>
       <CategoryTitle title={title} />
-      <Carousel images={images} options={OPTIONS} />
+      {images.length > 0 && <Carousel images={images} options={OPTIONS} />}
       <ListAmenities amenities={amenities} />
     </div>
   );

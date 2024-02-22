@@ -28,9 +28,7 @@ export type ComplexProps = {
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
   return (
     <button
-      onClick={() =>
-        Router.push("/community/[slug]", `/community/${complex.slug}`)
-      }
+      onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
       className=""
     >
       <div className="relative w-full">

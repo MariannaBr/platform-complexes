@@ -1,19 +1,19 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import Layout from "../../components/Layout";
-import HeaderComplex from "../../components/HeaderComplex";
-import Devider from "../../components/Devider";
-import Category from "../../components/Category";
-import Navigation from "../../components/Navigation";
-import { ComplexProps } from "../../components/Complex";
-import prisma from "../../lib/prisma";
-import CategoryTitle from "../../components/CategoryTitle";
+import Layout from "../components/Layout";
+import HeaderComplex from "../components/HeaderComplex";
+import Devider from "../components/Devider";
+import Category from "../components/Category";
+import Navigation from "../components/Navigation";
+import { ComplexProps } from "../components/Complex";
+import prisma from "../lib/prisma";
+import CategoryTitle from "../components/CategoryTitle";
 import {
   titleCommunityWeb,
   titleCommunityAmenities,
   titleApartmentAmenities,
   titleNeighborhood,
-} from "../../lib/defaults";
+} from "../lib/defaults";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const complex = await prisma.complex.findUnique({

@@ -10,9 +10,8 @@ type PropType = {
   amenities: string[];
 };
 
-const OPTIONS: EmblaOptionsType = { loop: true };
-
 const Category: React.FC<PropType> = ({ title, images, amenities }) => {
+  const OPTIONS: EmblaOptionsType = { loop: false, slidesToScroll: "auto" };
   return (
     <div>
       <CategoryTitle title={title} />

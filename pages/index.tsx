@@ -16,6 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
     select: {
       id: true,
       title: true,
+      slug: true,
       rating: true,
       rateCount: true,
       link: true,

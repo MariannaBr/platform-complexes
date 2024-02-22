@@ -18,7 +18,7 @@ import {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const complex = await prisma.complex.findUnique({
     where: {
-      id: String(params?.id),
+      slug: String(params?.slug),
     },
     select: {
       title: true,

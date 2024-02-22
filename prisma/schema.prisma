@@ -60,6 +60,7 @@ model VerificationToken {
 model Complex {
   id        String   @id @default(cuid())
   title     String
+  slug      String?  @unique
   location  String?
   description   String?
   link      String

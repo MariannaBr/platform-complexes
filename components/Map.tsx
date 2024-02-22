@@ -1,7 +1,9 @@
 import mapboxgl from "mapbox-gl";
 import React, { useState, useEffect, useRef } from "react";
 
-mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+//mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+mapboxgl.accessToken =
+  "pk.eyJ1IjoibWFyaWFubmFiciIsImEiOiJjbHN3ZzZqNHIydjhmMmxwN2l0OXI4MHdhIn0.pkB8DERYaUqh4jXjuq-rSw";
 
 const Map: React.FC<{ complexes }> = ({ complexes }) => {
   const mapContainerRef = useRef(null);

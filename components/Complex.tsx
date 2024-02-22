@@ -8,6 +8,7 @@ import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 export type ComplexProps = {
   id: string;
   title: string;
+  slug: string;
   description: string;
   link: string;
   image: string;
@@ -27,7 +28,9 @@ export type ComplexProps = {
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
   return (
     <button
-      onClick={() => Router.push("/p/[id]", `/p/${complex.id}`)}
+      onClick={() =>
+        Router.push("/community/[slug]", `/community/${complex.slug}`)
+      }
       className=""
     >
       <div className="relative w-full">

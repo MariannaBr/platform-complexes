@@ -1,16 +1,23 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type PropType = {
+  onClick: () => void;
   iconName: any;
   color: string;
   title: string;
 };
 
-const ButtonIcon: React.FC<PropType> = ({ iconName, color, title }) => {
+const ButtonIcon: React.FC<PropType> = ({
+  onClick,
+  iconName,
+  color,
+  title,
+}) => {
   return (
     <button
       type="button"
+      onClick={onClick}
       className={`inline-flex items-center rounded-md py-2 text-sm text-black font-semibold hover:bg-${color}-500`}
     >
       <FontAwesomeIcon icon={iconName} className="w-6 h-6 text-black pr-2" />

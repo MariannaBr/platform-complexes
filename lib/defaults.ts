@@ -5,3 +5,4 @@ export const titleApartmentAmenities = "Apartment Amenities";
 export const titleNeighborhood = "Neighborhood";
 export const titleFavorites = "Favorites";
 export const titleSave = "Save";
+export const titleSaved = "Saved";

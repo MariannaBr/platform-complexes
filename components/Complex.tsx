@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Router from "next/router";
 import Rating from "./Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
+import { getLocalStorageFavorites, getIsFavorite } from "../lib/localStorage";
 
 export type ComplexProps = {
   id: string;
@@ -26,26 +27,54 @@ export type ComplexProps = {
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
+  const [favorites, setFavorites] = useState(getLocalStorageFavorites());
+  const [isFavorite, setIsFavorite] = useState<boolean>(
+    getIsFavorite(complex.id)
+  );
+  const [icon, setIcon] = useState<IconDefinition>(faHeartReg);
+  useEffect(() => {
+    setIcon(getIsFavorite(complex.id) ? faHeart : faHeartReg);
+  });
+  const saveFavorite = () => {
+    const savedComplexes = getLocalStorageFavorites();
+    if (isFavorite) {
+      const index = savedComplexes.indexOf(complex.id);
+      if (index > -1) {
+        savedComplexes.splice(index, 1);
+        setFavorites(favorites);
+        setIsFavorite(false);
+      }
+    } else {
+      savedComplexes.push(complex.id);
+      setFavorites(favorites);
+      setIsFavorite(true);
+    }
+    localStorage.setItem("favorites", JSON.stringify(savedComplexes));
+    setIcon(icon === faHeartReg ? faHeart : faHeartReg);
+  };
   return (
-    <button
-      onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
-      className=""
-    >
+    <div>
       <div className="relative w-full">
-        <img
-          src={complex.image}
-          alt=""
-          className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-        />
-        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-        <FontAwesomeIcon
-          icon={faHeartReg}
-          className="w-6 h-6 absolute right-4 top-4 text-pink-600"
-        />
-        {/* <FontAwesomeIcon
-          icon={faHeart}
-          className="w-6 h-6 absolute right-4 top-4 text-indigo-600"
-        /> */}
+        <a
+          onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
+          className="cursor-pointer"
+        >
+          <img
+            src={complex.image}
+            alt=""
+            className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+          <button className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-20">
+            <FontAwesomeIcon
+              icon={icon}
+              onClick={(event) => {
+                event.stopPropagation();
+                saveFavorite();
+              }}
+            />
+          </button>
+        </a>
       </div>
       <div className="max-w-xl">
         <div className="group relative">
@@ -64,7 +93,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
           </p>
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 

@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import Rating from "./Rating";
 import ButtonIcon from "./ButtonIcon";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
-import {
-  faHeart as faHeartFull,
-  IconDefinition,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { titleSave, titleSaved } from "../lib/defaults";
+import { getLocalStorageFavorites, getIsFavorite } from "../lib/localStorage";
 
 type PropType = {
   id: string;
@@ -25,29 +23,14 @@ const HeaderComplex: React.FC<PropType> = ({
   rateCount,
   isHomepage,
 }) => {
-  function getLocalStorageFavorites() {
-    if (typeof window !== "undefined") {
-      const storedFavorites = localStorage.getItem("favorites");
-      const data = JSON.parse(storedFavorites);
-      return data || [];
-    }
-  }
-
-  function getIsFavorite() {
-    const storedFavorites = getLocalStorageFavorites();
-    if (storedFavorites) {
-      return storedFavorites.includes(id);
-    }
-    return false;
-  }
   const [favorites, setFavorites] = useState(getLocalStorageFavorites());
-  const [isFavorite, setIsFavorite] = useState<boolean>(getIsFavorite());
+  const [isFavorite, setIsFavorite] = useState<boolean>(getIsFavorite(id));
   const [icon, setIcon] = useState<IconDefinition>(faHeartReg);
   const [titleButton, setTitle] = useState<string>(titleSave);
 
   useEffect(() => {
-    setIcon(getIsFavorite() ? faHeartFull : faHeartReg);
-    setTitle(getIsFavorite() ? titleSaved : titleSave);
+    setIcon(getIsFavorite(id) ? faHeart : faHeartReg);
+    setTitle(getIsFavorite(id) ? titleSaved : titleSave);
   });
 
   const saveFavorite = () => {
@@ -62,7 +45,7 @@ const HeaderComplex: React.FC<PropType> = ({
       setIsFavorite(true);
     }
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    setIcon(icon === faHeartReg ? faHeartFull : faHeartReg);
+    setIcon(icon === faHeartReg ? faHeart : faHeartReg);
     setTitle(titleButton === titleSave ? titleSaved : titleSave);
   };
 

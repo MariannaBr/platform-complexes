@@ -21,6 +21,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       slug: String(params?.slug),
     },
     select: {
+      id: true,
       title: true,
       description: true,
       link: true,
@@ -42,6 +43,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 const Complex: React.FC<ComplexProps> = (props) => {
+  let id = props.id;
   let title = props.title;
   let description = props.description;
   let webLink = props.link;
@@ -61,6 +63,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
       <Navigation />
       <Devider />
       <HeaderComplex
+        id={id}
         title={title}
         placeId={placeId}
         rating={rating}

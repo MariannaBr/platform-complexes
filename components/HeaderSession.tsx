@@ -100,9 +100,9 @@ const Header: React.FC<PropType> = ({
       <div className="md:flex md:items-center md:justify-between">
         {titleData}
         <div className="flex">
-          {!isHomepage && (
+          {/* {!isHomepage && (
             <ButtonIcon iconName={faHeartReg} color="gray" title={titleSave} />
-          )}
+          )} */}
           {right}
         </div>
       </div>

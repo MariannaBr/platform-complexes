@@ -6,7 +6,7 @@ type PropType = {
   isFavorites?: boolean;
   titleGray?: boolean;
   addClass?: string;
-  buttonColor?: string;
+  buttonColor: string;
 };
 
 const Header: React.FC<PropType> = ({
@@ -33,7 +33,7 @@ const Header: React.FC<PropType> = ({
           <div className=" lg:flex">
             <a
               href={linkFavorites}
-              className={`text-md font-semibold mr-16 leading-6 text-gray-900 hover:bg-gray-100 p-2 rounded-md ${
+              className={`text-base font-semibold mr-16 leading-6 text-gray-900 hover:bg-gray-100 p-2 rounded-md ${
                 isFavorites && "underline"
               }`}
             >
@@ -42,7 +42,11 @@ const Header: React.FC<PropType> = ({
           </div>
           <div className="lg:flex lg:flex-1">
             <div className="flex">
-              <Button title="Sign up" color={buttonColor} link="/signup" />
+              <Button
+                title="Sign up"
+                buttonColor={buttonColor}
+                link="/signup"
+              />
             </div>
           </div>
         </div>

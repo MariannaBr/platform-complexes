@@ -41,7 +41,6 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
-  image         String?
   favorites     UsersOnComplexes[]
   accounts      Account[]
   sessions      Session[]

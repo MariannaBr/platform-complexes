@@ -61,7 +61,11 @@ const Complex: React.FC<ComplexProps> = (props) => {
 
   return (
     <Layout>
-      <Header titleGray={true} addClass="max-w-7xl mx-auto px-0" />
+      <Header
+        titleGray={true}
+        addClass="max-w-7xl mx-auto px-0"
+        buttonColor="button_colors_pink"
+      />
       <Devider />
       <HeaderComplex
         id={id}

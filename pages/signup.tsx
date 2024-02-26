@@ -11,7 +11,7 @@ const SignupPage: React.FC = () => {
         isFavorites={false}
         titleGray={false}
         addClass="max-w-7xl mx-auto px-0"
-        buttonColor="gray"
+        buttonColor="button_colors_gray"
       />
       <Devider />
       <div className="bg-white py-16 sm:py-24">

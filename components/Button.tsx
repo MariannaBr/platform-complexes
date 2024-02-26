@@ -1,17 +1,17 @@
 import React from "react";
 
 type PropType = {
-  color?: string;
+  buttonColor: string;
   title: string;
   link: string;
 };
 
-const Button: React.FC<PropType> = ({ color, title, link }) => {
-  color = color ?? "pink";
+const Button: React.FC<PropType> = ({ buttonColor, title, link }) => {
   return (
     <a
       href={link}
-      className={`rounded-md bg-${color}-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-${color}-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-${color}-600`}
+      className={`rounded-md px-3 py-2 font-semibold focus-visible:outline focus-visible:outline-2
+       focus-visible:outline-offset-2 ${buttonColor}`}
     >
       {title}
     </a>

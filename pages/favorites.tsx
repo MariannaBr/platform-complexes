@@ -56,6 +56,7 @@ const FavoritesPage: React.FC<Props> = (props) => {
         isFavorites={true}
         titleGray={true}
         addClass="max-w-7xl mx-auto px-0"
+        buttonColor="button_colors_pink"
       />
       <Devider />
       <div className="max-w-7xl mx-auto">

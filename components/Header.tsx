@@ -6,9 +6,15 @@ type PropType = {
   isFavorites?: boolean;
   titleGray?: boolean;
   addClass?: string;
+  buttonColor?: string;
 };
 
-const Header: React.FC<PropType> = ({ isFavorites, titleGray, addClass }) => {
+const Header: React.FC<PropType> = ({
+  isFavorites,
+  titleGray,
+  addClass,
+  buttonColor,
+}) => {
   return (
     <header className={`bg-white p-6 ${addClass}`}>
       <nav className="flex items-center justify-between" aria-label="Global">
@@ -36,7 +42,7 @@ const Header: React.FC<PropType> = ({ isFavorites, titleGray, addClass }) => {
           </div>
           <div className="lg:flex lg:flex-1">
             <div className="flex">
-              <Button title="Sign up" color="pink" link="/signup" />
+              <Button title="Sign up" color={buttonColor} link="/signup" />
             </div>
           </div>
         </div>

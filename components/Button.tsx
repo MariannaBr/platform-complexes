@@ -1,12 +1,13 @@
 import React from "react";
 
 type PropType = {
-  color: string;
+  color?: string;
   title: string;
   link: string;
 };
 
 const Button: React.FC<PropType> = ({ color, title, link }) => {
+  color = color ?? "pink";
   return (
     <a
       href={link}

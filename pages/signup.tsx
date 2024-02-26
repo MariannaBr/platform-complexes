@@ -5,6 +5,38 @@ import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 
 const SignupPage: React.FC = () => {
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const email = formData.get("email");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      // Handle success - maybe clear the form or show a success message
+      setIsSuccess(true);
+      setFeedbackMessage("Thank you for subscribing!");
+      event.target.reset();
+    } catch (error) {
+      // Handle errors - show error message to the user
+      setIsSuccess(false);
+      setFeedbackMessage(error.toString());
+      console.error("Failed to submit form", error);
+    }
+  };
   return (
     <Layout>
       <Header
@@ -24,29 +56,43 @@ const SignupPage: React.FC = () => {
               We are working on this feature. We will notify you as soon as we
               are ready.
             </p>
-            <form className="mx-auto mt-10 flex max-w-md gap-x-4">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset
+
+            {feedbackMessage ? (
+              <div
+                className={`mt-6 text-center text-xl ${
+                  isSuccess ? "text-pink-600" : "text-red-600"
+                }`}
+              >
+                {feedbackMessage}
+              </div>
+            ) : (
+              <form
+                className="mx-auto mt-10 flex max-w-md gap-x-4"
+                onSubmit={handleSubmit}
+              >
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset
                  ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 placeholder-gray-500"
-                placeholder="Enter your email"
-              />
-              <button
-                type="submit"
-                className="flex-none rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm
+                  placeholder="Enter your email"
+                />
+                <button
+                  type="submit"
+                  className="flex-none rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm
                  hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
                   focus-visible:outline-white"
-              >
-                Notify me
-              </button>
-            </form>
+                >
+                  Notify me
+                </button>
+              </form>
+            )}
             <svg
               viewBox="0 0 1024 1024"
               className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2"

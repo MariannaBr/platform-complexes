@@ -41,7 +41,11 @@ const HeaderSession: React.FC<PropType> = ({
   if (!session) {
     right = (
       <div className="mt-4 flex md:ml-6 md:mt-0">
-        <Button title={titleFavorites} color="pink" link="/" />
+        <Button
+          title={titleFavorites}
+          buttonColor="button_colors_pink"
+          link="/"
+        />
         <Link href="/api/auth/signin">
           <a
             data-active={isActive("/signup")}
@@ -60,7 +64,11 @@ const HeaderSession: React.FC<PropType> = ({
         <p>
           {session.user.name} ({session.user.email})
         </p>
-        <Button title={titleFavorites} color="pink" link="/" />
+        <Button
+          title={titleFavorites}
+          buttonColor="button_colors_pink"
+          link="/"
+        />
         <button onClick={() => signOut()}>
           <a>Log out</a>
         </button>

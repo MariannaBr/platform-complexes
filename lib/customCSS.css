@@ -1,0 +1,13 @@
+.content_height {
+  max-height: calc(100vh - 140px);
+}
+
+.hide_scrollbar {
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide_scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

@@ -41,16 +41,16 @@ const Homepage: React.FC<Props> = (props) => {
     <Layout>
       <Header title={titleDogpatch} isHomepage={true} />
       <Devider />
-      <div className="flex h-full">
-        <div className="mx-auto w-2/3 px-6">
+      <div className="flex content_height">
+        <div className="mx-auto w-2/3 px-6 hide_scrollbar">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {props.feed.map((complex) => (
-              <article
+              <div
                 key={complex.id}
                 className="flex flex-col items-start justify-between"
               >
                 <Complex complex={complex} />
-              </article>
+              </div>
             ))}
           </div>
         </div>

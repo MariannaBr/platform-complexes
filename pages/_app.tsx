@@ -6,6 +6,7 @@ import Head from "next/head";
 import "./globals.css";
 import "../lib/mapStyle.css";
 import "../lib/emblaStyle.css";
+import "../lib/customCSS.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

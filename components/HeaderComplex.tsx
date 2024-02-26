@@ -50,10 +50,10 @@ const HeaderComplex: React.FC<PropType> = ({
   };
 
   return (
-    <div className="py-6 max-w-7xl mx-auto">
-      <div className="md:flex md:items-center md:justify-between">
-        <div className="flex items-center justify-between gap-x-4 text-xs">
-          <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+    <div className="md:py-6 max-w-7xl mx-4 lg:mx-auto">
+      <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="sm:flex sm:items-center sm:justify-between sm:gap-x-4 text-xs">
+          <h1 className="text-2xl font-bold leading-7 text-gray-900">
             {title}
           </h1>
           <Rating placeId={placeId} rating={rating} rateCount={rateCount} />

@@ -12,7 +12,7 @@ const ButtonIcon: React.FC<PropType> = ({ onClick, iconName, title }) => {
     <button
       type="button"
       onClick={onClick}
-      className={`flex-none inline-flex items-center rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-black
+      className={`flex-none inline-flex items-center rounded-md bg-white sm:px-2 py-1.5 text-sm font-semibold text-black
        hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
       focus-visible:outline-gray-200`}
     >

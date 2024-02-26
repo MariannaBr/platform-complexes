@@ -16,24 +16,27 @@ const Header: React.FC<PropType> = ({
   buttonColor,
 }) => {
   return (
-    <header className={`bg-white p-6 ${addClass}`}>
-      <nav className="flex items-center justify-between" aria-label="Global">
+    <header className={`bg-white py-6 px-4 ${addClass}`}>
+      <nav
+        className="lg:flex lg:items-center lg:justify-between"
+        aria-label="Global"
+      >
         <div className="flex lg:flex-1">
           <a href="/" className="">
             <h1
-              className={`text-2xl font-bold leading-7 ${
+              className={`text-lg md:text-2xl font-bold leading-7 ${
                 titleGray ? "text-gray-500" : "text-gray-900"
-              } sm:truncate sm:text-3xl sm:tracking-tight`}
+              }`}
             >
               {titleDogpatch}
             </h1>
           </a>
         </div>
-        <div className=" flex lg:justify-end items-center justify-between">
+        <div className="mt-3 lg:mt-0 flex lg:justify-end items-center justify-between">
           <div className=" lg:flex">
             <a
               href={linkFavorites}
-              className={`text-base font-semibold mr-16 leading-6 text-gray-900 hover:bg-gray-100 p-2 rounded-md ${
+              className={`text-sm lg:text-base font-semibold lg:mr-16 leading-6 text-gray-900 hover:bg-gray-100 lg:p-2 rounded-md ${
                 isFavorites && "underline"
               }`}
             >

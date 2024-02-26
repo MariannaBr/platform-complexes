@@ -42,24 +42,24 @@ const SignupPage: React.FC = () => {
       <Header
         isFavorites={false}
         titleGray={false}
-        addClass="max-w-7xl mx-auto px-0"
+        addClass="max-w-7xl mx-auto xl:px-0"
         buttonColor="button_colors_gray"
       />
       <Devider />
-      <div className="bg-white py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl">
+      <div className="bg-white -my-6 sm:my-24">
+        <div className="mx-auto max-w-2xl xl:max-w-7xl">
           <div className="relative isolate overflow-hidden bg-gray-400 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
             <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-black sm:text-4xl">
               Thank you for your interest.
             </h2>
-            <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-800">
+            <p className="mx-2 sm:mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-800">
               We are working on this feature. We will notify you as soon as we
               are ready.
             </p>
 
             {feedbackMessage ? (
               <div
-                className={`mt-6 text-center text-xl ${
+                className={`mt-6 mx-2 text-center text-xl ${
                   isSuccess ? "text-pink-600" : "text-red-600"
                 }`}
               >
@@ -67,7 +67,7 @@ const SignupPage: React.FC = () => {
               </div>
             ) : (
               <form
-                className="mx-auto mt-10 flex max-w-md gap-x-4"
+                className="sm:mx-auto mx-2 my-4 flex max-w-md gap-x-4"
                 onSubmit={handleSubmit}
               >
                 <label htmlFor="email-address" className="sr-only">

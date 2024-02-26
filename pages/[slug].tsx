@@ -63,7 +63,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
     <Layout>
       <Header
         titleGray={true}
-        addClass="max-w-7xl mx-auto px-0"
+        addClass="max-w-7xl mx-auto xl:px-0"
         buttonColor="button_colors_pink"
       />
       <Devider />
@@ -75,7 +75,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
         rateCount={rateCount}
         isHomepage={false}
       />
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 xl:px-0">
         <p>{description}</p>
         <a href={webLink} className="underline text-pink-500 text-sm">
           {titleCommunityWeb}

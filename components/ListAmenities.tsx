@@ -7,7 +7,7 @@ type PropType = {
 const ListAmenities: React.FC<PropType> = ({ amenities }) => {
   return (
     <ul role="list" className="">
-      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 lg:mx-0">
         {amenities.map((amenity, index) => (
           <li key={index}>
             <div className="flex items-center gap-x-3">

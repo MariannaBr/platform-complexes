@@ -55,17 +55,17 @@ const FavoritesPage: React.FC<Props> = (props) => {
       <Header
         isFavorites={true}
         titleGray={true}
-        addClass="max-w-7xl mx-auto px-0"
+        addClass="max-w-7xl mx-auto xl:px-0"
         buttonColor="button_colors_pink"
       />
       <Devider />
-      <div className="max-w-7xl mx-auto">
-        <div className="py-6">
-          <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+      <div className="max-w-7xl mx-4 xl:mx-auto">
+        <div className="pb-4 lg:py-6">
+          <h1 className="text-2xl font-bold leading-7 text-gray-900">
             {titleMyFavorites}
           </h1>
         </div>
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-y-20 lg:mx-0">
           {favorites.map((complex) => (
             <article
               key={complex.id}

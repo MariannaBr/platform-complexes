@@ -29,7 +29,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
       })
         .setPopup(
           new mapboxgl.Popup().setHTML(
-            `<a href="/${complex.slug}">
+            `<a href="/${complex.slug}" class="outline-none">
             <div class="popup">
               <img class="picture"
                 src=${complex.image}

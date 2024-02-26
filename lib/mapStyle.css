@@ -18,9 +18,9 @@
   @apply px-4 py-2 text-base rounded-b-xl font-semibold text-gray-900 bg-white;
 }
 
-.mapboxgl-popup-content .picture-over {
+/* .mapboxgl-popup-content .picture-over {
   @apply absolute inset-0 rounded-t-xl ring-1 ring-inset ring-gray-900/10;
-}
+} */
 
 .mapboxgl-popup-content .title-over {
   @apply rounded-b-xl flex items-center justify-between gap-x-4;

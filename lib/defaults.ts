@@ -6,3 +6,6 @@ export const titleNeighborhood = "Neighborhood";
 export const titleFavorites = "Favorites";
 export const titleSave = "Save";
 export const titleSaved = "Saved";
+export const titleMyFavorites = "My Favorite Dogpatch communities";
+export const titleHome = "Home";
+export const linkFavorites = "/favorites";

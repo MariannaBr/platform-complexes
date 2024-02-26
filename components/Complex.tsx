@@ -27,14 +27,14 @@ export type ComplexProps = {
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
-  const [favorites, setFavorites] = useState(getLocalStorageFavorites());
+  const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState<boolean>(
     getIsFavorite(complex.id)
   );
   const [icon, setIcon] = useState<IconDefinition>(faHeartReg);
   useEffect(() => {
     setIcon(getIsFavorite(complex.id) ? faHeart : faHeartReg);
-  });
+  }, []);
   const saveFavorite = () => {
     const savedComplexes = getLocalStorageFavorites();
     if (isFavorite) {

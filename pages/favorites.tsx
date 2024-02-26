@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
-import Map from "../components/Map";
 import prisma from "../lib/prisma";
-import { titleDogpatch } from "../lib/defaults";
+import { titleMyFavorites } from "../lib/defaults";
+import { getLocalStorageFavorites } from "../lib/localStorage";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -36,15 +36,31 @@ type Props = {
   feed: ComplexProps[];
 };
 
-const Homepage: React.FC<Props> = (props) => {
+const FavoritesPage: React.FC<Props> = (props) => {
+  const [savedFavorites, setSavedFavorites] = useState([]);
+  useEffect(() => {
+    setSavedFavorites(getLocalStorageFavorites());
+  }, []);
+
+  const favorites = [];
+  for (let i = 0; i < props.feed.length; i++) {
+    if (savedFavorites.includes(props.feed[i].id)) {
+      favorites.push(props.feed[i]);
+    }
+  }
+
   return (
     <Layout>
-      <Header title={titleDogpatch} isHomepage={true} />
+      <Header
+        title={titleMyFavorites}
+        isHomepage={false}
+        addClass="max-w-7xl mx-auto"
+      />
       <Devider />
-      <div className="flex h-full">
-        <div className="mx-auto w-2/3 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {props.feed.map((complex) => (
+            {favorites.map((complex) => (
               <article
                 key={complex.id}
                 className="flex flex-col items-start justify-between"
@@ -54,12 +70,9 @@ const Homepage: React.FC<Props> = (props) => {
             ))}
           </div>
         </div>
-        <div className="w-1/3">
-          <Map complexes={props.feed} />
-        </div>
       </div>
     </Layout>
   );
 };
 
-export default Homepage;
+export default FavoritesPage;

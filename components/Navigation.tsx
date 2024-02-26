@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./Button";
-import { titleDogpatch, titleFavorites } from "../lib/defaults";
+import { titleDogpatch, titleFavorites, linkFavorites } from "../lib/defaults";
 
 const Navigation: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const Navigation: React.FC = () => {
           {titleDogpatch}
         </a>
         <div className="mt-4 flex md:ml-6 md:mt-0 shadow-sm">
-          <Button title={titleFavorites} color="pink" />
+          <Button title={titleFavorites} color="pink" link={linkFavorites} />
         </div>
       </div>
     </nav>

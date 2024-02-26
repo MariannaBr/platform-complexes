@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import Footer from "./Footer";
 
 type Props = {
   children: ReactNode;
@@ -8,7 +7,6 @@ type Props = {
 const Layout: React.FC<Props> = (props) => (
   <div className="max-h-screen">
     <div>{props.children}</div>
-    {/* <Footer /> */}
   </div>
 );
 

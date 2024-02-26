@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
+import Footer from "../components/Footer";
 import Complex, { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
 import { titleMyFavorites } from "../lib/defaults";
@@ -52,25 +53,29 @@ const FavoritesPage: React.FC<Props> = (props) => {
   return (
     <Layout>
       <Header
-        title={titleMyFavorites}
-        isHomepage={false}
-        addClass="max-w-7xl mx-auto"
+        isFavorites={true}
+        titleGray={true}
+        addClass="max-w-7xl mx-auto px-0"
       />
       <Devider />
       <div className="max-w-7xl mx-auto">
-        <div className="">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {favorites.map((complex) => (
-              <article
-                key={complex.id}
-                className="flex flex-col items-start justify-between"
-              >
-                <Complex complex={complex} />
-              </article>
-            ))}
-          </div>
+        <div className="py-6">
+          <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            {titleMyFavorites}
+          </h1>
+        </div>
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          {favorites.map((complex) => (
+            <article
+              key={complex.id}
+              className="flex flex-col items-start justify-between"
+            >
+              <Complex complex={complex} />
+            </article>
+          ))}
         </div>
       </div>
+      <Footer />
     </Layout>
   );
 };

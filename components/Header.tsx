@@ -1,30 +1,47 @@
 import React from "react";
+import { titleDogpatch, titleFavorites, linkFavorites } from "../lib/defaults";
 import Button from "./Button";
-import { titleFavorites, titleHome, linkFavorites } from "../lib/defaults";
 
 type PropType = {
-  title: string;
-  placeId?: string;
-  rating?: string;
-  rateCount?: number;
-  isHomepage: boolean;
+  isFavorites?: boolean;
+  titleGray?: boolean;
   addClass?: string;
 };
 
-const Header: React.FC<PropType> = ({ title, isHomepage, addClass }) => {
-  const buttonTitle = isHomepage ? titleFavorites : titleHome;
-  const link = isHomepage ? linkFavorites : "/";
+const Header: React.FC<PropType> = ({ isFavorites, titleGray, addClass }) => {
   return (
-    <nav className="p-6">
-      <div className={`md:flex md:items-center md:justify-between ${addClass}`}>
-        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-          {title}
-        </h1>
-        <div className="mt-4 flex md:ml-6 md:mt-0">
-          <Button title={buttonTitle} color="pink" link={link} />
+    <header className={`bg-white p-6 ${addClass}`}>
+      <nav className="flex items-center justify-between" aria-label="Global">
+        <div className="flex lg:flex-1">
+          <a href="/" className="">
+            <h1
+              className={`text-2xl font-bold leading-7 ${
+                titleGray ? "text-gray-500" : "text-gray-900"
+              } sm:truncate sm:text-3xl sm:tracking-tight`}
+            >
+              {titleDogpatch}
+            </h1>
+          </a>
         </div>
-      </div>
-    </nav>
+        <div className=" flex lg:justify-end items-center justify-between">
+          <div className=" lg:flex">
+            <a
+              href={linkFavorites}
+              className={`text-md font-semibold mr-16 leading-6 text-gray-900 hover:bg-gray-100 p-2 rounded-md ${
+                isFavorites && "underline"
+              }`}
+            >
+              {titleFavorites}
+            </a>
+          </div>
+          <div className="lg:flex lg:flex-1">
+            <div className="flex">
+              <Button title="Sign up" color="pink" link="/signup" />
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 };
 

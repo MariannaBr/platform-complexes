@@ -16,7 +16,7 @@ type PropType = {
   isHomepage: boolean;
 };
 
-const Header: React.FC<PropType> = ({
+const HeaderSession: React.FC<PropType> = ({
   title,
   placeId,
   rating,
@@ -110,4 +110,4 @@ const Header: React.FC<PropType> = ({
   );
 };
 
-export default Header;
+export default HeaderSession;

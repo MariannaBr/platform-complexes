@@ -39,7 +39,7 @@ type Props = {
 const Homepage: React.FC<Props> = (props) => {
   return (
     <Layout>
-      <Header title={titleDogpatch} isHomepage={true} />
+      <Header isFavorites={false} />
       <Devider />
       <div className="flex content_height">
         <div className="mx-auto w-2/3 px-6 hide_scrollbar">

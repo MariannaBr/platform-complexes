@@ -13,7 +13,7 @@ const Rating: React.FC<PropType> = ({ placeId, rating, rateCount }) => {
     <a
       target="_blank"
       rel="noreferrer"
-      className="flex self-center ml-10 font-medium text-gray-600 hover:bg-gray-100"
+      className="flex self-center ml-10 font-medium text-gray-600 hover:bg-gray-100 p-1 rounded-md"
       href={`https://search.google.com/local/reviews?placeid=${placeId}`}
     >
       <span>

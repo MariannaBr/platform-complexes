@@ -63,7 +63,6 @@ const HeaderComplex: React.FC<PropType> = ({
             <ButtonIcon
               onClick={saveFavorite}
               iconName={icon}
-              color="gray"
               title={titleButton}
             />
           )}

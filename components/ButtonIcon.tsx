@@ -4,21 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 type PropType = {
   onClick: () => void;
   iconName: any;
-  color: string;
   title: string;
 };
 
-const ButtonIcon: React.FC<PropType> = ({
-  onClick,
-  iconName,
-  color,
-  title,
-}) => {
+const ButtonIcon: React.FC<PropType> = ({ onClick, iconName, title }) => {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex items-center rounded-md py-2 text-sm text-black font-semibold hover:bg-${color}-500`}
+      className={`flex-none inline-flex items-center rounded-md bg-white px-2 py-1.5 text-sm font-semibold text-black
+       hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+      focus-visible:outline-gray-200`}
     >
       <FontAwesomeIcon icon={iconName} className="w-6 h-6 text-black pr-2" />
       <span className="text-base font-medium underline">{title}</span>

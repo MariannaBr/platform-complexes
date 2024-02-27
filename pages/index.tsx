@@ -41,8 +41,8 @@ const Homepage: React.FC<Props> = (props) => {
       <Header isFavorites={false} buttonColor="button_colors_pink" />
       <Devider />
       <div className="flex content_height">
-        <div className="mx-auto w-2/3 px-6 hide_scrollbar">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto w-1/2 lg:w-2/3 px-2 lg:px-6 hide_scrollbar">
+          <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 lg:grid-cols-3">
             {props.feed.map((complex) => (
               <div
                 key={complex.id}
@@ -53,7 +53,7 @@ const Homepage: React.FC<Props> = (props) => {
             ))}
           </div>
         </div>
-        <div className="w-1/3">
+        <div className="w-1/2 lg:w-1/3">
           <Map complexes={props.feed} />
         </div>
       </div>

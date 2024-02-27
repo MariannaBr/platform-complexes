@@ -32,25 +32,20 @@ const Header: React.FC<PropType> = ({
             </h1>
           </a>
         </div>
-        <div className="mt-3 lg:mt-0 flex lg:justify-end items-center justify-between">
+        <div className="mt-3 lg:mt-0 flex lg:justify-end items-center justify-between gap-x-4">
           <div className=" lg:flex">
-            <a
-              href={linkFavorites}
-              className={`text-sm lg:text-base font-semibold lg:mr-16 leading-6 text-gray-900 hover:bg-gray-100 lg:p-2 rounded-md ${
-                isFavorites && "underline"
-              }`}
-            >
-              {titleFavorites}
-            </a>
+            <Button
+              title={titleFavorites}
+              link={linkFavorites}
+              buttonColor={
+                isFavorites
+                  ? "button_colors_gray_underline"
+                  : "button_colors_gray"
+              }
+            />
           </div>
           <div className="lg:flex lg:flex-1">
-            <div className="flex">
-              <Button
-                title="Sign up"
-                buttonColor={buttonColor}
-                link="/signup"
-              />
-            </div>
+            <Button title="Sign up" buttonColor={buttonColor} link="/signup" />
           </div>
         </div>
       </nav>

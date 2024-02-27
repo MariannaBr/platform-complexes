@@ -43,12 +43,12 @@ const SignupPage: React.FC = () => {
         isFavorites={false}
         titleGray={false}
         addClass="max-w-7xl mx-auto xl:px-0"
-        buttonColor="button_colors_gray"
+        buttonColor="button_colors_gray_underline"
       />
       <Devider />
       <div className="bg-white -my-6 sm:my-24">
         <div className="mx-auto max-w-2xl xl:max-w-7xl">
-          <div className="relative isolate overflow-hidden bg-gray-400 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
+          <div className="relative isolate overflow-hidden py-24 sm:rounded-3xl sm:px-24 xl:py-32">
             <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-black sm:text-4xl">
               Thank you for your interest.
             </h2>
@@ -79,7 +79,7 @@ const SignupPage: React.FC = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset
+                  className="min-w-0 flex-auto rounded-md border-0 bg-gray-200 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset
                  ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 placeholder-gray-500"
                   placeholder="Enter your email"
                 />
@@ -93,7 +93,7 @@ const SignupPage: React.FC = () => {
                 </button>
               </form>
             )}
-            <svg
+            {/* <svg
               viewBox="0 0 1024 1024"
               className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2"
               aria-hidden="true"
@@ -118,7 +118,7 @@ const SignupPage: React.FC = () => {
                   <stop offset={1} stopColor="#db2777" stopOpacity={0} />
                 </radialGradient>
               </defs>
-            </svg>
+            </svg> */}
           </div>
         </div>
       </div>

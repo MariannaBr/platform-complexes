@@ -77,7 +77,11 @@ const Complex: React.FC<ComplexProps> = (props) => {
       />
       <div className="max-w-7xl mx-auto px-4 xl:px-0">
         <p>{description}</p>
-        <a href={webLink} className="underline text-pink-500 text-sm">
+        <a
+          href={webLink}
+          target="_blank"
+          className="underline text-pink-500 text-sm"
+        >
           {titleCommunityWeb}
         </a>
         {communityMap && (

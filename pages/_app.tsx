@@ -17,6 +17,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       </Head>
       <Script
         async

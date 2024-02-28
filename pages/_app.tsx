@@ -18,6 +18,26 @@ const App = ({ Component, pageProps }: AppProps) => {
           rel="stylesheet"
         />
         <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dogpatch Apartment Communities</title>
+        <meta
+          name="description"
+          content="Find your favorite apartment communities in Dogpatch, San Francisco. 
+          Complete list of all apartment communities with all information you need for finding the most suitable apartment for rent."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Dogpatch Apartment Communities" />
+        <meta
+          property="og:description"
+          content="Find your favorite apartment communities in Dogpatch, San Francisco. 
+          Complete list of all apartment communities with all information you need for finding the most suitable apartment for rent."
+        />
+        <meta
+          property="og:image"
+          content="https://storage.googleapis.com/communitiesplatform-pictures/Avalon/avalon_overview.avif"
+        />
+        <meta property="og:url" content="https://www.dogpatchapartments.com/" />
+        <meta property="og:type" content="website" />
       </Head>
       <Script
         async

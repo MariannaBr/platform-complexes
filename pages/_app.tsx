@@ -34,7 +34,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
         <meta
           property="og:image"
-          content="https://storage.googleapis.com/communitiesplatform-pictures/Avalon/avalon_overview.avif"
+          content="https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp"
         />
         <meta property="og:url" content="https://www.dogpatchapartments.com/" />
         <meta property="og:type" content="website" />

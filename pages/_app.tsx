@@ -11,7 +11,8 @@ import "../lib/customCSS.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <SessionProvider session={pageProps.session}>
+    // <SessionProvider session={pageProps.session}>
+    <>
       <Head>
         <link
           href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css"
@@ -51,7 +52,8 @@ const App = ({ Component, pageProps }: AppProps) => {
           gtag('config', 'G-E65RTQKQZB');`}
       </Script>
       <Component {...pageProps} />
-    </SessionProvider>
+    </>
+    // </SessionProvider>
   );
 };
 

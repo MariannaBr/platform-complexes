@@ -57,6 +57,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
       <div className="relative w-full">
         <a
           onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
+          href={`/${complex.slug}`}
           className="cursor-pointer"
         >
           <img

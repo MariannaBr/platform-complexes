@@ -2,6 +2,7 @@ import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
+import { metaTitle, metaDescription } from "../lib/defaults";
 
 // These styles apply to every route in the application
 import "./globals.css";
@@ -20,19 +21,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
         <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Dogpatch Apartment Communities</title>
-        <meta
-          name="description"
-          content="Find your favorite apartment communities in Dogpatch, San Francisco. 
-          Complete list of all apartment communities with all information you need for finding the most suitable apartment for rent."
-        />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Dogpatch Apartment Communities" />
-        <meta
-          property="og:description"
-          content="Find your favorite apartment communities in Dogpatch, San Francisco. 
-          Complete list of all apartment communities with all information you need for finding the most suitable apartment for rent."
-        />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
         <meta
           property="og:image"
           content="https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp"

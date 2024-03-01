@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
+import Image from "next/image";
 import Rating from "./Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -58,23 +59,30 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
         <a
           onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
           href={`/${complex.slug}`}
-          className="cursor-pointer"
+          className="cursor-pointer relative"
         >
-          <img
-            src={complex.image}
-            alt=""
-            className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-          />
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-          <button className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-20">
-            <FontAwesomeIcon
-              icon={icon}
-              onClick={(event) => {
-                event.stopPropagation();
-                saveFavorite();
-              }}
+          <div className="relative w-full rounded-2xl bg-gray-100 object-cover aspect-[16/9] sm:aspect-[2/1] lg:aspect-[3/2]">
+            <Image
+              src={complex.image}
+              alt="complex overview"
+              fill={true}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              priority={true}
+              style={{ objectFit: "cover" }}
+              className="rounded-2xl"
             />
-          </button>
+            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+            <button className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-20">
+              <FontAwesomeIcon
+                icon={icon}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  event.preventDefault();
+                  saveFavorite();
+                }}
+              />
+            </button>
+          </div>
         </a>
       </div>
       <div className="max-w-xl">

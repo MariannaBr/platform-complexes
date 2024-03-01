@@ -80,7 +80,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
         <a
           href={webLink}
           target="_blank"
-          className="underline text-pink-500 text-sm"
+          className="underline text-pink-600 text-sm"
         >
           {titleCommunityWeb}
         </a>

@@ -48,23 +48,27 @@ const Carousel: React.FC<PropType> = (props) => {
   return (
     <div className="embla">
       <div className="relative">
-        <PrevButton onClick={scrollPrev} disabled={prevBtnDisabled} />
+        <PrevButton
+          onClick={scrollPrev}
+          disabled={prevBtnDisabled}
+          aria-label="next"
+        />
       </div>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {images.map((image, index) => (
             <div className="embla__slide" key={index}>
-              <img
-                className="embla__slide__img"
-                src={image}
-                alt="Your alt text"
-              />
+              <img className="embla__slide__img" src={image} alt="Amenity" />
             </div>
           ))}
         </div>
       </div>
       <div className="relative">
-        <NextButton onClick={scrollNext} disabled={nextBtnDisabled} />
+        <NextButton
+          onClick={scrollNext}
+          disabled={nextBtnDisabled}
+          aria-label="previous"
+        />
       </div>
     </div>
   );

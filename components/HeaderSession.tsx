@@ -45,6 +45,7 @@ const HeaderSession: React.FC<PropType> = ({
           title={titleFavorites}
           buttonColor="button_colors_pink"
           link="/"
+          label={titleFavorites}
         />
         <Link href="/api/auth/signin">
           <a
@@ -68,6 +69,7 @@ const HeaderSession: React.FC<PropType> = ({
           title={titleFavorites}
           buttonColor="button_colors_pink"
           link="/"
+          label={titleFavorites}
         />
         <button onClick={() => signOut()}>
           <a>Log out</a>

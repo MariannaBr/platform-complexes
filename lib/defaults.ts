@@ -7,6 +7,7 @@ export const titleFavorites = "Favorites";
 export const titleSave = "Save";
 export const titleSaved = "Saved";
 export const titleMyFavorites = "Favorites";
+export const titleSignup = "Sign up";
 export const titleHome = "Home";
 export const linkFavorites = "/favorites";
 export const metaTitle = "Dogpatch Apartment Communities";

@@ -1,6 +1,8 @@
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Script from "next/script";
+import Head from "next/head";
+import { metaTitle } from "../lib/defaults";
 
 // These styles apply to every route in the application
 import "./globals.css";
@@ -12,6 +14,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     // <SessionProvider session={pageProps.session}>
     <>
+      <Head>
+        <title>{metaTitle}</title>
+      </Head>
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-E65RTQKQZB"

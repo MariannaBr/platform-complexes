@@ -1,5 +1,10 @@
 import React from "react";
-import { titleDogpatch, titleFavorites, linkFavorites } from "../lib/defaults";
+import {
+  titleDogpatch,
+  titleFavorites,
+  linkFavorites,
+  titleSignup,
+} from "../lib/defaults";
 import Button from "./Button";
 
 type PropType = {
@@ -37,6 +42,7 @@ const Header: React.FC<PropType> = ({
             <Button
               title={titleFavorites}
               link={linkFavorites}
+              label={titleFavorites}
               buttonColor={
                 isFavorites
                   ? "button_colors_gray_underline"
@@ -45,7 +51,12 @@ const Header: React.FC<PropType> = ({
             />
           </div>
           <div className="lg:flex lg:flex-1">
-            <Button title="Sign up" buttonColor={buttonColor} link="/signup" />
+            <Button
+              title={titleSignup}
+              buttonColor={buttonColor}
+              link="/signup"
+              label={titleSignup}
+            />
           </div>
         </div>
       </nav>

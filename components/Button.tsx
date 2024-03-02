@@ -4,12 +4,14 @@ type PropType = {
   buttonColor: string;
   title: string;
   link: string;
+  label: string;
 };
 
-const Button: React.FC<PropType> = ({ buttonColor, title, link }) => {
+const Button: React.FC<PropType> = ({ buttonColor, title, link, label }) => {
   return (
     <a
       href={link}
+      aria-label={label}
       className={`rounded-md px-1 py-1 lg:px-3 lg:py-2 font-semibold focus-visible:outline focus-visible:outline-2
        focus-visible:outline-offset-2 ${buttonColor}`}
     >

@@ -15,7 +15,6 @@ class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
           <meta name="robots" content="index, follow" />
           <meta property="og:title" content={metaTitle} />

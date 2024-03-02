@@ -72,7 +72,10 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
               className="rounded-2xl"
             />
             <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-            <button className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-20">
+            <button
+              className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-20"
+              aria-label="save"
+            >
               <FontAwesomeIcon
                 icon={icon}
                 onClick={(event) => {
@@ -88,9 +91,9 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
       <div className="max-w-xl">
         <div className="group relative">
           <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
-            <h3 className="text-lg font-semibold leading-6 text-gray-900">
+            <h2 className="text-lg font-semibold leading-6 text-gray-900">
               {complex.title}
-            </h3>
+            </h2>
             <Rating
               placeId={complex.placeId}
               rating={complex.rating}

@@ -6,6 +6,7 @@ import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
 import prisma from "../lib/prisma";
+import Table from "../components/Table";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -23,6 +24,25 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       placeId: true,
       coordinates: true,
+      roofDeck: true,
+      bbq: true,
+      gym: true,
+      pool: true,
+      workSpaces: true,
+      gameRoom: true,
+      packing: true,
+      bikeStorage: true,
+      petFriendly: true,
+      garage: true,
+      evCharging: true,
+      hardFloors: true,
+      inUnitWasher: true,
+      bigWindows: true,
+      airCondition: true,
+      balconies: true,
+      modernStyle: true,
+      furnishedOpt: true,
+      walkInCloset: true,
     },
   });
   return {
@@ -57,6 +77,7 @@ const Homepage: React.FC<Props> = (props) => {
           <Map complexes={props.feed} />
         </div>
       </div>
+      <Table complexes={props.feed} />
     </Layout>
   );
 };

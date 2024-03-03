@@ -25,6 +25,25 @@ export type ComplexProps = {
   apartmentAmenities: string[];
   neighborhoodImgs: string[];
   neighborhood: string[];
+  roofDeck: boolean;
+  bbq: boolean;
+  gym: boolean;
+  pool: boolean;
+  workSpaces: boolean;
+  gameRoom: boolean;
+  packing: boolean;
+  bikeStorage: boolean;
+  petFriendly: boolean;
+  garage: boolean;
+  evCharging: boolean;
+  hardFloors: boolean;
+  inUnitWasher: boolean;
+  bigWindows: boolean;
+  airCondition: boolean;
+  balconies: boolean;
+  modernStyle: boolean;
+  furnishedOpt: boolean;
+  walkInCloset: boolean;
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {

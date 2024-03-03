@@ -75,6 +75,25 @@ model Complex {
   apartmentAmenitiesImgs String[]
   neighborhood String[]
   neighborhoodImgs String[]
+  roofDeck      Boolean @default(false)
+  bbq           Boolean @default(false)
+  gym           Boolean @default(false)
+  pool          Boolean @default(false)
+  workSpaces    Boolean @default(false)
+  gameRoom      Boolean @default(false)
+  packing       Boolean @default(false)
+  bikeStorage   Boolean @default(false)
+  petFriendly   Boolean @default(false)
+  garage        Boolean @default(false)
+  evCharging    Boolean @default(false)
+  hardFloors    Boolean @default(false)
+  inUnitWasher  Boolean @default(false)
+  bigWindows    Boolean @default(false)
+  airCondition  Boolean @default(false)
+  balconies     Boolean @default(false)
+  modernStyle   Boolean @default(false)
+  furnishedOpt  Boolean @default(false)
+  walkInCloset  Boolean @default(false)
   favUsers  UsersOnComplexes[]
   }
 
@@ -86,4 +105,9 @@ model UsersOnComplexes {
   assignedAt DateTime @default(now())
 
   @@id([complexId, userId])
+}
+
+model ComparisonTable {
+  id      String @id @default(cuid())
+  title   String
 }

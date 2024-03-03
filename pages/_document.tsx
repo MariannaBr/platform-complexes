@@ -28,6 +28,7 @@ class MyDocument extends Document {
             content="https://www.dogpatchapartments.com/"
           />
           <meta property="og:type" content="website" />
+          <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
         </Head>
         <body>
           <Main />

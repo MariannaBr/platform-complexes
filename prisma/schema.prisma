@@ -94,6 +94,7 @@ model Complex {
   modernStyle   Boolean @default(false)
   furnishedOpt  Boolean @default(false)
   walkInCloset  Boolean @default(false)
+  storage       Boolean @default(false)
   favUsers  UsersOnComplexes[]
   }
 

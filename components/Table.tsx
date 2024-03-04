@@ -11,7 +11,6 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   const defaultColDef = useMemo(() => {
     return {
       wrapHeaderText: true,
-      autoHeaderHeight: true,
     };
   }, []);
 
@@ -47,16 +46,19 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
     let column = {};
     column = {
       field: complex["title"],
-      cellDataType: "boolean",
+      cellDataType: "text",
       width: 154,
       headerClass: "custom_header",
       cellStyle: { textAlign: "center" },
       cellRenderer: (params) => {
-        return params.value ? (
-          <FontAwesomeIcon icon={faCheck} className="check_true" />
-        ) : (
-          <FontAwesomeIcon icon={faXmark} className="check_false" />
-        );
+        if (typeof params.value === "boolean") {
+          return params.value ? (
+            <FontAwesomeIcon icon={faCheck} className="check_true" />
+          ) : (
+            <FontAwesomeIcon icon={faXmark} className="check_false" />
+          );
+        }
+        return params.value;
       },
     };
     columns.push(column);
@@ -76,7 +78,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
 
   return (
     <div className=" mx-6 my-20">
-      <div className="ag-theme-quartz" style={{ height: 870 }}>
+      <div className="ag-theme-quartz" style={{ height: 950 }}>
         <AgGridReact
           rowData={rowData}
           columnDefs={colDefs}

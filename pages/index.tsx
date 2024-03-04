@@ -43,16 +43,19 @@ export const getStaticProps: GetStaticProps = async () => {
       modernStyle: true,
       furnishedOpt: true,
       walkInCloset: true,
+      storage: true,
     },
   });
+  const show = process.env.VERCEL_ENV === "development";
   return {
-    props: { feed },
+    props: { feed, show },
     revalidate: 10,
   };
 };
 
 type Props = {
   feed: ComplexProps[];
+  show: boolean;
 };
 
 const Homepage: React.FC<Props> = (props) => {
@@ -77,7 +80,7 @@ const Homepage: React.FC<Props> = (props) => {
           <Map complexes={props.feed} />
         </div>
       </div>
-      <Table complexes={props.feed} />
+      {props.show && <Table complexes={props.feed} />}
     </Layout>
   );
 };

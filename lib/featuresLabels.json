@@ -1,5 +1,6 @@
 {
   "amenity": "Amenity",
+  "rating": "Google rating",
   "roofDeck": "Roof deck",
   "bbq": "BBQ",
   "gym": "Gym",
@@ -11,6 +12,7 @@
   "petFriendly": "Pet friendly",
   "garage": "Garage",
   "evCharging": "EV charging",
+  "storage": "Additional storage",
   "hardFloors": "Hard-surface flooring",
   "inUnitWasher": "In-Unit washer/dryer",
   "bigWindows": "High Windows",

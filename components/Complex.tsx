@@ -44,6 +44,7 @@ export type ComplexProps = {
   modernStyle: boolean;
   furnishedOpt: boolean;
   walkInCloset: boolean;
+  storage: boolean;
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {

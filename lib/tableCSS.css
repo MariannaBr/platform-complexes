@@ -1,5 +1,5 @@
 .custom_header .ag-header-cell-label {
-  @apply justify-center !important;
+  @apply flex align-middle text-center justify-center !important;
 }
 
 .check_true {

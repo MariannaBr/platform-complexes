@@ -9,6 +9,7 @@ import "./globals.css";
 import "../lib/mapStyle.css";
 import "../lib/emblaStyle.css";
 import "../lib/customCSS.css";
+import "../lib/tableCSS.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -16,6 +17,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>{metaTitle}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Script
         async

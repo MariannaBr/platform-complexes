@@ -1,0 +1,11 @@
+.custom_header .ag-header-cell-label {
+  @apply justify-center !important;
+}
+
+.check_true {
+  @apply w-6 h-6 align-middle inline-block mx-auto text-green-500;
+}
+
+.check_false {
+  @apply w-6 h-6 align-middle inline-block mx-auto text-pink-500;
+}

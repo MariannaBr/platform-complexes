@@ -11,10 +11,6 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
           <meta name="description" content={metaDescription} />
           <meta name="robots" content="index, follow" />
           <meta property="og:title" content={metaTitle} />
@@ -28,7 +24,6 @@ class MyDocument extends Document {
             content="https://www.dogpatchapartments.com/"
           />
           <meta property="og:type" content="website" />
-          <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
         </Head>
         <body>
           <Main />

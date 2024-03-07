@@ -7,7 +7,7 @@
   "pool": "Pool",
   "workSpaces": "Work spaces",
   "gameRoom": "Game room",
-  "packing": "Paking service",
+  "packing": "Packing service",
   "bikeStorage": "Bike storage",
   "petFriendly": "Pet friendly",
   "garage": "Garage",
@@ -15,11 +15,11 @@
   "storage": "Additional storage",
   "hardFloors": "Hard-surface flooring",
   "inUnitWasher": "In-Unit washer/dryer",
-  "bigWindows": "High Windows",
+  "bigWindows": "Floor-to-ceiling windows",
   "airCondition": "Air condition",
   "modernStyle": "Modern style",
   "walkInCloset": "Walk-in closets",
-  "furnishedOpt": "Furnished Option",
+  "furnishedOpt": "Furnished option",
   "balconies": "Balcony option",
   "inclEnergies": "Water, gas and garbage incl."
 }

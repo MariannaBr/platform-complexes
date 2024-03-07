@@ -1,11 +1,11 @@
 import React from "react";
 import { GetStaticProps } from "next";
+import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
-import prisma from "../lib/prisma";
 import Table from "../components/Table";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -24,26 +24,6 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       placeId: true,
       coordinates: true,
-      roofDeck: true,
-      bbq: true,
-      gym: true,
-      pool: true,
-      workSpaces: true,
-      gameRoom: true,
-      packing: true,
-      bikeStorage: true,
-      petFriendly: true,
-      garage: true,
-      evCharging: true,
-      hardFloors: true,
-      inUnitWasher: true,
-      bigWindows: true,
-      airCondition: true,
-      balconies: true,
-      modernStyle: true,
-      furnishedOpt: true,
-      walkInCloset: true,
-      storage: true,
     },
   });
   const show = process.env.VERCEL_ENV === "development";
@@ -61,7 +41,7 @@ type Props = {
 const Homepage: React.FC<Props> = (props) => {
   return (
     <Layout>
-      <Header isFavorites={false} buttonColor="button_colors_pink" />
+      <Header />
       <Devider />
       <div className="flex content_height">
         <div className="mx-auto w-1/2 lg:w-2/3 px-2 lg:px-6 hide_scrollbar">
@@ -80,7 +60,6 @@ const Homepage: React.FC<Props> = (props) => {
           <Map complexes={props.feed} />
         </div>
       </div>
-      {props.show && <Table complexes={props.feed} />}
     </Layout>
   );
 };

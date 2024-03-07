@@ -4,7 +4,7 @@ import ButtonIcon from "./ButtonIcon";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { titleSave, titleSaved } from "../lib/defaults";
-import { getLocalStorageFavorites, getIsFavorite } from "../lib/localStorage";
+import { getLocalStorageFavorites, getIsFavorite } from "../lib/functions";
 
 type PropType = {
   id: string;

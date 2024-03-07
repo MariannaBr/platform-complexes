@@ -5,7 +5,7 @@ import Rating from "./Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
-import { getLocalStorageFavorites, getIsFavorite } from "../lib/localStorage";
+import { getLocalStorageFavorites, getIsFavorite } from "../lib/functions";
 
 export type ComplexProps = {
   id: string;
@@ -45,6 +45,7 @@ export type ComplexProps = {
   furnishedOpt: boolean;
   walkInCloset: boolean;
   storage: boolean;
+  inclEnergies: boolean;
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
@@ -93,7 +94,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
             />
             <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
             <button
-              className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-20"
+              className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-10"
               aria-label="save"
             >
               <FontAwesomeIcon

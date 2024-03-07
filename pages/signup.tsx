@@ -39,12 +39,7 @@ const SignupPage: React.FC = () => {
   };
   return (
     <Layout>
-      <Header
-        isFavorites={false}
-        titleGray={false}
-        addClass="max-w-7xl mx-auto xl:px-0"
-        buttonColor="button_colors_gray_underline"
-      />
+      <Header />
       <Devider />
       <div className="bg-white -my-6 sm:my-24">
         <div className="mx-auto max-w-2xl xl:max-w-7xl">

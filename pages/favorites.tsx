@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import Complex, { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
 import { titleMyFavorites } from "../lib/defaults";
-import { getLocalStorageFavorites } from "../lib/localStorage";
+import { getLocalStorageFavorites } from "../lib/functions";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -52,12 +52,7 @@ const FavoritesPage: React.FC<Props> = (props) => {
 
   return (
     <Layout>
-      <Header
-        isFavorites={true}
-        titleGray={true}
-        addClass="max-w-7xl mx-auto xl:px-0"
-        buttonColor="button_colors_pink"
-      />
+      <Header addClass="max-w-7xl mx-auto xl:px-0" />
       <Devider />
       <div className="max-w-7xl mx-4 xl:mx-auto">
         <div className="pb-4 lg:py-6">

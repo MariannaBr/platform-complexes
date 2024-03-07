@@ -6,6 +6,7 @@ import labels from "../lib/featuresLabels.json";
 import { ComplexProps } from "./Complex";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import TableHeader from "./TableHeader";
 
 const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   const defaultColDef = useMemo(() => {
@@ -40,14 +41,17 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   let columns = [];
   const firstColumn = {
     field: labels["amenity"],
+    width: 210,
   };
   columns.push(firstColumn);
   complexes.map((complex) => {
     let column = {};
     column = {
       field: complex["title"],
+      sortable: false,
+      headerComponentParams: { link: `/${complex.slug}` },
       cellDataType: "text",
-      width: 154,
+      width: 152,
       headerClass: "custom_header",
       cellStyle: { textAlign: "center" },
       cellRenderer: (params) => {
@@ -63,6 +67,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
     };
     columns.push(column);
   });
+
   const [colDefs, setColDefs] = useState(columns);
 
   //   for (var label in labels) {
@@ -76,15 +81,20 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   //     columns.push(column);
   //   }
 
+  const components = useMemo(() => {
+    return {
+      agColumnHeader: TableHeader,
+    };
+  }, []);
+
   return (
-    <div className=" mx-6 my-20">
-      <div className="ag-theme-quartz" style={{ height: 950 }}>
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={colDefs}
-          defaultColDef={defaultColDef}
-        />
-      </div>
+    <div className="ag-theme-quartz" style={{ height: 990 }}>
+      <AgGridReact
+        rowData={rowData}
+        columnDefs={colDefs}
+        components={components}
+        defaultColDef={defaultColDef}
+      />
     </div>
   );
 };

@@ -95,6 +95,7 @@ model Complex {
   furnishedOpt  Boolean @default(false)
   walkInCloset  Boolean @default(false)
   storage       Boolean @default(false)
+  inclEnergies  Boolean @default(false)
   favUsers  UsersOnComplexes[]
   }
 

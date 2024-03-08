@@ -8,6 +8,7 @@ import {
   titleTableNav,
   linkTable,
 } from "../lib/defaults";
+import { usePathname } from "next/navigation";
 
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
@@ -26,6 +27,7 @@ type PropType = {
 
 const Header: React.FC<PropType> = ({ addClass }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className={`bg-white py-6 px-6 ${addClass}`}>
@@ -53,7 +55,9 @@ const Header: React.FC<PropType> = ({ addClass }) => {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className={`text-sm font-semibold leading-6 text-gray-900 ${
+                pathname === item.href && "underline"
+              }`}
             >
               {item.name}
             </a>

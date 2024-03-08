@@ -112,18 +112,30 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
       <div className="max-w-xl">
         <div className="group relative">
           <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
-            <h2 className="text-lg font-semibold leading-6 text-gray-900">
-              {complex.title}
-            </h2>
+            <a
+              onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
+              href={`/${complex.slug}`}
+              className="cursor-pointer relative"
+            >
+              <h2 className="text-lg font-semibold leading-6 text-gray-900">
+                {complex.title}
+              </h2>
+            </a>
             <Rating
               placeId={complex.placeId}
               rating={complex.rating}
               rateCount={complex.rateCount}
             />
           </div>
-          <p className="mt-2 mx-1 line-clamp-2 text-left text-sm leading-6 text-gray-600">
-            {complex.description}
-          </p>
+          <a
+            onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
+            href={`/${complex.slug}`}
+            className="cursor-pointer relative"
+          >
+            <p className="mt-2 mx-1 line-clamp-2 text-left text-sm leading-6 text-gray-600">
+              {complex.description}
+            </p>
+          </a>
         </div>
       </div>
     </div>

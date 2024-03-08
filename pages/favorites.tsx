@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Footer from "../components/Footer";
+import Table from "../components/Table";
 import Complex, { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
 import { titleMyFavorites } from "../lib/defaults";
@@ -25,6 +26,27 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       placeId: true,
       coordinates: true,
+      roofDeck: true,
+      bbq: true,
+      gym: true,
+      pool: true,
+      workSpaces: true,
+      gameRoom: true,
+      packing: true,
+      bikeStorage: true,
+      petFriendly: true,
+      garage: true,
+      evCharging: true,
+      hardFloors: true,
+      inUnitWasher: true,
+      bigWindows: true,
+      airCondition: true,
+      balconies: true,
+      modernStyle: true,
+      furnishedOpt: true,
+      walkInCloset: true,
+      storage: true,
+      inclEnergies: true,
     },
   });
   return {
@@ -70,6 +92,7 @@ const FavoritesPage: React.FC<Props> = (props) => {
             </article>
           ))}
         </div>
+        {/* <Table complexes={favorites} /> */}
       </div>
       <Footer />
     </Layout>

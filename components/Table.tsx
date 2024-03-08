@@ -48,7 +48,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
     let column = {};
     column = {
       field: complex["title"],
-      sortable: false,
+      sortable: true,
       headerComponentParams: { link: `/${complex.slug}` },
       cellDataType: "text",
       width: 152,

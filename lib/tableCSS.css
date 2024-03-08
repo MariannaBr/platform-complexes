@@ -2,10 +2,18 @@
   @apply flex align-middle text-center justify-center !important;
 }
 
+.custom_header .ag-header-cell-comp-wrapper {
+  @apply flex align-middle text-center justify-center !important;
+}
+
 .check_true {
   @apply w-6 h-6 align-middle inline-block mx-auto text-green-500;
 }
 
 .check_false {
   @apply w-6 h-6 align-middle inline-block mx-auto text-pink-500;
+}
+
+.sort_label {
+  @apply float-left ml-2;
 }

@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 import Table from "../components/Table";
 import { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
-import { titleTable } from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -58,12 +57,7 @@ const TablePage: React.FC<Props> = (props) => {
     <Layout>
       <Header />
       <Devider />
-      <div className="mx-6">
-        <div className="pb-4 lg:py-6">
-          <h1 className="text-2xl font-bold leading-7 text-gray-900">
-            {titleTable}
-          </h1>
-        </div>
+      <div className="mx-6 pt-6">
         <Table complexes={props.feed} />
       </div>
       <Footer />

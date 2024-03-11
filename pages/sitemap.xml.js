@@ -37,6 +37,9 @@ function generateSiteMap(complexes) {
      <url>
        <loc>https://www.dogpatchapartments.com/signup</loc>
      </url>
+     <url>
+       <loc>https://www.dogpatchapartments.com/communities-comparison</loc>
+     </url>
      ${complexes
        .map((complex) => {
          return `

@@ -81,14 +81,6 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
     };
   }, []);
 
-  const onGridReady = useCallback(() => {
-    if (gridRef.current && gridRef.current.api) {
-      gridRef.current.api.sizeColumnsToFit({
-        defaultMinWidth: 100,
-      });
-    }
-  }, [rowData]);
-
   useEffect(() => {
     if (gridRef.current && gridRef.current.api) {
       // Wait for the next tick to ensure AG Grid has processed the row data
@@ -106,7 +98,6 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
         columnDefs={colDefs}
         components={components}
         defaultColDef={defaultColDef}
-        onGridReady={onGridReady}
       />
     </div>
   );

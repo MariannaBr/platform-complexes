@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef,
+} from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
@@ -12,91 +18,117 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   const defaultColDef = useMemo(() => {
     return {
       wrapHeaderText: true,
+      minWidth: 152,
     };
   }, []);
 
-  let rows = [];
-  for (var feature in labels) {
-    if (feature !== "amenity") {
-      let row = {};
-      complexes.map((complex) => {
-        row[labels["amenity"]] = labels[feature];
-        row[complex["title"]] = complex[feature];
-      });
-      rows.push(row);
+  const gridRef = useRef();
+  const [rowData, setRowData] = useState([]);
+  const [colDefs, setColDefs] = useState([]);
+
+  // create rows
+  useEffect(() => {
+    let rows = [];
+    for (var feature in labels) {
+      if (feature !== "amenity") {
+        let row = { [labels["amenity"]]: labels[feature] };
+        complexes.forEach((complex) => {
+          row[complex["title"]] = complex[feature];
+        });
+        rows.push(row);
+      }
     }
-  }
-  const [rowData, setRowData] = useState(rows);
+    setRowData(rows);
+  }, [complexes]);
 
-  //   complexes.map((complex) => {
-  //       let row = {};
-  //       for (var feature in complex) {
-  //         if (labels[feature]) {
-  //           row[labels[feature]] = complex[feature];
-  //         }
-  //       }
-  //       rows.push(row);
-  //     });
-
-  let columns = [];
-  const firstColumn = {
-    field: labels["amenity"],
-    width: 210,
-  };
-  columns.push(firstColumn);
-  complexes.map((complex) => {
-    let column = {};
-    column = {
-      field: complex["title"],
-      sortable: true,
-      headerComponentParams: { link: `/${complex.slug}` },
-      cellDataType: "text",
-      width: 152,
-      headerClass: "custom_header",
-      cellStyle: { textAlign: "center" },
-      cellRenderer: (params) => {
-        if (typeof params.value === "boolean") {
-          return params.value ? (
-            <FontAwesomeIcon icon={faCheck} className="check_true" />
-          ) : (
-            <FontAwesomeIcon icon={faXmark} className="check_false" />
-          );
-        }
-        return params.value;
+  // create columns
+  useEffect(() => {
+    let columns = [
+      {
+        field: labels["amenity"],
+        minWidth: 210,
       },
-    };
-    columns.push(column);
-  });
+    ];
+    complexes.forEach((complex) => {
+      let column = {
+        field: complex["title"],
+        sortable: true,
+        headerComponentParams: { link: `/${complex.slug}` },
+        cellDataType: "text",
+        minWidth: 152,
+        headerClass: "custom_header",
+        cellStyle: { textAlign: "center" },
+        cellRenderer: (params) => {
+          if (typeof params.value === "boolean") {
+            return params.value ? (
+              <FontAwesomeIcon icon={faCheck} className="check_true" />
+            ) : (
+              <FontAwesomeIcon icon={faXmark} className="check_false" />
+            );
+          }
+          return params.value;
+        },
+      };
+      columns.push(column);
+    });
+    setColDefs(columns);
+  }, [complexes]);
 
-  const [colDefs, setColDefs] = useState(columns);
-
-  //   for (var label in labels) {
-  //     if (label === "title") {
-  //       column = { field: labels[label], width: 160 };
-  //     } else if (label === "rating") {
-  //       column = { field: labels[label], width: 100 };
-  //     } else {
-  //       column = { field: labels[label], width: 80 };
-  //     }
-  //     columns.push(column);
-  //   }
-
+  // create custom header
   const components = useMemo(() => {
     return {
       agColumnHeader: TableHeader,
     };
   }, []);
 
+  const onGridReady = useCallback(() => {
+    gridRef.current.api.sizeColumnsToFit({
+      defaultMinWidth: 100,
+    });
+  }, [rowData]);
+
+  useEffect(() => {
+    if (gridRef.current && gridRef.current.api) {
+      // Wait for the next tick to ensure AG Grid has processed the row data
+      setTimeout(() => {
+        gridRef.current.api.sizeColumnsToFit();
+      });
+    }
+  }, [rowData]);
+
   return (
-    <div className="ag-theme-quartz" style={{ height: 990 }}>
+    <div className="ag-theme-quartz max-h-screen" style={{ height: "80vh" }}>
       <AgGridReact
+        ref={gridRef}
         rowData={rowData}
         columnDefs={colDefs}
         components={components}
         defaultColDef={defaultColDef}
+        onGridReady={onGridReady}
       />
     </div>
   );
 };
 
 export default Table;
+
+//   complexes.map((complex) => {
+//       let row = {};
+//       for (var feature in complex) {
+//         if (labels[feature]) {
+//           row[labels[feature]] = complex[feature];
+//         }
+//       }
+//       rows.push(row);
+//     });
+
+//   for (var label in labels) {
+//     if (label === "title") {
+//       column = { field: labels[label], width: 160 };
+//     } else if (label === "rating") {
+//       column = { field: labels[label], width: 100 };
+//     } else {
+//       column = { field: labels[label], width: 80 };
+//     }
+//     columns.push(column);
+//   }

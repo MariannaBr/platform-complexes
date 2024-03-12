@@ -61,16 +61,18 @@ type Props = {
 
 const FavoritesPage: React.FC<Props> = (props) => {
   const [savedFavorites, setSavedFavorites] = useState([]);
+  const [favorites, setFavorites] = useState<ComplexProps[]>([]);
+
   useEffect(() => {
     setSavedFavorites(getLocalStorageFavorites());
   }, []);
 
-  const favorites = [];
-  for (let i = 0; i < props.feed.length; i++) {
-    if (savedFavorites.includes(props.feed[i].id)) {
-      favorites.push(props.feed[i]);
-    }
-  }
+  useEffect(() => {
+    const newFavorites = props.feed.filter((complex) =>
+      savedFavorites.includes(complex.id)
+    );
+    setFavorites(newFavorites);
+  }, [savedFavorites, props.feed]);
 
   return (
     <Layout>
@@ -92,7 +94,9 @@ const FavoritesPage: React.FC<Props> = (props) => {
             </article>
           ))}
         </div>
-        {/* <Table complexes={favorites} /> */}
+        <div className="mt-14">
+          <Table complexes={favorites} />
+        </div>
       </div>
       <Footer />
     </Layout>

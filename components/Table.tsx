@@ -82,9 +82,11 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   }, []);
 
   const onGridReady = useCallback(() => {
-    gridRef.current.api.sizeColumnsToFit({
-      defaultMinWidth: 100,
-    });
+    if (gridRef.current && gridRef.current.api) {
+      gridRef.current.api.sizeColumnsToFit({
+        defaultMinWidth: 100,
+      });
+    }
   }, [rowData]);
 
   useEffect(() => {

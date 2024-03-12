@@ -82,7 +82,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   }, []);
 
   useEffect(() => {
-    if (gridRef.current && gridRef.current.api) {
+    if (gridRef.current) {
       // Wait for the next tick to ensure AG Grid has processed the row data
       setTimeout(() => {
         gridRef.current.api.sizeColumnsToFit();

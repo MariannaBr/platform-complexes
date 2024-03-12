@@ -12,6 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
     where: {
       location: String("Dogpatch"),
+      show: Boolean(true),
     },
     select: {
       title: true,

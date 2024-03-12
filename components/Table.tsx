@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
@@ -22,7 +16,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
     };
   }, []);
 
-  const gridRef = useRef();
+  const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState([]);
   const [colDefs, setColDefs] = useState([]);
 
@@ -82,7 +76,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   }, []);
 
   useEffect(() => {
-    if (gridRef.current) {
+    if (gridRef.current && gridRef.current.api) {
       // Wait for the next tick to ensure AG Grid has processed the row data
       setTimeout(() => {
         gridRef.current.api.sizeColumnsToFit();

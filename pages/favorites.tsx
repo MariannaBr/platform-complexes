@@ -48,6 +48,7 @@ export const getStaticProps: GetStaticProps = async () => {
       walkInCloset: true,
       storage: true,
       inclEnergies: true,
+      floorHeating: true,
     },
   });
   return {

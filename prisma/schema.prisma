@@ -96,6 +96,7 @@ model Complex {
   walkInCloset  Boolean @default(false)
   storage       Boolean @default(false)
   inclEnergies  Boolean @default(false)
+  floorHeating  Boolean @default(false)
   show          Boolean @default(true)
   favUsers  UsersOnComplexes[]
   }

@@ -46,7 +46,7 @@ const SignupPage: React.FC = () => {
         description={metaDescriptionSignup}
       />
       <Layout>
-        <Header />
+        <Header isHomepage={true} />
         <Devider />
         <div className="bg-white -my-6 sm:my-24">
           <div className="mx-auto max-w-2xl xl:max-w-7xl">

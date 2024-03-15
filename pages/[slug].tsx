@@ -25,7 +25,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     select: {
       id: true,
       title: true,
+      metaTitle: true,
       description: true,
+      metaDescription: true,
       link: true,
       rating: true,
       rateCount: true,
@@ -47,7 +49,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const Complex: React.FC<ComplexProps> = (props) => {
   let id = props.id;
   let title = props.title;
+  let metaTitle = props.metaTitle;
   let description = props.description;
+  let metaDescription = props.metaDescription;
   let webLink = props.link;
   let rating = props.rating;
   let rateCount = props.rateCount;
@@ -62,7 +66,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
 
   return (
     <>
-      <PageMetadata title={title} description={description} />
+      <PageMetadata title={metaTitle} description={metaDescription} />
       <Layout>
         <Header addClass="max-w-7xl mx-auto xl:px-0" />
         <Devider />

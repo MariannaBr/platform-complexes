@@ -59,9 +59,11 @@ model VerificationToken {
 model Complex {
   id        String   @id @default(cuid())
   title     String
+  metaTitle String?
   slug      String?  @unique
   location  String?
   description   String?
+  metaDescription String?
   link      String
   rating    String?
   rateCount Int?

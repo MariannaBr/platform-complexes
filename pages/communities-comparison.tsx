@@ -67,7 +67,7 @@ const TablePage: React.FC<Props> = (props) => {
         description={metaDescriptionComparison}
       />
       <Layout>
-        <Header />
+        <Header isHomepage={true} />
         <Devider />
         <div className="mx-6 pt-6">
           <Table complexes={props.feed} />

@@ -10,8 +10,10 @@ import { getLocalStorageFavorites, getIsFavorite } from "../lib/functions";
 export type ComplexProps = {
   id: string;
   title: string;
+  metaTitle: string;
   slug: string;
   description: string;
+  metaDescription: string;
   link: string;
   image: string;
   rating: string;

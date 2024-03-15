@@ -71,7 +71,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
         rateCount={rateCount}
         isHomepage={false}
       />
-      <div className="max-w-7xl mx-auto px-4 xl:px-0">
+      <div className="max-w-7xl mx-auto px-4 xl:px-0 text-justify">
         <p>{description}</p>
         <a
           href={webLink}

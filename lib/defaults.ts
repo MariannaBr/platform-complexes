@@ -14,7 +14,7 @@ export const titleHome = "Home";
 export const linkFavorites = "/favorites";
 export const linkTable = "/communities-comparison";
 export const linkSignup = "/signup";
-export const metaTitleHome = "Dogpatch Apartments Communities";
+export const metaTitleHome = "Dogpatch San Francisco Apartments communities";
 export const metaDescriptionHome =
   "Discover your perfect home in Dogpatch San Francisco with our comprehensive listings of apartment complexes. Explore detailed information, amenities, and exclusive photos for each complex to find your dream apartment in this vibrant neighborhood. Start your search today!";
 export const metaTitleFavorites =

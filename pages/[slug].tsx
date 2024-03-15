@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
 import CategoryTitle from "../components/CategoryTitle";
+import PageMetadata from "../components/PageMetaData";
 import {
   titleCommunityWeb,
   titleCommunityAmenities,
@@ -60,52 +61,55 @@ const Complex: React.FC<ComplexProps> = (props) => {
   let neighborhood = props.neighborhood;
 
   return (
-    <Layout>
-      <Header addClass="max-w-7xl mx-auto xl:px-0" />
-      <Devider />
-      <HeaderComplex
-        id={id}
-        title={title}
-        placeId={placeId}
-        rating={rating}
-        rateCount={rateCount}
-        isHomepage={false}
-      />
-      <div className="max-w-7xl mx-auto px-4 xl:px-0 text-justify">
-        <p>{description}</p>
-        <a
-          href={webLink}
-          target="_blank"
-          className="underline text-pink-600 text-sm"
-        >
-          {titleCommunityWeb}
-        </a>
-        {communityMap && (
-          <div>
-            <CategoryTitle title="Community map" />
-            <div className="flex max-w-7xl mx-auto pt-6">
-              <img src={communityMap} alt="" className="w-full" />
+    <>
+      <PageMetadata title={title} description={description} />
+      <Layout>
+        <Header addClass="max-w-7xl mx-auto xl:px-0" />
+        <Devider />
+        <HeaderComplex
+          id={id}
+          title={title}
+          placeId={placeId}
+          rating={rating}
+          rateCount={rateCount}
+          isHomepage={false}
+        />
+        <div className="max-w-7xl mx-auto px-4 xl:px-0 text-justify">
+          <p>{description}</p>
+          <a
+            href={webLink}
+            target="_blank"
+            className="underline text-pink-600 text-sm"
+          >
+            {titleCommunityWeb}
+          </a>
+          {communityMap && (
+            <div>
+              <CategoryTitle title="Community map" />
+              <div className="flex max-w-7xl mx-auto pt-6">
+                <img src={communityMap} alt="" className="w-full" />
+              </div>
             </div>
-          </div>
-        )}
-        <Category
-          title={titleCommunityAmenities}
-          images={amenitiesImgs}
-          amenities={amenities}
-        />
-        <Category
-          title={titleApartmentAmenities}
-          images={apartmentAmenitiesImgs}
-          amenities={apartmentAmenities}
-        />
-        <Category
-          title={titleNeighborhood}
-          images={neighborhoodImgs}
-          amenities={neighborhood}
-        />
-      </div>
-      <Footer />
-    </Layout>
+          )}
+          <Category
+            title={titleCommunityAmenities}
+            images={amenitiesImgs}
+            amenities={amenities}
+          />
+          <Category
+            title={titleApartmentAmenities}
+            images={apartmentAmenitiesImgs}
+            amenities={apartmentAmenities}
+          />
+          <Category
+            title={titleNeighborhood}
+            images={neighborhoodImgs}
+            amenities={neighborhood}
+          />
+        </div>
+        <Footer />
+      </Layout>
+    </>
   );
 };
 

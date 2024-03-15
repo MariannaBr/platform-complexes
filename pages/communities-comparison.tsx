@@ -6,7 +6,12 @@ import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 import Table from "../components/Table";
 import { ComplexProps } from "../components/Complex";
+import PageMetadata from "../components/PageMetaData";
 import prisma from "../lib/prisma";
+import {
+  metaTitleComparison,
+  metaDescriptionComparison,
+} from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -56,14 +61,20 @@ type Props = {
 
 const TablePage: React.FC<Props> = (props) => {
   return (
-    <Layout>
-      <Header />
-      <Devider />
-      <div className="mx-6 pt-6">
-        <Table complexes={props.feed} />
-      </div>
-      <Footer />
-    </Layout>
+    <>
+      <PageMetadata
+        title={metaTitleComparison}
+        description={metaDescriptionComparison}
+      />
+      <Layout>
+        <Header />
+        <Devider />
+        <div className="mx-6 pt-6">
+          <Table complexes={props.feed} />
+        </div>
+        <Footer />
+      </Layout>
+    </>
   );
 };
 

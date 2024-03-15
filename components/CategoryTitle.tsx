@@ -5,7 +5,7 @@ type PropType = {
 };
 
 const CategoryTitle: React.FC<PropType> = ({ title }) => {
-  return <div className="text-xl font-semibold mt-10">{title}</div>;
+  return <h3 className="text-xl font-semibold mt-10">{title}</h3>;
 };
 
 export default CategoryTitle;

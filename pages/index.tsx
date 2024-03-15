@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
+import PageMetadata from "../components/PageMetaData";
+import { metaTitleHome, metaDescriptionHome } from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -40,27 +42,30 @@ type Props = {
 
 const Homepage: React.FC<Props> = (props) => {
   return (
-    <Layout>
-      <Header />
-      <Devider />
-      <div className="flex content_height">
-        <div className="mx-auto w-1/2 lg:w-2/3 px-2 lg:px-6 hide_scrollbar">
-          <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 lg:grid-cols-3">
-            {props.feed.map((complex) => (
-              <div
-                key={complex.id}
-                className="flex flex-col items-start justify-between"
-              >
-                <Complex complex={complex} />
-              </div>
-            ))}
+    <>
+      <PageMetadata title={metaTitleHome} description={metaDescriptionHome} />
+      <Layout>
+        <Header isHomepage={true} />
+        <Devider />
+        <div className="flex content_height">
+          <div className="mx-auto w-1/2 lg:w-2/3 px-2 lg:px-6 hide_scrollbar">
+            <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 lg:grid-cols-3">
+              {props.feed.map((complex) => (
+                <div
+                  key={complex.id}
+                  className="flex flex-col items-start justify-between"
+                >
+                  <Complex complex={complex} />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="w-1/2 lg:w-1/3">
+            <Map complexes={props.feed} />
           </div>
         </div>
-        <div className="w-1/2 lg:w-1/3">
-          <Map complexes={props.feed} />
-        </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 

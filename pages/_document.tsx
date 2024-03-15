@@ -1,4 +1,4 @@
-import { metaTitle, metaDescription } from "../lib/defaults";
+import { metaTitleHome, metaDescriptionHome } from "../lib/defaults";
 import Document, { Html, Main, Head, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -11,10 +11,9 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
-          <meta name="description" content={metaDescription} />
           <meta name="robots" content="index, follow" />
-          <meta property="og:title" content={metaTitle} />
-          <meta property="og:description" content={metaDescription} />
+          <meta property="og:title" content={metaTitleHome} />
+          <meta property="og:description" content={metaDescriptionHome} />
           <meta
             property="og:image"
             content="https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp"

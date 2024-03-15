@@ -23,9 +23,10 @@ const navigation = [
 
 type PropType = {
   addClass?: string;
+  isHomepage?: boolean;
 };
 
-const Header: React.FC<PropType> = ({ addClass }) => {
+const Header: React.FC<PropType> = ({ isHomepage, addClass }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -36,9 +37,15 @@ const Header: React.FC<PropType> = ({ addClass }) => {
         aria-label="Global"
       >
         <a href="/" className="">
-          <h1 className="text-lg md:text-2xl font-bold leading-7 text-gray-900">
-            {titleDogpatch}
-          </h1>
+          {isHomepage ? (
+            <h1 className="text-lg md:text-2xl font-bold leading-7 text-gray-900">
+              {titleDogpatch}
+            </h1>
+          ) : (
+            <h2 className="text-lg md:text-2xl font-bold leading-7 text-gray-900">
+              {titleDogpatch}
+            </h2>
+          )}
         </a>
         <div className="flex lg:hidden">
           <button

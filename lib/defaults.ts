@@ -14,9 +14,10 @@ export const titleHome = "Home";
 export const linkFavorites = "/favorites";
 export const linkTable = "/communities-comparison";
 export const linkSignup = "/signup";
-export const metaTitleHome = "Dogpatch San Francisco Apartments communities";
+export const metaTitleHome =
+  "Dogpatch San Francisco Epic Apartments communities";
 export const metaDescriptionHome =
-  "Discover your perfect home in Dogpatch San Francisco with our comprehensive listings of apartment complexes. Explore detailed information, amenities, and exclusive photos for each complex to find your dream apartment in this vibrant neighborhood. Start your search today!";
+  "Discover your perfect home in Dogpatch San Francisco, CA 94107. Get information about 1 bedroom, 1 bath, 2 bedroom, 2 baths or 3 bedroom apartments and townhomes for rent. Explore amenities, and exclusive photos for each complex to find your dream apartment in this vibrant neighborhood.";
 export const metaTitleFavorites =
   "Your favorite apartment communities in Dogpatch";
 export const metaDescriptionFavorites =

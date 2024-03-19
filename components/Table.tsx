@@ -22,52 +22,56 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
 
   // create rows
   useEffect(() => {
-    let rows = [];
-    for (var feature in labels) {
-      if (feature !== "amenity") {
-        let row = { [labels["amenity"]]: labels[feature] };
-        complexes.forEach((complex) => {
-          row[complex["title"]] = complex[feature];
-        });
-        rows.push(row);
+    if (complexes && complexes.length > 0) {
+      let rows = [];
+      for (var feature in labels) {
+        if (feature !== "amenity") {
+          let row = { [labels["amenity"]]: labels[feature] };
+          complexes.forEach((complex) => {
+            row[complex["title"]] = complex[feature];
+          });
+          rows.push(row);
+        }
       }
+      setRowData(rows);
     }
-    setRowData(rows);
   }, [complexes]);
 
   // create columns
   useEffect(() => {
-    let columns = [
-      {
-        field: labels["amenity"],
-        minWidth: 210,
-        pinned: "left",
-      },
-    ];
-    complexes.forEach((complex) => {
-      let column = {
-        field: complex["title"],
-        sortable: true,
-        headerComponentParams: { link: `/${complex.slug}` },
-        cellDataType: "text",
-        minWidth: 152,
-        pinned: "no",
-        headerClass: "custom_header",
-        cellStyle: { textAlign: "center" },
-        cellRenderer: (params) => {
-          if (typeof params.value === "boolean") {
-            return params.value ? (
-              <FontAwesomeIcon icon={faCheck} className="check_true" />
-            ) : (
-              <FontAwesomeIcon icon={faXmark} className="check_false" />
-            );
-          }
-          return params.value;
+    if (complexes && complexes.length > 0) {
+      let columns = [
+        {
+          field: labels["amenity"],
+          minWidth: 210,
+          pinned: "left",
         },
-      };
-      columns.push(column);
-    });
-    setColDefs(columns);
+      ];
+      complexes.forEach((complex) => {
+        let column = {
+          field: complex["title"],
+          sortable: true,
+          headerComponentParams: { link: `/${complex.slug}` },
+          cellDataType: "text",
+          minWidth: 152,
+          pinned: "no",
+          headerClass: "custom_header",
+          cellStyle: { textAlign: "center" },
+          cellRenderer: (params) => {
+            if (typeof params.value === "boolean") {
+              return params.value ? (
+                <FontAwesomeIcon icon={faCheck} className="check_true" />
+              ) : (
+                <FontAwesomeIcon icon={faXmark} className="check_false" />
+              );
+            }
+            return params.value;
+          },
+        };
+        columns.push(column);
+      });
+      setColDefs(columns);
+    }
   }, [complexes]);
 
   // create custom header

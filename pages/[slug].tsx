@@ -15,6 +15,7 @@ import {
   titleCommunityAmenities,
   titleApartmentAmenities,
   titleNeighborhood,
+  linkHome,
 } from "../lib/defaults";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -29,6 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       description: true,
       metaDescription: true,
       link: true,
+      slug: true,
       image: true,
       rating: true,
       rateCount: true,
@@ -53,6 +55,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
   let metaTitle = props.metaTitle;
   let description = props.description;
   let metaDescription = props.metaDescription;
+  let metaLink = linkHome + props.slug;
   let webLink = props.link;
   let image = props.image;
   let rating = props.rating;
@@ -72,7 +75,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
         title={metaTitle}
         description={metaDescription}
         image={image}
-        url={webLink}
+        url={metaLink}
       />
       <Layout>
         <Header addClass="max-w-7xl mx-auto xl:px-0" />

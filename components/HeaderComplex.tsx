@@ -50,7 +50,7 @@ const HeaderComplex: React.FC<PropType> = ({
   };
 
   return (
-    <div className="md:py-6 max-w-7xl mx-4 lg:mx-auto">
+    <div className="md:py-6 max-w-7xl px-6 xl:px-0 mx-auto">
       <div className="sm:flex sm:items-center sm:justify-between">
         <div className="sm:flex sm:items-center sm:justify-between sm:gap-x-4 text-xs">
           <h1 className="text-2xl font-bold leading-7 text-gray-900">

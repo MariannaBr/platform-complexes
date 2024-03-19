@@ -94,7 +94,7 @@ const FavoritesPage: React.FC<Props> = (props) => {
       <Layout>
         <Header addClass="max-w-7xl mx-auto xl:px-0" />
         <Devider />
-        <div className="max-w-7xl mx-4 xl:mx-auto">
+        <div className="max-w-7xl px-6 mx-auto xl:px-0">
           <div className="pb-4 lg:py-6">
             <h1 className="text-2xl font-bold leading-7 text-gray-900">
               {titleMyFavorites}

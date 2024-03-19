@@ -31,7 +31,7 @@ const Header: React.FC<PropType> = ({ isHomepage, addClass }) => {
   const pathname = usePathname();
 
   return (
-    <header className={`bg-white py-6 px-6 ${addClass}`}>
+    <header className={`bg-white py-6 px-2 lg:px-6 ${addClass}`}>
       <nav
         className="mx-auto flex items-center justify-between"
         aria-label="Global"

@@ -11,9 +11,16 @@ export const titleTable = "Communities Comparison";
 export const titleTableNav = "Comparison Table";
 export const titleSignup = "Sign up";
 export const titleHome = "Home";
+export const linkHome = "https://www.dogpatchapartments.com/";
+export const metaImageHome =
+  "https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp";
 export const linkFavorites = "/favorites";
+export const metaLinkFavorites = "https://www.dogpatchapartments.com/favorites";
 export const linkTable = "/communities-comparison";
+export const metaLinkTable =
+  "https://www.dogpatchapartments.com/communities-comparison";
 export const linkSignup = "/signup";
+export const metaLinkSignup = "https://www.dogpatchapartments.com/signup";
 export const metaTitleHome =
   "Dogpatch San Francisco Epic Apartments communities";
 export const metaDescriptionHome =

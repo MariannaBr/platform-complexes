@@ -7,7 +7,12 @@ import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
 import PageMetadata from "../components/PageMetaData";
-import { metaTitleHome, metaDescriptionHome } from "../lib/defaults";
+import {
+  metaTitleHome,
+  metaDescriptionHome,
+  linkHome,
+  metaImageHome,
+} from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -43,7 +48,12 @@ type Props = {
 const Homepage: React.FC<Props> = (props) => {
   return (
     <>
-      <PageMetadata title={metaTitleHome} description={metaDescriptionHome} />
+      <PageMetadata
+        title={metaTitleHome}
+        description={metaDescriptionHome}
+        image={metaImageHome}
+        url={linkHome}
+      />
       <Layout>
         <Header isHomepage={true} />
         <Devider />

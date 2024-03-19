@@ -11,6 +11,8 @@ import prisma from "../lib/prisma";
 import {
   metaTitleComparison,
   metaDescriptionComparison,
+  metaImageHome,
+  metaLinkTable,
 } from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -65,6 +67,8 @@ const TablePage: React.FC<Props> = (props) => {
       <PageMetadata
         title={metaTitleComparison}
         description={metaDescriptionComparison}
+        image={metaImageHome}
+        url={metaLinkTable}
       />
       <Layout>
         <Header isHomepage={true} />

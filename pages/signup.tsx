@@ -4,7 +4,12 @@ import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 import PageMetadata from "../components/PageMetaData";
-import { metaTitleSignup, metaDescriptionSignup } from "../lib/defaults";
+import {
+  metaTitleSignup,
+  metaDescriptionSignup,
+  metaLinkSignup,
+  metaImageHome,
+} from "../lib/defaults";
 
 const SignupPage: React.FC = () => {
   const [feedbackMessage, setFeedbackMessage] = useState("");
@@ -44,6 +49,8 @@ const SignupPage: React.FC = () => {
       <PageMetadata
         title={metaTitleSignup}
         description={metaDescriptionSignup}
+        image={metaImageHome}
+        url={metaLinkSignup}
       />
       <Layout>
         <Header isHomepage={true} />

@@ -10,7 +10,12 @@ import prisma from "../lib/prisma";
 import { titleMyFavorites } from "../lib/defaults";
 import { getLocalStorageFavorites } from "../lib/functions";
 import PageMetadata from "../components/PageMetaData";
-import { metaTitleFavorites, metaDescriptionFavorites } from "../lib/defaults";
+import {
+  metaTitleFavorites,
+  metaDescriptionFavorites,
+  metaLinkFavorites,
+  metaImageHome,
+} from "../lib/defaults";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -83,6 +88,8 @@ const FavoritesPage: React.FC<Props> = (props) => {
       <PageMetadata
         title={metaTitleFavorites}
         description={metaDescriptionFavorites}
+        image={metaImageHome}
+        url={metaLinkFavorites}
       />
       <Layout>
         <Header addClass="max-w-7xl mx-auto xl:px-0" />

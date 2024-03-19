@@ -41,6 +41,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
       {
         field: labels["amenity"],
         minWidth: 210,
+        pinned: "left",
       },
     ];
     complexes.forEach((complex) => {
@@ -50,6 +51,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
         headerComponentParams: { link: `/${complex.slug}` },
         cellDataType: "text",
         minWidth: 152,
+        pinned: "no",
         headerClass: "custom_header",
         cellStyle: { textAlign: "center" },
         cellRenderer: (params) => {

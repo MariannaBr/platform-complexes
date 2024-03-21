@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="mx-auto py-12 md:flex md:items-center md:justify-between lg:px-8">
+    <footer className="mx-auto py-6 md:flex md:items-center md:justify-between lg:px-8">
       <div className="flex justify-center space-x-6 md:order-2">
         {/* {navigation.map((item) => (
             <a

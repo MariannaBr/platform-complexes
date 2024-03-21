@@ -12,7 +12,6 @@ type PropType = {
   placeId?: string;
   rating?: string;
   rateCount?: number;
-  isHomepage: boolean;
 };
 
 const HeaderComplex: React.FC<PropType> = ({
@@ -21,7 +20,6 @@ const HeaderComplex: React.FC<PropType> = ({
   placeId,
   rating,
   rateCount,
-  isHomepage,
 }) => {
   const [favorites, setFavorites] = useState(getLocalStorageFavorites());
   const [isFavorite, setIsFavorite] = useState<boolean>(getIsFavorite(id));
@@ -50,23 +48,34 @@ const HeaderComplex: React.FC<PropType> = ({
   };
 
   return (
-    <div className="md:py-6 max-w-7xl px-6 xl:px-0 mx-auto">
-      <div className="sm:flex sm:items-center sm:justify-between">
+    <div className="py-4 md:py-6 max-w-7xl px-6 xl:px-0 mx-auto">
+      <div className="hidden sm:flex sm:items-center sm:justify-between">
         <div className="sm:flex sm:items-center sm:justify-between sm:gap-x-4 text-xs">
           <h1 className="text-2xl font-bold leading-7 text-gray-900">
             {title}
           </h1>
+
           <Rating placeId={placeId} rating={rating} rateCount={rateCount} />
         </div>
         <div className="flex">
-          {!isHomepage && (
-            <ButtonIcon
-              onClick={saveFavorite}
-              iconName={icon}
-              title={titleButton}
-            />
-          )}
+          <ButtonIcon
+            onClick={saveFavorite}
+            iconName={icon}
+            title={titleButton}
+          />
         </div>
+      </div>
+
+      <div className="sm:hidden flex items-center justify-between gap-x-4 text-xs">
+        <h1 className="text-2xl font-bold leading-7 text-gray-900">{title}</h1>
+        <ButtonIcon
+          onClick={saveFavorite}
+          iconName={icon}
+          title={titleButton}
+        />
+      </div>
+      <div className="sm:hidden text-xs">
+        <Rating placeId={placeId} rating={rating} rateCount={rateCount} />
       </div>
     </div>
   );

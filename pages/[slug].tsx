@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import HeaderComplex from "../components/HeaderComplex";
@@ -69,6 +69,12 @@ const Complex: React.FC<ComplexProps> = (props) => {
   let neighborhoodImgs = props.neighborhoodImgs;
   let neighborhood = props.neighborhood;
 
+  const [showContent, setShowContent] = useState(false);
+
+  const changeShowContent = () => {
+    setShowContent(!showContent);
+  };
+
   return (
     <>
       <PageMetadata
@@ -86,17 +92,27 @@ const Complex: React.FC<ComplexProps> = (props) => {
           placeId={placeId}
           rating={rating}
           rateCount={rateCount}
-          isHomepage={false}
         />
         <div className="max-w-7xl mx-auto px-6 xl:px-0 text-justify">
-          <p>{description}</p>
-          <a
-            href={webLink}
-            target="_blank"
-            className="underline text-pink-600 text-sm"
+          <div className="mb-2">
+            <a
+              href={webLink}
+              target="_blank"
+              className="underline text-pink-600 text-sm"
+            >
+              {titleCommunityWeb}
+            </a>
+          </div>
+          <p className={`${!showContent && "line-clamp-3 lg:line-clamp-5"}`}>
+            {description}
+          </p>
+          <button
+            onClick={changeShowContent}
+            className=" font-medium underline mt-1"
           >
-            {titleCommunityWeb}
-          </a>
+            {showContent ? "Show less" : "Show more"}
+          </button>
+
           {communityMap && (
             <div>
               <CategoryTitle title="Community map" />

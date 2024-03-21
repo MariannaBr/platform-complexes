@@ -3,42 +3,42 @@
     {
       "source": "/themartin",
       "destination": "/the-martin",
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/windsor",
       "destination": "/windsor-dogpatch",
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/2290third",
       "destination": "/2290-third",
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/777tenn",
       "destination": "/777-tenn",
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/potrerolaunch",
       "destination": "/potrero-launch",
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/thegantry",
       "destination": "/the-gantry",
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/themariposa",
       "destination": "/the-mariposa",
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/potrerolaunch",
       "destination": "/potrero-launch",
-      "statusCode": 301
+      "permanent": true
     }
   ]
 }

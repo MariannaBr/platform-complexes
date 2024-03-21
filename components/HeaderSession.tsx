@@ -1,12 +1,12 @@
-import React from "react";
-import Link from "next/link";
-import Rating from "./Rating";
-import Button from "./Button";
-import ButtonIcon from "./ButtonIcon";
-import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
-import { useRouter } from "next/router";
-import { signOut, useSession } from "next-auth/react";
-import { titleDogpatch, titleFavorites, titleSave } from "../lib/defaults";
+// import React from "react";
+// import Link from "next/link";
+// import Rating from "./Rating";
+// import Button from "./Button";
+// import ButtonIcon from "./ButtonIcon";
+// import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
+// import { useRouter } from "next/router";
+// import { signOut, useSession } from "next-auth/react";
+// import { titleDogpatch, titleFavorites, titleSave } from "../lib/defaults";
 
 // type PropType = {
 //   title: string;

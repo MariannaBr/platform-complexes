@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/themartin",
+      "destination": "/the-martin",
+      "statusCode": 301
+    },
+    {
+      "source": "/windsor",
+      "destination": "/windsor-dogpatch",
+      "statusCode": 301
+    },
+    {
+      "source": "/2290third",
+      "destination": "/2290-third",
+      "statusCode": 301
+    },
+    {
+      "source": "/777tenn",
+      "destination": "/777-tenn",
+      "statusCode": 301
+    },
+    {
+      "source": "/potrerolaunch",
+      "destination": "/potrero-launch",
+      "statusCode": 301
+    },
+    {
+      "source": "/thegantry",
+      "destination": "/the-gantry",
+      "statusCode": 301
+    },
+    {
+      "source": "/themariposa",
+      "destination": "/the-mariposa",
+      "statusCode": 301
+    },
+    {
+      "source": "/potrerolaunch",
+      "destination": "/potrero-launch",
+      "statusCode": 301
+    }
+  ]
+}

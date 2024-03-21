@@ -25,11 +25,21 @@ const HeaderComplex: React.FC<PropType> = ({
   const [isFavorite, setIsFavorite] = useState<boolean>(getIsFavorite(id));
   const [icon, setIcon] = useState<IconDefinition>(faHeartReg);
   const [titleButton, setTitle] = useState<string>(titleSave);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIcon(getIsFavorite(id) ? faHeart : faHeartReg);
     setTitle(getIsFavorite(id) ? titleSaved : titleSave);
-  });
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+    // Check on mount and on resize
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   const saveFavorite = () => {
     if (isFavorite) {
@@ -49,34 +59,41 @@ const HeaderComplex: React.FC<PropType> = ({
 
   return (
     <div className="py-4 md:py-6 max-w-7xl px-6 xl:px-0 mx-auto">
-      <div className="hidden sm:flex sm:items-center sm:justify-between">
-        <div className="sm:flex sm:items-center sm:justify-between sm:gap-x-4 text-xs">
+      {!isMobile && (
+        <div className="hidden sm:flex sm:items-center sm:justify-between">
+          <div className="hidden sm:flex sm:items-center sm:justify-between sm:gap-x-4 text-xs">
+            <h1 className="text-2xl font-bold leading-7 text-gray-900">
+              {title}
+            </h1>
+            <Rating placeId={placeId} rating={rating} rateCount={rateCount} />
+          </div>
+          <div className="flex">
+            <ButtonIcon
+              onClick={saveFavorite}
+              iconName={icon}
+              title={titleButton}
+            />
+          </div>
+        </div>
+      )}
+
+      {isMobile && (
+        <div className="sm:hidden flex items-center justify-between gap-x-4 text-xs">
           <h1 className="text-2xl font-bold leading-7 text-gray-900">
             {title}
           </h1>
-
-          <Rating placeId={placeId} rating={rating} rateCount={rateCount} />
-        </div>
-        <div className="flex">
           <ButtonIcon
             onClick={saveFavorite}
             iconName={icon}
             title={titleButton}
           />
         </div>
-      </div>
-
-      <div className="sm:hidden flex items-center justify-between gap-x-4 text-xs">
-        <h1 className="text-2xl font-bold leading-7 text-gray-900">{title}</h1>
-        <ButtonIcon
-          onClick={saveFavorite}
-          iconName={icon}
-          title={titleButton}
-        />
-      </div>
-      <div className="sm:hidden text-xs">
-        <Rating placeId={placeId} rating={rating} rateCount={rateCount} />
-      </div>
+      )}
+      {isMobile && (
+        <div className="sm:hidden text-xs">
+          <Rating placeId={placeId} rating={rating} rateCount={rateCount} />
+        </div>
+      )}
     </div>
   );
 };

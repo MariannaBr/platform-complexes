@@ -8,7 +8,7 @@ export const MetaDataComplex = ({ complex }) => {
   const coordinates = complex.coordinates;
   const street = complex.street;
   const postal = complex.postal;
-  const rating = parseFloat(complex.rating);
+  const rating = complex.rating;
   const rateCount = complex.rateCount;
   const amenities = complex.amenities;
   const apartmentAmenities = complex.apartmentAmenities;
@@ -41,9 +41,8 @@ export const MetaDataComplex = ({ complex }) => {
       },
       aggregateRating: {
         "@type": "AggregateRating",
-        itemReviewed: metaTitle,
         ratingValue: rating,
-        reviewCount: rateCount,
+        ratingCount: rateCount,
       },
       amenityFeature: amenitiesList,
     },

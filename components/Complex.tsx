@@ -89,7 +89,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
           <div className="relative w-full rounded-2xl bg-gray-100 object-cover aspect-[16/9] sm:aspect-[2/1] lg:aspect-[3/2]">
             <Image
               src={complex.image}
-              alt="complex overview"
+              alt={complex.title}
               fill={true}
               sizes="(max-width: 768px) 100vw, 33vw"
               priority={true}

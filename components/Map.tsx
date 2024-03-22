@@ -24,6 +24,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
       new mapboxgl.Marker({
         color: "#db2777",
         draggable: false,
+        scale: 0.9,
       })
         .setPopup(
           new mapboxgl.Popup().setHTML(

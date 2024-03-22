@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Footer from "../components/Footer";
-import PageMetadata from "../components/PageMetaData";
+import MetaData from "../components/MetaData";
 import {
   metaTitleSignup,
   metaDescriptionSignup,
@@ -46,7 +46,8 @@ const SignupPage: React.FC = () => {
   };
   return (
     <>
-      <PageMetadata
+      <MetaData
+        type="Signup"
         title={metaTitleSignup}
         description={metaDescriptionSignup}
         image={metaImageHome}

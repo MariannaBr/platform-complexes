@@ -9,7 +9,7 @@ import Complex, { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
 import { titleMyFavorites } from "../lib/defaults";
 import { getLocalStorageFavorites } from "../lib/functions";
-import PageMetadata from "../components/PageMetaData";
+import MetaData from "../components/MetaData";
 import {
   metaTitleFavorites,
   metaDescriptionFavorites,
@@ -34,6 +34,12 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       placeId: true,
       coordinates: true,
+      metaTitle: true,
+      metaDescription: true,
+      street: true,
+      postal: true,
+      amenities: true,
+      apartmentAmenities: true,
       roofDeck: true,
       bbq: true,
       gym: true,
@@ -85,11 +91,13 @@ const FavoritesPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <PageMetadata
+      <MetaData
+        type="SearchResultsPage"
         title={metaTitleFavorites}
         description={metaDescriptionFavorites}
         image={metaImageHome}
         url={metaLinkFavorites}
+        complexes={favorites}
       />
       <Layout>
         <Header addClass="max-w-7xl mx-auto xl:px-0" />

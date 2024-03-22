@@ -62,6 +62,8 @@ model Complex {
   metaTitle String?
   slug      String?  @unique
   location  String?
+  street    String?
+  postal    String?
   description   String?
   metaDescription String?
   link      String

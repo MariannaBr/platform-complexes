@@ -9,13 +9,12 @@ import Header from "../components/Header";
 import { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
 import CategoryTitle from "../components/CategoryTitle";
-import PageMetadata from "../components/PageMetaData";
+import MetaData from "../components/MetaData";
 import {
   titleCommunityWeb,
   titleCommunityAmenities,
   titleApartmentAmenities,
   titleNeighborhood,
-  linkHome,
 } from "../lib/defaults";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -29,8 +28,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       metaTitle: true,
       description: true,
       metaDescription: true,
+      coordinates: true,
       link: true,
       slug: true,
+      street: true,
+      postal: true,
       image: true,
       rating: true,
       rateCount: true,
@@ -52,12 +54,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const Complex: React.FC<ComplexProps> = (props) => {
   let id = props.id;
   let title = props.title;
-  let metaTitle = props.metaTitle;
   let description = props.description;
-  let metaDescription = props.metaDescription;
-  let metaLink = linkHome + props.slug;
   let webLink = props.link;
-  let image = props.image;
   let rating = props.rating;
   let rateCount = props.rateCount;
   let placeId = props.placeId;
@@ -77,12 +75,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
 
   return (
     <>
-      <PageMetadata
-        title={metaTitle}
-        description={metaDescription}
-        image={image}
-        url={metaLink}
-      />
+      <MetaData complex={props} />
       <Layout>
         <Header addClass="max-w-7xl mx-auto xl:px-0" />
         <Devider />

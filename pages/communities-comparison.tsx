@@ -6,7 +6,7 @@ import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 import Table from "../components/Table";
 import { ComplexProps } from "../components/Complex";
-import PageMetadata from "../components/PageMetaData";
+import MetaData from "../components/MetaData";
 import prisma from "../lib/prisma";
 import {
   metaTitleComparison,
@@ -25,6 +25,13 @@ export const getStaticProps: GetStaticProps = async () => {
       title: true,
       slug: true,
       rating: true,
+      coordinates: true,
+      metaTitle: true,
+      metaDescription: true,
+      street: true,
+      postal: true,
+      amenities: true,
+      apartmentAmenities: true,
       roofDeck: true,
       bbq: true,
       gym: true,
@@ -64,11 +71,13 @@ type Props = {
 const TablePage: React.FC<Props> = (props) => {
   return (
     <>
-      <PageMetadata
+      <MetaData
+        type="SearchResultsPage"
         title={metaTitleComparison}
         description={metaDescriptionComparison}
         image={metaImageHome}
         url={metaLinkTable}
+        complexes={props.feed}
       />
       <Layout>
         <Header isHomepage={true} />

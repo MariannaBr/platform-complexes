@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
-import PageMetadata from "../components/PageMetaData";
+import MetaData from "../components/MetaData";
 import {
   metaTitleHome,
   metaDescriptionHome,
@@ -31,6 +31,12 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       placeId: true,
       coordinates: true,
+      metaTitle: true,
+      metaDescription: true,
+      street: true,
+      postal: true,
+      amenities: true,
+      apartmentAmenities: true,
     },
   });
   const show = process.env.VERCEL_ENV === "development";
@@ -48,11 +54,13 @@ type Props = {
 const Homepage: React.FC<Props> = (props) => {
   return (
     <>
-      <PageMetadata
+      <MetaData
+        type="SearchResultsPage"
         title={metaTitleHome}
         description={metaDescriptionHome}
         image={metaImageHome}
         url={linkHome}
+        complexes={props.feed}
       />
       <Layout>
         <Header isHomepage={true} />

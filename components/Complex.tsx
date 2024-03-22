@@ -12,6 +12,8 @@ export type ComplexProps = {
   title: string;
   metaTitle: string;
   slug: string;
+  street: string;
+  postal: string;
   description: string;
   metaDescription: string;
   link: string;

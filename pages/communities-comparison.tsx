@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
       title: true,
       slug: true,
       rating: true,
+      rateCount: true,
       coordinates: true,
       metaTitle: true,
       metaDescription: true,

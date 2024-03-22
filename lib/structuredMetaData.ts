@@ -8,7 +8,7 @@ export const MetaDataComplex = ({ complex }) => {
   const coordinates = complex.coordinates;
   const street = complex.street;
   const postal = complex.postal;
-  const rating = complex.rating;
+  const rating = parseFloat(complex.rating);
   const rateCount = complex.rateCount;
   const amenities = complex.amenities;
   const apartmentAmenities = complex.apartmentAmenities;

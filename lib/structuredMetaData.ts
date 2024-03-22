@@ -20,7 +20,7 @@ export const MetaDataComplex = ({ complex }) => {
     "@context": "http://schema.org",
     "@type": "ItemPage",
     about: {
-      "@type": "ApartmentComplex",
+      "@type": "LocalBusiness",
       name: metaTitle,
       "@id": url,
       url: url,
@@ -43,6 +43,11 @@ export const MetaDataComplex = ({ complex }) => {
         "@type": "AggregateRating",
         ratingValue: rating,
         ratingCount: rateCount,
+        itemReviewed: {
+          "@type": "ApartmentComplex",
+          name: metaTitle,
+          "@id": url,
+        },
       },
       amenityFeature: amenitiesList,
     },

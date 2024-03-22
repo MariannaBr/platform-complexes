@@ -18,30 +18,34 @@ export const MetaDataComplex = ({ complex }) => {
 
   return {
     "@context": "http://schema.org",
-    "@type": "ApartmentComplex",
-    name: metaTitle,
-    url: url,
-    image: image,
-    description: metaDescription,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: street,
-      addressLocality: "San Francisco",
-      addressRegion: "CA",
-      postalCode: postal,
-      addressCountry: "USA",
+    "@type": "ItemPage",
+    about: {
+      "@type": "ApartmentComplex",
+      name: metaTitle,
+      "@id": url,
+      url: url,
+      image: image,
+      description: metaDescription,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: street,
+        addressLocality: "San Francisco",
+        addressRegion: "CA",
+        postalCode: postal,
+        addressCountry: "USA",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: latitude,
+        longitude: longitude,
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: rating,
+        reviewCount: rateCount,
+      },
+      amenityFeature: amenitiesList,
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: latitude,
-      longitude: longitude,
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: rating,
-      reviewCount: rateCount,
-    },
-    amenityFeature: amenitiesList,
   };
 };
 
@@ -62,6 +66,7 @@ export const PageMetaData = ({
     "@context": "http://schema.org",
     "@type": type,
     name: title,
+    "@id": metaUrl,
     url: metaUrl,
     image: metaImage,
     description: description,

@@ -41,6 +41,7 @@ export const MetaDataComplex = ({ complex }) => {
       },
       aggregateRating: {
         "@type": "AggregateRating",
+        itemReviewed: metaTitle,
         ratingValue: rating,
         reviewCount: rateCount,
       },

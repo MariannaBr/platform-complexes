@@ -22,7 +22,7 @@ export const metaLinkTable =
 export const linkSignup = "/signup";
 export const metaLinkSignup = "https://www.dogpatchapartments.com/signup";
 export const metaTitleHome =
-  "Dogpatch San Francisco Epic Apartments communities";
+  "Dogpatch Communities | apartments for rent | San Francisco, CA";
 export const metaDescriptionHome =
   "Discover your perfect home in Dogpatch San Francisco, CA 94107. Get information about 1 bedroom, 1 bath, 2 bedroom, 2 baths or 3 bedroom apartments and townhomes for rent. Explore amenities, and exclusive photos for each complex to find your dream apartment in this vibrant neighborhood.";
 export const metaTitleFavorites =

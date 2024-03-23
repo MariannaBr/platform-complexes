@@ -3,7 +3,7 @@
     --slide-spacing: 1rem;
     --slide-size: 33.3%;
     --slide-height: 19rem;
-    @apply py-6 flex;
+    @apply pb-6 flex;
   }
 }
 @media (max-width: 1280px) {
@@ -11,7 +11,7 @@
     --slide-spacing: 1rem;
     --slide-size: 50%;
     --slide-height: 19rem;
-    @apply py-6 flex;
+    @apply pb-6 flex;
   }
 }
 @media (max-width: 768px) {
@@ -19,7 +19,7 @@
     --slide-spacing: 1rem;
     --slide-size: 100%;
     --slide-height: 19rem;
-    @apply py-6 flex;
+    @apply pb-6 flex;
   }
 }
 .embla__viewport {

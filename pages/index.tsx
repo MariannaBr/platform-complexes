@@ -13,8 +13,17 @@ import {
   linkHome,
   metaImageHome,
 } from "../lib/defaults";
+import {
+  saveApartments,
+  getApartmentsTenn,
+  getApartmentsChase,
+} from "../lib/apartmentsScrape";
 
 export const getStaticProps: GetStaticProps = async () => {
+  //await saveApartments();
+  //await getApartmentsTenn();
+  // await getApartmentsChase("https://www.chasesf.com/availability");
+
   const feed = await prisma.complex.findMany({
     where: {
       location: String("Dogpatch"),

@@ -21,6 +21,7 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/api/auth/[...nextauth].ts",
-    "pages/sitemap.xml.js"
+    "pages/sitemap.xml.js",
+    "lib/multionTest.js"
   ]
 }

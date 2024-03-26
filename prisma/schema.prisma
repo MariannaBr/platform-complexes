@@ -67,6 +67,7 @@ model Complex {
   description   String?
   metaDescription String?
   link      String
+  availabilityLink  String?
   rating    String?
   rateCount Int?
   placeId   String?
@@ -103,6 +104,19 @@ model Complex {
   floorHeating  Boolean @default(false)
   show          Boolean @default(true)
   favUsers  UsersOnComplexes[]
+  apartments    Apartment[]
+  }
+
+  model Apartment {
+    id        String   @id @default(cuid())
+    complexId String  @map("complex_id")
+    beds      String?
+    baths     String?
+    area      String?
+    price     String?
+    image     String?
+    link      String?
+    complex Complex @relation(fields:[complexId], references:[id], onDelete: Cascade)
   }
 
 model UsersOnComplexes {

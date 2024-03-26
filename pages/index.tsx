@@ -17,12 +17,20 @@ import {
   saveApartments,
   getApartmentsTenn,
   getApartmentsChase,
+  getApartmentsPotrero,
+  getApartmentsMartin,
+  getApartmentsMariposa,
+  getApartmentsGantry,
+  getApartmentsOAM,
 } from "../lib/apartmentsScrape";
 
 export const getStaticProps: GetStaticProps = async () => {
+  // run the scraping only once per day!!!
+
   //await saveApartments();
-  //await getApartmentsTenn();
-  // await getApartmentsChase("https://www.chasesf.com/availability");
+  // await getApartmentsOAM(
+  //   "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans#/"
+  // );
 
   const feed = await prisma.complex.findMany({
     where: {

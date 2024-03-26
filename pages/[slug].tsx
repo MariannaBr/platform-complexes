@@ -15,6 +15,7 @@ import {
   titleCommunityAmenities,
   titleApartmentAmenities,
   titleNeighborhood,
+  titleApartments,
 } from "../lib/defaults";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -44,6 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       apartmentAmenities: true,
       neighborhoodImgs: true,
       neighborhood: true,
+      apartments: true,
     },
   });
   return {
@@ -52,20 +54,23 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 const Complex: React.FC<ComplexProps> = (props) => {
-  let id = props.id;
-  let title = props.title;
-  let description = props.description;
-  let webLink = props.link;
-  let rating = props.rating;
-  let rateCount = props.rateCount;
-  let placeId = props.placeId;
-  let communityMap = props.communityMap;
-  let amenitiesImgs = props.amenitiesImgs;
-  let amenities = props.amenities;
-  let apartmentAmenitiesImgs = props.apartmentAmenitiesImgs;
-  let apartmentAmenities = props.apartmentAmenities;
-  let neighborhoodImgs = props.neighborhoodImgs;
-  let neighborhood = props.neighborhood;
+  const {
+    id,
+    title,
+    description,
+    link,
+    rating,
+    rateCount,
+    placeId,
+    communityMap,
+    amenitiesImgs,
+    amenities,
+    apartmentAmenitiesImgs,
+    apartmentAmenities,
+    neighborhoodImgs,
+    neighborhood,
+    apartments,
+  } = props;
 
   const [showContent, setShowContent] = useState(false);
 
@@ -89,7 +94,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
         <div className="max-w-7xl mx-auto px-6 xl:px-0 text-justify">
           <div className="mb-2">
             <a
-              href={webLink}
+              href={link}
               target="_blank"
               className="underline text-pink-600 text-sm"
             >
@@ -129,6 +134,13 @@ const Complex: React.FC<ComplexProps> = (props) => {
             images={neighborhoodImgs}
             amenities={neighborhood}
           />
+          {/* {apartments && apartments.length > 0 && (
+            <Category
+              title={titleApartments}
+              apartments={apartments}
+              complexTitle={title}
+            />
+          )} */}
         </div>
         <Footer />
       </Layout>

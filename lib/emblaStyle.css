@@ -36,6 +36,9 @@
 .embla__slide__img {
   @apply block h-[var(--slide-height)] w-full object-cover rounded-2xl;
 }
+.embla__slide__apartment {
+  @apply block h-full w-full object-cover rounded-2xl;
+}
 .embla__button {
   @apply absolute top-1/2 -translate-y-1/2 text-pink-600 cursor-pointer bg-white rounded-full mx-auto z-10 justify-center w-10 h-10 disabled:opacity-30;
 }

@@ -50,6 +50,7 @@ export type ComplexProps = {
   walkInCloset: boolean;
   storage: boolean;
   inclEnergies: boolean;
+  apartments: [];
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {

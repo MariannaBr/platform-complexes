@@ -7,6 +7,7 @@ import { ComplexProps } from "./Complex";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import TableHeader from "./TableHeader";
+import EmptyTableOverlay from "./EmptyTableOverlay";
 
 const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   const defaultColDef = useMemo(() => {
@@ -90,6 +91,10 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
     }
   }, [rowData]);
 
+  const noRowsOverlayComponent = useMemo(() => {
+    return EmptyTableOverlay;
+  }, []);
+
   return (
     <div className="ag-theme-quartz max-h-screen" style={{ height: "80vh" }}>
       <AgGridReact
@@ -98,6 +103,7 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
         columnDefs={colDefs}
         components={components}
         defaultColDef={defaultColDef}
+        noRowsOverlayComponent={noRowsOverlayComponent}
       />
     </div>
   );

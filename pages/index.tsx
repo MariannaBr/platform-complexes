@@ -22,11 +22,13 @@ import {
   getApartmentsMariposa,
   getApartmentsGantry,
   getApartmentsOAM,
+  getApartmentsWindsor,
 } from "../lib/apartmentsScrape";
 
 export const getStaticProps: GetStaticProps = async () => {
   // run the scraping only once per day!!!
   //await saveApartments();
+  //await getApartmentsWindsor("https://www.windsoratdogpatch.com/floorplans");
   // await getApartmentsMariposa(
   //   "https://www.themariposa.com/595-mariposa-san-francisco-ca/floorplans"
   // );

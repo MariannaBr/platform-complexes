@@ -1,5 +1,3 @@
-const puppeteer = require("puppeteer");
-const proxyChain = require("proxy-chain");
 const scrapingbee = require("scrapingbee");
 
 async function get(url) {

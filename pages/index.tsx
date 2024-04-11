@@ -13,18 +13,7 @@ import {
   linkHome,
   metaImageHome,
 } from "../lib/defaults";
-import {
-  saveApartments,
-  getApartmentsTenn,
-  getApartmentsChase,
-  getApartmentsPotrero,
-  getApartmentsMartin,
-  getApartmentsMariposa,
-  getApartmentsGantry,
-  getApartmentsOAM,
-  getApartmentsWindsor,
-  getApartmentsAvalon,
-} from "../lib/apartmentsScrape";
+import { saveApartments } from "../data/apartmentsScrape";
 
 export const getStaticProps: GetStaticProps = async () => {
   // run the scraping only once per day!!!

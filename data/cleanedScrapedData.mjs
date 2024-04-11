@@ -121,39 +121,64 @@ export function getApartmentsTenn(apartmentsData) {
 }
 
 export function getApartmentsPotrero(apartmentsData) {
-  const dataDecoded = JSON.parse(apartmentsData.apartments);
-  const apartments = dataDecoded.map((item) => {
-    const beds = item.Beds;
-    var bedrooms = beds + " Beds";
-    if (beds === "0") {
-      bedrooms = "Studio";
-    }
-    if (beds === "1") {
-      bedrooms = beds + " Bed";
-    }
-
-    const bath = item.Baths;
-    const bathArray = Array.from(bath);
-    var bathCleaned = bathArray[0];
-    if (bathArray[2] !== "0") {
-      bathCleaned = bath.slice(0, 3);
-    }
-    var baths = bathCleaned + " Baths";
-    if (bathCleaned === "1") {
-      baths = bathCleaned + " Bath";
-    }
-
-    const area = item.MinimumSQFT + " Sq. Ft.";
-    var price = null;
-    const rentArray = Array.from(item.MinimumRent);
-    if (item.MinimumRent !== "-1") {
-      price = "$" + rentArray[0] + "," + item.MinimumRent.slice(1);
-    }
-    var image = item.FloorplanImageURL;
-    var apartment_link = item.AvailabilityURL;
-    return { bedrooms, baths, area, price, image, apartment_link };
-  });
-  return apartments;
+  if (!apartmentsData.apartments) return [];
+  try {
+    const dataDecoded = JSON.parse(apartmentsData.apartments);
+    const apartments = dataDecoded.map((item) => {
+      var bedrooms = "";
+      var baths = "";
+      var area = "";
+      var price = null;
+      var image = "";
+      var apartment_link = "";
+      if (item.Beds) {
+        const beds = item.Beds;
+        bedrooms = beds + " Beds";
+        if (beds === "0") {
+          bedrooms = "Studio";
+        }
+        if (beds === "1") {
+          bedrooms = beds + " Bed";
+        }
+      }
+      if (item.Baths) {
+        const bath = item.Baths;
+        const bathArray = Array.from(bath);
+        var bathCleaned = "";
+        if (bathArray[0]) {
+          bathCleaned = bathArray[0];
+        }
+        if (bathArray[2] && bathArray[2] !== "0") {
+          bathCleaned = bath.slice(0, 3);
+        }
+        if (bathCleaned) {
+          baths = bathCleaned + " Baths";
+          if (bathCleaned === "1") {
+            baths = bathCleaned + " Bath";
+          }
+        }
+      }
+      if (item.MinimumSQFT) {
+        area = item.MinimumSQFT + " Sq. Ft.";
+      }
+      if (item.MinimumRent) {
+        const rentArray = Array.from(item.MinimumRent);
+        if (item.MinimumRent !== "-1" && rentArray[0]) {
+          price = "$" + rentArray[0] + "," + item.MinimumRent.slice(1);
+        }
+      }
+      if (item.FloorplanImageURL) {
+        image = item.FloorplanImageURL;
+      }
+      if (item.AvailabilityURL) {
+        apartment_link = item.AvailabilityURL;
+      }
+      return { bedrooms, baths, area, price, image, apartment_link };
+    });
+    return apartments;
+  } catch {
+    return [];
+  }
 }
 
 export function getApartmentsMartin(apartmentsData) {

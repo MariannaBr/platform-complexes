@@ -366,3 +366,107 @@ function testGetApartmentsTenn() {
 }
 
 testGetApartmentsTenn();
+
+function testGetApartmentsPotrero() {
+  const data = [
+    { input: "<div>", expected: [] },
+    { input: "{}", expected: [] },
+    {
+      input: {
+        apartments: "[]",
+      },
+      expected: [],
+    },
+    {
+      input: {
+        apartments: "[{}]",
+      },
+      expected: [
+        {
+          bedrooms: "",
+          baths: "",
+          area: "",
+          price: null,
+          image: "",
+          apartment_link: "",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: JSON.stringify([
+          {
+            Beds: "0",
+            Baths: "1",
+            MinimumSQFT: "500",
+            MinimumRent: "-1",
+            FloorplanImageURL: "img_url",
+            AvailabilityURL: "page_url",
+          },
+        ]),
+      },
+      expected: [
+        {
+          bedrooms: "Studio",
+          baths: "1 Bath",
+          area: "500 Sq. Ft.",
+          price: null,
+          image: "img_url",
+          apartment_link: "page_url",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: JSON.stringify([
+          {
+            Beds: "1",
+            Baths: "1",
+            MinimumSQFT: "500",
+            MinimumRent: "2000",
+            FloorplanImageURL: "img_url",
+            AvailabilityURL: "page_url",
+          },
+          {
+            Beds: "2",
+            Baths: "1.5",
+            MinimumSQFT: "900",
+            MinimumRent: "4000",
+            FloorplanImageURL: "img_url2",
+            AvailabilityURL: "page_url2",
+          },
+        ]),
+      },
+      expected: [
+        {
+          bedrooms: "1 Bed",
+          baths: "1 Bath",
+          area: "500 Sq. Ft.",
+          price: "$2,000",
+          image: "img_url",
+          apartment_link: "page_url",
+        },
+        {
+          bedrooms: "2 Beds",
+          baths: "1.5 Baths",
+          area: "900 Sq. Ft.",
+          price: "$4,000",
+          image: "img_url2",
+          apartment_link: "page_url2",
+        },
+      ],
+    },
+  ];
+  data.forEach((item, index) => {
+    const output = getApartmentsPotrero(item.input);
+    console.assert(
+      JSON.stringify(output) === JSON.stringify(item.expected),
+      `Test case ${index + 1} failed. ${JSON.stringify(
+        output
+      )}. expected: ${JSON.stringify(item.expected)}`
+    );
+  });
+  console.log("Tests completed");
+}
+
+testGetApartmentsPotrero();

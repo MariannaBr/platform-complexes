@@ -88,33 +88,19 @@ export function getApartmentsTenn(apartmentsData) {
       }
     })
     .map((item) => {
-      var bedrooms = "";
-      var baths = "";
-      var area = "";
+      const bedrooms = item.info[0] ?? "";
+      const baths = item.info[1] ?? "";
+      const area = item.info[2] ?? "";
       var price = null;
-      var image = "";
-      var apartment_link = "";
-      if (item.info) {
-        if (item.info[0]) {
-          bedrooms = item.info[0];
-        }
-        if (item.info[1]) {
-          baths = item.info[1];
-        }
-        if (item.info[2]) {
-          area = item.info[2];
-        }
-      }
       if (item.price && item.price.includes("$")) {
         const index = item.price.indexOf("$");
         price = item.price.slice(index);
       }
-      if (item.picture) {
-        image = item.picture;
-      }
-      if (item.link) {
-        apartment_link = "https://www.live777tenn.com" + item.link;
-      }
+      const image = item.picture ?? "";
+      const apartment_link = item.link
+        ? "https://www.live777tenn.com" + item.link
+        : "";
+
       return { bedrooms, baths, area, price, image, apartment_link };
     });
   return apartments;
@@ -182,50 +168,64 @@ export function getApartmentsPotrero(apartmentsData) {
 }
 
 export function getApartmentsMartin(apartmentsData) {
+  if (!apartmentsData.apartments) return [];
   const apartments = apartmentsData.apartments
     .filter((item) => {
-      if (item.info.length === 3) {
+      if (item.info && item.info.length === 3) {
         return item;
       }
     })
     .map((item) => {
-      const bedrooms = item.info[0];
-      const baths = item.info[1];
-      const area = item.info[2];
+      const bedrooms = item.info[0] ?? "";
+      const baths = item.info[1] ?? "";
+      const area = item.info[2] ?? "";
       var price = null;
       if (item.price.includes("$")) {
         const index = item.price.indexOf("$");
         price = item.price.slice(index);
       }
-      const picture = item.picture;
-      var apartment_link = "https://www.themartinsf.com/" + item.link;
-      return { bedrooms, baths, area, price, picture, apartment_link };
+      const image = item.picture ?? "";
+      var apartment_link = item.link
+        ? "https://www.themartinsf.com/" + item.link
+        : "";
+      return { bedrooms, baths, area, price, image, apartment_link };
     });
   return apartments;
 }
 
 export function getApartmentsGantry(apartmentsData) {
+  if (!apartmentsData.apartments) return [];
   const apartments = apartmentsData.apartments.map((item) => {
-    const bedBath = item.info[1].split("/");
-    const beds = bedBath[0].trim().split(" ")[0];
-    const bath = bedBath[1].trim().split(" ")[0];
-    var bedrooms = beds + " Beds";
-    if (beds === "1") {
-      bedrooms = beds + " Bed";
-    }
-    var baths = bath + " Baths";
-    if (bath === "1") {
-      baths = bath + " Bath";
-    }
-    const area = item.area[1] + " " + item.area[0];
+    var bedrooms = "";
+    var baths = "";
+    var area = "";
     var price = null;
-    if (item.price.includes("$")) {
+    if (item.info && item.info[1]) {
+      const bedBath = item.info[1].split("/");
+      const beds = bedBath[0].trim().split(" ")[0];
+      const bath = bedBath[1].trim().split(" ")[0];
+      if (beds === "2" || beds === "3") {
+        bedrooms = beds + " Beds";
+      } else if (beds === "1") {
+        bedrooms = beds + " Bed";
+      } else {
+        bedrooms = beds;
+      }
+      baths = bath + " Baths";
+      if (bath === "1") {
+        baths = bath + " Bath";
+      }
+    }
+    if (item.area && item.area.length > 1) {
+      area = item.area[1] + " " + item.area[0];
+    }
+    if (item.price && item.price.includes("$")) {
       const index = item.price.indexOf("$");
       const priceMonth = item.price.slice(index);
       price = priceMonth.split("/")[0];
     }
-    var image = item.picture;
-    var apartment_link = item.link;
+    const image = item.picture ?? "";
+    const apartment_link = item.link ?? "";
     return { bedrooms, baths, area, price, image, apartment_link };
   });
   return apartments;

@@ -700,3 +700,256 @@ function testGetApartmentsGantry() {
 }
 
 testGetApartmentsGantry();
+
+function testGetApartmentsOAM() {
+  const data = [
+    { input: {}, expected: [] },
+    {
+      input: {
+        apartments: [],
+      },
+      expected: [],
+    },
+    {
+      input: {
+        apartments: [{}],
+      },
+      expected: [
+        {
+          bedrooms: "",
+          baths: "",
+          area: "",
+          price: null,
+          image: "",
+          apartment_link:
+            "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: [{ info: "" }],
+      },
+      expected: [
+        {
+          bedrooms: "",
+          baths: "",
+          area: "",
+          price: null,
+          image: "",
+          apartment_link:
+            "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: [{ info: ["1 Bed", "1 Bath"] }],
+      },
+      expected: [
+        {
+          bedrooms: "1 Bed",
+          baths: "1 Bath",
+          area: "",
+          price: null,
+          image: "",
+          apartment_link:
+            "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: [
+          {
+            info: ["1 Bed", "1 Bath", "500 Sq. Ft."],
+            price: "call us",
+            picture: "img_url",
+            link: "page_url",
+          },
+        ],
+      },
+      expected: [
+        {
+          bedrooms: "1 Bed",
+          baths: "1 Bath",
+          area: "500 Sq. Ft.",
+          price: null,
+          image: "",
+          apartment_link:
+            "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: [
+          {
+            info: ["1 Bed", "1 Bath", "500 Sq. Ft."],
+            price: "Starting at $2000",
+            picture: 'background-image: url("http://www.example.com/img.png")',
+            link: "",
+          },
+          {
+            info: ["2 Bed", "2 Bath", "900 Sq. Ft."],
+            price: "$4000",
+            picture: "url('http://www.example.com/img.png')",
+            link: "page_url2",
+          },
+        ],
+      },
+      expected: [
+        {
+          bedrooms: "1 Bed",
+          baths: "1 Bath",
+          area: "500 Sq. Ft.",
+          price: "$2000",
+          image: "http://www.example.com/img.png",
+          apartment_link:
+            "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans",
+        },
+        {
+          bedrooms: "2 Bed",
+          baths: "2 Bath",
+          area: "900 Sq. Ft.",
+          price: null,
+          image: "",
+          apartment_link:
+            "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans",
+        },
+      ],
+    },
+  ];
+  data.forEach((item, index) => {
+    const output = getApartmentsOAM(item.input);
+    console.assert(
+      JSON.stringify(output) === JSON.stringify(item.expected),
+      `Test case ${index + 1} failed. ${JSON.stringify(
+        output
+      )}. expected: ${JSON.stringify(item.expected)}`
+    );
+  });
+  console.log("Tests completed");
+}
+
+testGetApartmentsOAM();
+
+function testGetApartmentsWindsor() {
+  const data = [
+    { input: {}, expected: [] },
+    {
+      input: {
+        apartments: [],
+      },
+      expected: [],
+    },
+    {
+      input: {
+        apartments: [{}],
+      },
+      expected: [],
+    },
+    {
+      input: {
+        apartments: [{ info: "" }],
+      },
+      expected: [],
+    },
+    {
+      input: {
+        apartments: [{ info: ["1 Bed", "1 Bath"] }],
+      },
+      expected: [],
+    },
+    {
+      input: {
+        apartments: [{ info: ["1 Bed", "1 Bath", "500 Sq. Ft."] }],
+      },
+      expected: [
+        {
+          bedrooms: "1 Bed",
+          baths: "1 Bath",
+          area: "500 Sq. Ft.",
+          price: null,
+          image: "",
+          apartment_link: "https://www.windsoratdogpatch.com/floorplans/",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: [
+          {
+            info: ["1 Bed", "1 Bath", "500 Sq. Ft."],
+            title: "Apartment1",
+            price: "call us",
+            picture: "img_url",
+            link: "page_url",
+          },
+        ],
+      },
+      expected: [
+        {
+          bedrooms: "1 Bed",
+          baths: "1 Bath",
+          area: "500 Sq. Ft.",
+          price: null,
+          image: "img_url",
+          apartment_link:
+            "https://www.windsoratdogpatch.com/floorplans/apartment1",
+        },
+      ],
+    },
+    {
+      input: {
+        apartments: [
+          {
+            info: ["1 Bed", "1 Bath", "500 Sq. Ft."],
+            title: "",
+            price: "Starting at $2000",
+            picture: "img_url",
+            link: "page_url",
+          },
+          {
+            info: ["2 Bed", "2 Bath", "900 Sq. Ft."],
+            title: "apartment",
+            price: "$4000",
+            picture: "img_url2",
+            link: "page_url2",
+          },
+        ],
+      },
+      expected: [
+        {
+          bedrooms: "1 Bed",
+          baths: "1 Bath",
+          area: "500 Sq. Ft.",
+          price: "$2000",
+          image: "img_url",
+          apartment_link: "https://www.windsoratdogpatch.com/floorplans/",
+        },
+        {
+          bedrooms: "2 Bed",
+          baths: "2 Bath",
+          area: "900 Sq. Ft.",
+          price: "$4000",
+          image: "img_url2",
+          apartment_link:
+            "https://www.windsoratdogpatch.com/floorplans/apartment",
+        },
+      ],
+    },
+  ];
+  data.forEach((item, index) => {
+    const output = getApartmentsWindsor(item.input);
+    console.assert(
+      JSON.stringify(output) === JSON.stringify(item.expected),
+      `Test case ${index + 1} failed. ${JSON.stringify(
+        output
+      )}. expected: ${JSON.stringify(item.expected)}`
+    );
+  });
+  console.log("Tests completed");
+}
+
+testGetApartmentsWindsor();

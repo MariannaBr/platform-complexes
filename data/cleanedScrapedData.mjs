@@ -180,7 +180,7 @@ export function getApartmentsMartin(apartmentsData) {
       const baths = item.info[1] ?? "";
       const area = item.info[2] ?? "";
       var price = null;
-      if (item.price.includes("$")) {
+      if (item.price && item.price.includes("$")) {
         const index = item.price.indexOf("$");
         price = item.price.slice(index);
       }
@@ -232,20 +232,30 @@ export function getApartmentsGantry(apartmentsData) {
 }
 
 export function getApartmentsOAM(apartmentsData) {
+  if (!apartmentsData.apartments) return [];
   const apartments = apartmentsData.apartments.map((item) => {
-    const bedrooms = item.info[0];
-    const baths = item.info[1];
-    const area = item.info[2];
-    var price = null;
-    if (item.link.length === 0 && item.price.includes("$")) {
-      const index = item.price.indexOf("$");
-      price = item.price.slice(index);
+    var bedrooms = "";
+    var baths = "";
+    var area = "";
+    if (item.info) {
+      bedrooms = item.info[0] ?? "";
+      baths = item.info[1] ?? "";
+      area = item.info[2] ?? "";
     }
-    var image = null;
+    var price = null;
+    if (item.price && (!item.link || item.link.length === 0)) {
+      if (item.link.length === 0 && item.price.includes("$")) {
+        const index = item.price.indexOf("$");
+        price = item.price.slice(index);
+      }
+    }
+    var image = "";
     const regex = /url\("([^"]+)"\)/;
-    const match = item.picture.match(regex);
-    if (match && match[1]) {
-      image = match[1];
+    if (item.picture) {
+      const match = item.picture.match(regex);
+      if (match && match[1]) {
+        image = match[1];
+      }
     }
     var apartment_link =
       "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans";
@@ -255,26 +265,27 @@ export function getApartmentsOAM(apartmentsData) {
 }
 
 export function getApartmentsWindsor(apartmentsData) {
+  if (!apartmentsData.apartments) return [];
   const apartments = apartmentsData.apartments
     .filter((item) => {
-      if (item.info.length === 3) {
+      if (item.info && item.info.length === 3) {
         return item;
       }
     })
     .map((item) => {
-      const titel = item.title.toLowerCase();
-      const bedrooms = item.info[0];
-      const baths = item.info[1];
-      const area = item.info[2];
+      const title = item.title ? item.title.toLowerCase() : "";
+      const bedrooms = item.info[0] ?? "";
+      const baths = item.info[1] ?? "";
+      const area = item.info[2] ?? "";
       var price = null;
-      if (item.price.includes("$")) {
+      if (item.price && item.price.includes("$")) {
         const index = item.price.indexOf("$");
         price = item.price.slice(index);
       }
-      const picture = item.picture;
+      const image = item.picture ?? "";
       var apartment_link =
-        "https://www.windsoratdogpatch.com/floorplans/" + titel;
-      return { bedrooms, baths, area, price, picture, apartment_link };
+        "https://www.windsoratdogpatch.com/floorplans/" + title;
+      return { bedrooms, baths, area, price, image, apartment_link };
     });
   return apartments;
 }

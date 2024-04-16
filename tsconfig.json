@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,8 +20,11 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.js",
+    "**/*.mjs",
     "pages/api/auth/[...nextauth].ts",
     "pages/sitemap.xml.js",
-    "lib/multionTest.js"
+    "lib/multionTest.js",
+    "lib/prisma.ts"
   ]
 }

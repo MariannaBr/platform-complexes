@@ -13,7 +13,7 @@ import {
   linkHome,
   metaImageHome,
 } from "../lib/defaults";
-import { saveApartments } from "../data/apartmentsScrape";
+import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
 
 export const getStaticProps: GetStaticProps = async () => {
   // run the scraping only once per day!!!

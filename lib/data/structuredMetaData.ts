@@ -1,4 +1,4 @@
-import { linkHome } from "../lib/defaults";
+import { linkHome } from "../defaults";
 
 export const MetaDataComplex = ({ complex }) => {
   const metaTitle = complex.metaTitle;

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { MetaDataComplex, PageMetaData } from "../data/structuredMetaData";
+import { MetaDataComplex, PageMetaData } from "../lib/data/structuredMetaData";
 import { linkHome } from "../lib/defaults";
 import { ComplexProps } from "../components/Complex";
 

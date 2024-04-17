@@ -68,16 +68,19 @@ const Carousel: React.FC<PropType> = (props) => {
             ))}
           {apartments &&
             apartments.length > 0 &&
-            apartments.map((apartment, index) => (
-              <div className="embla__slide" key={index}>
-                <div className="">
-                  <Apartment
-                    apartment={apartment}
-                    complexTitle={complexTitle}
-                  />
-                </div>
-              </div>
-            ))}
+            apartments.map(
+              (apartment, index) =>
+                apartment.price && (
+                  <div className="embla__slide" key={index}>
+                    <div className="">
+                      <Apartment
+                        apartment={apartment}
+                        complexTitle={complexTitle}
+                      />
+                    </div>
+                  </div>
+                )
+            )}
         </div>
       </div>
       <div className="relative">

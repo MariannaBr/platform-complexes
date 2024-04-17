@@ -1,5 +1,6 @@
 import React from "react";
 import { ComplexProps } from "../components/Complex";
+import { noImageFoundUrl } from "../lib/defaults";
 
 export type ApartmentProps = {
   id: string;
@@ -18,35 +19,41 @@ const Apartment: React.FC<{
   complexTitle: string;
   isFavorite?: boolean;
 }> = ({ apartment, complexTitle, isFavorite }) => {
+  const bedrooms = apartment.beds ? apartment.beds + " | " : "";
+  const baths = apartment.baths ? apartment.baths + " | " : "";
+  const area = apartment.area ?? "";
+  const apartmentImage = apartment.image ?? noImageFoundUrl;
+  const link = apartment.link ?? "";
+
   return (
     <div className=" border rounded-2xl py-4">
       <div className="relative w-full">
         <a
-          href={apartment.link}
+          href={link}
           target="_blank"
           className="cursor-pointer relative rounded-2xl"
         >
-          <div className="relative w-full rounded-2xl embla__slide__apartment">
+          <div className="relative w-full rounded-2xl">
             <img
-              className="rounded-2xl"
-              src={apartment.image}
-              alt={`${apartment.beds} ${apartment.baths} "apartment"`}
+              className="rounded-2xl embla__slide__img__apartment p-2"
+              src={apartmentImage}
+              alt={`${bedrooms} ${baths} "apartment"`}
             />
           </div>
         </a>
       </div>
 
-      <a href={apartment.link} className="cursor-pointer" target="_blank">
+      <a href={link} className="cursor-pointer" target="_blank">
         {isFavorite ? (
           <div className="flex gap-y-4">
             <div className="text-base leading-6 text-gray-900">
-              {`${apartment.beds} | ${apartment.baths} | ${apartment.area}`}
+              {bedrooms} {baths} {area}
             </div>
           </div>
         ) : (
           <div className="text-base font-semibold leading-6 text-gray-900 flex justify-around mt-4">
             <div className="">
-              {`${apartment.beds} | ${apartment.baths} | ${apartment.area}`}
+              {bedrooms} {baths} {area}
             </div>
             <div className="">{`From ${apartment.price}`}</div>
           </div>

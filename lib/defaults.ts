@@ -38,3 +38,5 @@ export const metaTitleSignup =
   "Sign up for getting updates about Apartment communitites in Dogpatch";
 export const metaDescriptionSignup =
   "We will notify you when there are new updates about apartment communities in Dogpatch";
+export const noImageFoundUrl =
+  "https://storage.googleapis.com/communitiesplatform-pictures/General/Image_not_available.png";

@@ -16,25 +16,7 @@ import {
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
 
 export const getStaticProps: GetStaticProps = async () => {
-  // run the scraping only once per day!!!
-  // await getApartmentsAvalon(
-  //   "https://www.avaloncommunities.com/california/san-francisco-apartments/avalon-dogpatch/#community-unit-listings"
-  // );
   //await saveApartments();
-  //await getApartmentsWindsor("https://www.windsoratdogpatch.com/floorplans");
-  // await getApartmentsMariposa(
-  //   "https://www.themariposa.com/595-mariposa-san-francisco-ca/floorplans"
-  // );
-  //await getApartmentsChase("https://www.chasesf.com/availability");
-  //await getApartmentsTenn("https://www.live777tenn.com/floorplans");
-  //await getApartmentsPotrero("https://www.potrerolaunch.com/floorplan/");
-  //await getApartmentsMartin("https://www.themartinsf.com/floorplans");
-  // await getApartmentsGantry(
-  //   "https://www.thegantryapts.com/san-francisco/the-gantry/conventional/"
-  // );
-  // await getApartmentsOAM(
-  //   "https://www.oandmsf.com/apartments/ca/san-francisco/floor-plans"
-  // );
   const feed = await prisma.complex.findMany({
     where: {
       location: String("Dogpatch"),

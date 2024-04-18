@@ -17,6 +17,7 @@ import {
   titleNeighborhood,
   titleApartments,
 } from "../lib/defaults";
+import { getSortedApartments } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const complex = await prisma.complex.findUnique({
@@ -78,6 +79,8 @@ const Complex: React.FC<ComplexProps> = (props) => {
     setShowContent(!showContent);
   };
 
+  const sortedApartments = getSortedApartments(apartments, "price");
+
   return (
     <>
       <MetaData complex={props} />
@@ -135,7 +138,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
             amenities={neighborhood}
           />
           {/* {apartments && apartments.length > 0 && (
-            <Category title={titleApartments} apartments={apartments} />
+            <Category title={titleApartments} apartments={sortedApartments} />
           )} */}
         </div>
         <Footer />

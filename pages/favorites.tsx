@@ -22,6 +22,7 @@ import {
   metaImageHome,
 } from "../lib/defaults";
 import { ApartmentProps } from "../components/Apartment";
+import { getSortedApartments } from "../lib/functions";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -103,12 +104,13 @@ const FavoritesPage: React.FC<Props> = (props) => {
       if (complex.apartments) {
         const updatedApartments = complex.apartments.map((apartment) => ({
           ...apartment,
-          complexTitle: complex.title, // Add the new property here
+          complexTitle: complex.title,
         }));
         favoriteApartments.push(...updatedApartments);
       }
     });
-    setApartments(favoriteApartments);
+    const sortedApartments = getSortedApartments(favoriteApartments, "price");
+    setApartments(sortedApartments);
   }, [favorites]);
 
   return (

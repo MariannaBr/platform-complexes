@@ -3,12 +3,16 @@ import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Category from "../components/Category";
+import CategoryTitle from "../components/CategoryTitle";
 import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 import Table from "../components/Table";
 import Complex, { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
-import { titleMyFavorites } from "../lib/defaults";
+import {
+  titleMyFavoritesApartments,
+  titleMyavoritesComplexes,
+} from "../lib/defaults";
 import { getLocalStorageFavorites } from "../lib/functions";
 import MetaData from "../components/MetaData";
 import {
@@ -118,19 +122,15 @@ const FavoritesPage: React.FC<Props> = (props) => {
         complexes={favorites}
       />
       <Layout>
-        <Header addClass="max-w-7xl mx-auto xl:px-0" />
+        <Header isHomepage={true} addClass="max-w-7xl mx-auto xl:px-0" />
         <Devider />
         <div className="max-w-7xl px-6 mx-auto xl:px-0">
           {/* <Category
-            title={metaTitleFavorites}
+            title={titleMyFavoritesApartments}
             apartments={apartments}
             isFavorite={true}
           /> */}
-          <div className="pb-4 lg:py-6">
-            <h1 className="text-2xl font-bold leading-7 text-gray-900">
-              {titleMyFavorites}
-            </h1>
-          </div>
+          <CategoryTitle title={titleMyavoritesComplexes} />
           <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-y-20 lg:mx-0">
             {favorites.map((complex) => (
               <article

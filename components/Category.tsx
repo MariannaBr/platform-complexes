@@ -6,7 +6,7 @@ import { EmblaOptionsType } from "embla-carousel";
 import { ApartmentProps } from "./Apartment";
 
 type PropType = {
-  title: string;
+  title?: string;
   images?: string[];
   amenities?: string[];
   apartments?: ApartmentProps[];

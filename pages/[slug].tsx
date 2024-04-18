@@ -135,11 +135,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
             amenities={neighborhood}
           />
           {/* {apartments && apartments.length > 0 && (
-            <Category
-              title={titleApartments}
-              apartments={apartments}
-              complexTitle={title}
-            />
+            <Category title={titleApartments} apartments={apartments} />
           )} */}
         </div>
         <Footer />

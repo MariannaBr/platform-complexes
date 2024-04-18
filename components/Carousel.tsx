@@ -8,11 +8,11 @@ type PropType = {
   images?: string[];
   options?: EmblaOptionsType;
   apartments?: ApartmentProps[];
-  complexTitle?: string;
+  isFavorite?: boolean;
 };
 
 const Carousel: React.FC<PropType> = (props) => {
-  const { images, options, apartments, complexTitle } = props;
+  const { images, options, apartments, isFavorite } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
@@ -75,7 +75,8 @@ const Carousel: React.FC<PropType> = (props) => {
                     <div className="">
                       <Apartment
                         apartment={apartment}
-                        complexTitle={complexTitle}
+                        complexTitle={apartment.complexTitle}
+                        isFavorite={isFavorite}
                       />
                     </div>
                   </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
+import Category from "../components/Category";
 import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 import Table from "../components/Table";
@@ -16,6 +17,7 @@ import {
   metaLinkFavorites,
   metaImageHome,
 } from "../lib/defaults";
+import { ApartmentProps } from "../components/Apartment";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
@@ -62,6 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
       storage: true,
       inclEnergies: true,
       floorHeating: true,
+      apartments: true,
     },
   });
   return {
@@ -77,6 +80,7 @@ type Props = {
 const FavoritesPage: React.FC<Props> = (props) => {
   const [savedFavorites, setSavedFavorites] = useState([]);
   const [favorites, setFavorites] = useState<ComplexProps[]>([]);
+  const [apartments, setApartments] = useState<ApartmentProps[]>([]);
 
   useEffect(() => {
     setSavedFavorites(getLocalStorageFavorites());
@@ -88,6 +92,20 @@ const FavoritesPage: React.FC<Props> = (props) => {
     );
     setFavorites(newFavorites);
   }, [savedFavorites, props.feed]);
+
+  useEffect(() => {
+    const favoriteApartments: ApartmentProps[] = [];
+    favorites.forEach((complex) => {
+      if (complex.apartments) {
+        const updatedApartments = complex.apartments.map((apartment) => ({
+          ...apartment,
+          complexTitle: complex.title, // Add the new property here
+        }));
+        favoriteApartments.push(...updatedApartments);
+      }
+    });
+    setApartments(favoriteApartments);
+  }, [favorites]);
 
   return (
     <>
@@ -103,6 +121,11 @@ const FavoritesPage: React.FC<Props> = (props) => {
         <Header addClass="max-w-7xl mx-auto xl:px-0" />
         <Devider />
         <div className="max-w-7xl px-6 mx-auto xl:px-0">
+          {/* <Category
+            title={metaTitleFavorites}
+            apartments={apartments}
+            isFavorite={true}
+          /> */}
           <div className="pb-4 lg:py-6">
             <h1 className="text-2xl font-bold leading-7 text-gray-900">
               {titleMyFavorites}

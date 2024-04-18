@@ -10,7 +10,7 @@ type PropType = {
   images?: string[];
   amenities?: string[];
   apartments?: ApartmentProps[];
-  complexTitle?: string;
+  isFavorite?: boolean;
 };
 
 const Category: React.FC<PropType> = ({
@@ -18,7 +18,7 @@ const Category: React.FC<PropType> = ({
   images,
   amenities,
   apartments,
-  complexTitle,
+  isFavorite,
 }) => {
   const OPTIONS: EmblaOptionsType = { loop: false, slidesToScroll: "auto" };
 
@@ -31,7 +31,7 @@ const Category: React.FC<PropType> = ({
           images={images}
           options={OPTIONS}
           apartments={apartments}
-          complexTitle={complexTitle}
+          isFavorite={isFavorite}
         />
       )}
       <ListAmenities amenities={amenities} />

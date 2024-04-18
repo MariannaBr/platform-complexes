@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 import { getLocalStorageFavorites, getIsFavorite } from "../lib/functions";
+import { ApartmentProps } from "../components/Apartment";
 
 export type ComplexProps = {
   id: string;
@@ -50,7 +51,7 @@ export type ComplexProps = {
   walkInCloset: boolean;
   storage: boolean;
   inclEnergies: boolean;
-  apartments: [];
+  apartments: ApartmentProps[];
 };
 
 const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {

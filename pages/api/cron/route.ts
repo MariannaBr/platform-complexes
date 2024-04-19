@@ -5,6 +5,12 @@ export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse
 ) {
-  const result = await saveApartments();
-  return response.json(result);
+  // const result = await saveApartments();
+  // return response.json(result);
+  const result = await fetch(
+    "http://worldtimeapi.org/api/timezone/America/Chicago"
+  );
+  const data = await result.json();
+
+  return response.json({ datetime: data.datetime });
 }

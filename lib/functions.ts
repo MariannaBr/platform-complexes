@@ -19,8 +19,8 @@ export function getIsFavorite(id: string): boolean {
 export function getSortedApartments(
   ar: ApartmentProps[],
   property: string
-): ApartmentProps[] | null {
-  var sortedArray = null;
+): ApartmentProps[] {
+  var sortedArray = [];
   if (ar.length > 0) {
     const withValue = ar.filter((apartment) => {
       if (apartment[property]) {

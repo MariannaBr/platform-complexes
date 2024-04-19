@@ -113,6 +113,9 @@ const Complex: React.FC<ComplexProps> = (props) => {
           >
             {showContent ? "Show less" : "Show more"}
           </button>
+          {sortedApartments && sortedApartments.length > 0 && (
+            <Category title={titleApartments} apartments={sortedApartments} />
+          )}
 
           {communityMap && (
             <div>
@@ -137,9 +140,6 @@ const Complex: React.FC<ComplexProps> = (props) => {
             images={neighborhoodImgs}
             amenities={neighborhood}
           />
-          {/* {apartments && apartments.length > 0 && (
-            <Category title={titleApartments} apartments={sortedApartments} />
-          )} */}
         </div>
         <Footer />
       </Layout>

@@ -7,6 +7,8 @@ import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartReg } from "@fortawesome/free-regular-svg-icons";
 import { getLocalStorageFavorites, getIsFavorite } from "../lib/functions";
 import { ApartmentProps } from "../components/Apartment";
+import UnitCount from "./UnitCount";
+import { getSortedApartments } from "../lib/functions";
 
 export type ComplexProps = {
   id: string;
@@ -60,6 +62,9 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
     getIsFavorite(complex.id)
   );
   const [icon, setIcon] = useState<IconDefinition>(faHeartReg);
+  const [sortedApartments, setSortedApartments] = useState<ApartmentProps[]>(
+    []
+  );
   useEffect(() => {
     setIcon(getIsFavorite(complex.id) ? faHeart : faHeartReg);
   }, []);
@@ -80,6 +85,11 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
     localStorage.setItem("favorites", JSON.stringify(savedComplexes));
     setIcon(icon === faHeartReg ? faHeart : faHeartReg);
   };
+
+  useEffect(() => {
+    setSortedApartments(getSortedApartments(complex.apartments, "price"));
+  }, []);
+
   return (
     <div>
       <div className="relative w-full">
@@ -136,7 +146,8 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
           href={`/${complex.slug}`}
           className="cursor-pointer relative"
         >
-          <p className="mt-2 mx-1 line-clamp-3 text-left text-sm leading-6 text-gray-600">
+          <UnitCount count={sortedApartments.length} />
+          <p className="mt-3 mx-1 line-clamp-3 text-left text-sm leading-6 text-gray-600">
             {complex.description}
           </p>
         </a>

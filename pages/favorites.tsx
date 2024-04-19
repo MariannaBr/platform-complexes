@@ -127,11 +127,13 @@ const FavoritesPage: React.FC<Props> = (props) => {
         <Header isHomepage={true} addClass="max-w-7xl mx-auto xl:px-0" />
         <Devider />
         <div className="max-w-7xl px-6 mx-auto xl:px-0">
-          {/* <Category
-            title={titleMyFavoritesApartments}
-            apartments={apartments}
-            isFavorite={true}
-          /> */}
+          {favorites && favorites.length > 0 && (
+            <Category
+              title={titleMyFavoritesApartments}
+              apartments={apartments}
+              isFavorite={true}
+            />
+          )}
           <CategoryTitle title={titleMyavoritesComplexes} />
           <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-y-20 lg:mx-0">
             {favorites.map((complex) => (

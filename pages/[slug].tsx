@@ -46,7 +46,18 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       apartmentAmenities: true,
       neighborhoodImgs: true,
       neighborhood: true,
-      apartments: true,
+      apartments: {
+        select: {
+          id: true,
+          complexId: true,
+          beds: true,
+          baths: true,
+          area: true,
+          price: true,
+          image: true,
+          link: true,
+        },
+      },
     },
   });
   return {

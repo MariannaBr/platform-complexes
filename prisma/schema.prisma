@@ -105,6 +105,7 @@ model Complex {
   show          Boolean @default(true)
   favUsers  UsersOnComplexes[]
   apartments    Apartment[]
+  apartmentsAll    ApartmentRaw[]
   }
 
   model Apartment {
@@ -116,7 +117,21 @@ model Complex {
     price     String?
     image     String?
     link      String?
+    createdAt  DateTime   @default(now())
     complex Complex @relation(fields:[complexId], references:[id], onDelete: Cascade)
+  }
+
+   model ApartmentRaw {
+    id        String   @id @default(cuid())
+    complexId String  @map("complex_id")
+    beds      String?
+    baths     String?
+    area      String?
+    price     String?
+    image     String?
+    link      String?
+    complex Complex @relation(fields:[complexId], references:[id], onDelete: Cascade)
+    createdAt  DateTime   @default(now())
   }
 
 model UsersOnComplexes {
@@ -127,9 +142,4 @@ model UsersOnComplexes {
   assignedAt DateTime @default(now())
 
   @@id([complexId, userId])
-}
-
-model ComparisonTable {
-  id      String @id @default(cuid())
-  title   String
 }

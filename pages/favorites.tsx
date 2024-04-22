@@ -69,7 +69,18 @@ export const getStaticProps: GetStaticProps = async () => {
       storage: true,
       inclEnergies: true,
       floorHeating: true,
-      apartments: true,
+      apartments: {
+        select: {
+          id: true,
+          complexId: true,
+          beds: true,
+          baths: true,
+          area: true,
+          price: true,
+          image: true,
+          link: true,
+        },
+      },
     },
   });
   return {

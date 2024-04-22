@@ -39,7 +39,18 @@ export const getStaticProps: GetStaticProps = async () => {
       postal: true,
       amenities: true,
       apartmentAmenities: true,
-      apartments: true,
+      apartments: {
+        select: {
+          id: true,
+          complexId: true,
+          beds: true,
+          baths: true,
+          area: true,
+          price: true,
+          image: true,
+          link: true,
+        },
+      },
     },
   });
   const show = process.env.VERCEL_ENV === "development";

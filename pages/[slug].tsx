@@ -46,7 +46,18 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       apartmentAmenities: true,
       neighborhoodImgs: true,
       neighborhood: true,
-      apartments: true,
+      apartments: {
+        select: {
+          id: true,
+          complexId: true,
+          beds: true,
+          baths: true,
+          area: true,
+          price: true,
+          image: true,
+          link: true,
+        },
+      },
     },
   });
   return {
@@ -113,6 +124,9 @@ const Complex: React.FC<ComplexProps> = (props) => {
           >
             {showContent ? "Show less" : "Show more"}
           </button>
+          {sortedApartments && sortedApartments.length > 0 && (
+            <Category title={titleApartments} apartments={sortedApartments} />
+          )}
 
           {communityMap && (
             <div>
@@ -137,9 +151,6 @@ const Complex: React.FC<ComplexProps> = (props) => {
             images={neighborhoodImgs}
             amenities={neighborhood}
           />
-          {/* {apartments && apartments.length > 0 && (
-            <Category title={titleApartments} apartments={sortedApartments} />
-          )} */}
         </div>
         <Footer />
       </Layout>

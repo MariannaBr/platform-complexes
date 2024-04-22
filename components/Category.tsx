@@ -24,7 +24,10 @@ const Category: React.FC<PropType> = ({
 
   return (
     <div>
-      <CategoryTitle title={title} />
+      <CategoryTitle
+        title={title}
+        unitCount={apartments && apartments.length}
+      />
       {((images && images.length > 0) ||
         (apartments && apartments.length > 0)) && (
         <Carousel

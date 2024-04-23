@@ -82,6 +82,9 @@ export const getStaticProps: GetStaticProps = async () => {
         },
       },
     },
+    orderBy: {
+      title: "asc",
+    },
   });
   return {
     props: { feed },

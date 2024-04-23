@@ -52,6 +52,9 @@ export const getStaticProps: GetStaticProps = async () => {
         },
       },
     },
+    orderBy: {
+      title: "asc",
+    },
   });
   const show = process.env.VERCEL_ENV === "development";
   return {

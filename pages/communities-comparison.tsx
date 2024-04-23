@@ -56,6 +56,9 @@ export const getStaticProps: GetStaticProps = async () => {
       inclEnergies: true,
       floorHeating: true,
     },
+    orderBy: {
+      title: "asc",
+    },
   });
   const show = process.env.VERCEL_ENV === "development";
   return {

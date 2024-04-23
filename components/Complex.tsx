@@ -56,7 +56,10 @@ export type ComplexProps = {
   apartments: ApartmentProps[];
 };
 
-const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
+const Complex: React.FC<{
+  complex: ComplexProps;
+  isFavoritesPage?: boolean;
+}> = ({ complex, isFavoritesPage }) => {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState<boolean>(
     getIsFavorite(complex.id)
@@ -84,6 +87,7 @@ const Complex: React.FC<{ complex: ComplexProps }> = ({ complex }) => {
     }
     localStorage.setItem("favorites", JSON.stringify(savedComplexes));
     setIcon(icon === faHeartReg ? faHeart : faHeartReg);
+    isFavoritesPage && window.location.reload();
   };
 
   useEffect(() => {

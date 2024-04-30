@@ -31,12 +31,16 @@ const Header: React.FC<PropType> = ({ isHomepage, addClass }) => {
   const pathname = usePathname();
 
   return (
-    <header className={`bg-white py-6 px-6 ${addClass}`}>
+    <header className={`bg-white py-4 px-2 lg:py-6 lg:px-6 ${addClass}`}>
       <nav
         className="mx-auto flex items-center justify-between"
         aria-label="Global"
       >
-        <a href="/" className="">
+        <a href="/" className="flex">
+          <img
+            src="/favicon.png"
+            className="w-6 h-6 md:w-8 md:h-8 mr-2 md:mr-4"
+          />
           {isHomepage ? (
             <h1 className="text-lg md:text-2xl font-bold leading-7 text-gray-900">
               {titleDogpatch}

@@ -9,6 +9,7 @@ export async function getServerSideProps({ res }) {
     },
     select: {
       slug: true,
+      image: true,
     },
   });
 
@@ -45,6 +46,9 @@ function generateSiteMap(complexes) {
          return `
       <url>
           <loc>${`${EXTERNAL_DATA_URL}/${complex.slug}`}</loc>
+          <image:image>
+            <image:loc>${complex.image}</image:loc>
+          </image:image>
       </url>
     `;
        })

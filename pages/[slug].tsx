@@ -132,7 +132,11 @@ const Complex: React.FC<ComplexProps> = (props) => {
             <div>
               <CategoryTitle title="Community map" />
               <div className="flex max-w-7xl mx-auto pt-6">
-                <img src={communityMap} alt="" className="w-full" />
+                <img
+                  src={communityMap}
+                  alt="community map"
+                  className="w-full"
+                />
               </div>
             </div>
           )}

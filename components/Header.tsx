@@ -40,6 +40,7 @@ const Header: React.FC<PropType> = ({ isHomepage, addClass }) => {
           <img
             src="/favicon.png"
             className="w-6 h-6 md:w-8 md:h-8 mr-2 md:mr-4"
+            alt="logo"
           />
           {isHomepage ? (
             <h1 className="text-lg md:text-2xl font-bold leading-7 text-gray-900">

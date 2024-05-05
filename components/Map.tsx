@@ -71,7 +71,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
 
   return (
     <div
-      className="absolute top-24 lg:top-28 bottom-0 right-0 w-1/2 lg:w-1/3"
+      className="absolute top-16 md:top-28 bottom-0 right-0 w-full h-full md:w-1/3"
       ref={mapContainerRef}
     />
   );

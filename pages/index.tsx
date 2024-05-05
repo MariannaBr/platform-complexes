@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
@@ -12,7 +12,12 @@ import {
   metaDescriptionHome,
   linkHome,
   metaImageHome,
+  showMapText,
+  showListText,
 } from "../lib/defaults";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMap, IconDefinition } from "@fortawesome/free-regular-svg-icons";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -69,6 +74,16 @@ type Props = {
 };
 
 const Homepage: React.FC<Props> = (props) => {
+  const [showMap, setShowMap] = useState(false);
+  const [buttonText, setButtonText] = useState(showMapText);
+  const [icon, setIcon] = useState<IconDefinition>(faMap);
+
+  const changeShowMap = () => {
+    setShowMap(!showMap);
+    setButtonText(buttonText === showMapText ? showListText : showMapText);
+    setIcon(icon === faMap ? faList : faMap);
+  };
+
   return (
     <>
       <MetaData
@@ -82,9 +97,28 @@ const Homepage: React.FC<Props> = (props) => {
       <Layout>
         <Header isHomepage={true} />
         <Devider />
+        <div className="relative md:hidden">
+          <button
+            onClick={changeShowMap}
+            type="button"
+            className="flex absolute right-0 left-0 z-20 mx-auto w-24 rounded-md bg-pink-600 px-2 py-1 text-xs text-white shadow-sm
+            hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+            focus-visible:outline-white items-end"
+          >
+            {buttonText}
+            <FontAwesomeIcon icon={icon} className="w-4 h-4 pl-2" />
+          </button>
+        </div>
         <div className="flex content_height">
-          <div className="mx-auto w-1/2 lg:w-2/3 px-2 lg:px-6 hide_scrollbar">
-            <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 lg:grid-cols-3">
+          <div className={showMap ? "flex" : "hidden"}>
+            <Map complexes={props.feed} />
+          </div>
+          <div
+            className={
+              showMap ? "hidden" : "mx-auto w-full md:w-2/3 px-6 hide_scrollbar"
+            }
+          >
+            <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 md:grid-cols-2 lg:grid-cols-3">
               {props.feed.map((complex) => (
                 <div
                   key={complex.id}
@@ -95,7 +129,7 @@ const Homepage: React.FC<Props> = (props) => {
               ))}
             </div>
           </div>
-          <div className="w-1/2 lg:w-1/3">
+          <div className="hidden md:flex md:w-1/3">
             <Map complexes={props.feed} />
           </div>
         </div>

@@ -42,4 +42,4 @@ export const metaDescriptionSignup =
 export const noImageFoundUrl =
   "https://storage.googleapis.com/communitiesplatform-pictures/General/Image_not_available.png";
 export const showMapText = "Show map";
-export const showListText = "Show text";
+export const showListText = "Show list";

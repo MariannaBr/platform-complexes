@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { GetStaticProps } from "next";
 import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
@@ -109,30 +109,30 @@ const Homepage: React.FC<Props> = (props) => {
             <FontAwesomeIcon icon={icon} className="w-4 h-4 pl-2" />
           </button>
         </div>
-        <div className={showMap ? "w-full h-full" : "hidden"}>
-          <Map complexes={props.feed} />
-        </div>
-        <div className="flex content_height">
-          <div
-            className={
-              showMap ? "hidden" : "mx-auto w-full md:w-2/3 px-6 hide_scrollbar"
-            }
-          >
-            <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 md:grid-cols-2 lg:grid-cols-3">
-              {props.feed.map((complex) => (
-                <div
-                  key={complex.id}
-                  className="flex flex-col items-start justify-between"
-                >
-                  <Complex complex={complex} />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="hidden md:flex md:w-1/3">
+        {showMap && (
+          <div className="relative w-full content_height">
             <Map complexes={props.feed} />
           </div>
-        </div>
+        )}
+        {!showMap && (
+          <div className="flex content_height">
+            <div className="mx-auto w-full md:w-2/3 px-6 hide_scrollbar">
+              <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 md:grid-cols-2 lg:grid-cols-3">
+                {props.feed.map((complex) => (
+                  <div
+                    key={complex.id}
+                    className="flex flex-col items-start justify-between"
+                  >
+                    <Complex complex={complex} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hidden md:flex md:w-1/3">
+              <Map complexes={props.feed} />
+            </div>
+          </div>
+        )}
       </Layout>
     </>
   );

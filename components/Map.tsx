@@ -1,11 +1,11 @@
 import mapboxgl from "mapbox-gl";
 import React, { useState, useEffect, useRef } from "react";
+import { ComplexProps } from "./Complex";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
-const Map: React.FC<{ complexes }> = ({ complexes }) => {
+const Map: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
   const mapContainerRef = useRef(null);
-
   const [lng, setLng] = useState(5);
   const [lat, setLat] = useState(34);
   const [zoom, setZoom] = useState(1.5);
@@ -60,18 +60,6 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-    // map.on("render", () => {
-    //   map.resize();
-    // });
-
-    // map.once("load", () => {
-    //   map.resize();
-    // });
-
-    // map.on("dataloading", () => {
-    //   map.resize();
-    // });
-
     map.on("move", () => {
       setLng(map.getCenter().lng.toFixed(4));
       setLat(map.getCenter().lat.toFixed(4));
@@ -84,7 +72,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
 
   return (
     <div
-      className="absolute top-16 md:top-28 bottom-0 right-0 w-full md:w-1/3"
+      className="absolute top-0 md:top-28 bottom-0 right-0 w-full md:w-1/3"
       ref={mapContainerRef}
     />
   );

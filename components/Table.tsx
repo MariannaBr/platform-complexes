@@ -110,24 +110,3 @@ const Table: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
 };
 
 export default Table;
-
-//   complexes.map((complex) => {
-//       let row = {};
-//       for (var feature in complex) {
-//         if (labels[feature]) {
-//           row[labels[feature]] = complex[feature];
-//         }
-//       }
-//       rows.push(row);
-//     });
-
-//   for (var label in labels) {
-//     if (label === "title") {
-//       column = { field: labels[label], width: 160 };
-//     } else if (label === "rating") {
-//       column = { field: labels[label], width: 100 };
-//     } else {
-//       column = { field: labels[label], width: 80 };
-//     }
-//     columns.push(column);
-//   }

@@ -1,5 +1,5 @@
 .content_height {
-  max-height: calc(100vh - 140px);
+  height: calc(100vh - 140px);
 }
 
 .hide_scrollbar {

@@ -25,6 +25,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
         color: "#db2777",
         draggable: false,
         scale: 0.9,
+        trackResize: true,
       })
         .setPopup(
           new mapboxgl.Popup().setHTML(
@@ -59,6 +60,18 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
     // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
+    // map.on("render", () => {
+    //   map.resize();
+    // });
+
+    // map.once("load", () => {
+    //   map.resize();
+    // });
+
+    // map.on("dataloading", () => {
+    //   map.resize();
+    // });
+
     map.on("move", () => {
       setLng(map.getCenter().lng.toFixed(4));
       setLat(map.getCenter().lat.toFixed(4));
@@ -71,7 +84,7 @@ const Map: React.FC<{ complexes }> = ({ complexes }) => {
 
   return (
     <div
-      className="absolute top-16 md:top-28 bottom-0 right-0 w-full h-full md:w-1/3"
+      className="absolute top-16 md:top-28 bottom-0 right-0 w-full md:w-1/3"
       ref={mapContainerRef}
     />
   );

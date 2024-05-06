@@ -109,10 +109,10 @@ const Homepage: React.FC<Props> = (props) => {
             <FontAwesomeIcon icon={icon} className="w-4 h-4 pl-2" />
           </button>
         </div>
+        <div className={showMap ? "w-full h-full" : "hidden"}>
+          <Map complexes={props.feed} />
+        </div>
         <div className="flex content_height">
-          <div className={showMap ? "flex" : "hidden"}>
-            <Map complexes={props.feed} />
-          </div>
           <div
             className={
               showMap ? "hidden" : "mx-auto w-full md:w-2/3 px-6 hide_scrollbar"

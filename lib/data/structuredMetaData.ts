@@ -61,7 +61,7 @@ export const MetaDataComplex = ({ complex }) => {
         addressLocality: "San Francisco",
         addressRegion: "CA",
         postalCode: postal,
-        addressCountry: "USA",
+        addressCountry: "US",
       },
       geo: {
         "@type": "GeoCoordinates",

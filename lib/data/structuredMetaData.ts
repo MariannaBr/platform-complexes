@@ -1,4 +1,5 @@
 import { linkHome } from "../defaults";
+import logo from "../../public/favicon.png";
 
 export const MetaDataComplex = ({ complex }) => {
   const metaTitle = complex.metaTitle;
@@ -19,6 +20,7 @@ export const MetaDataComplex = ({ complex }) => {
   return {
     "@context": "http://schema.org",
     "@type": "ItemPage",
+    logo: logo,
     about: {
       "@type": "LocalBusiness",
       name: metaTitle,
@@ -74,6 +76,7 @@ export const PageMetaData = ({
     "@id": metaUrl,
     url: metaUrl,
     image: metaImage,
+    logo: logo,
     description: description,
     contentLocation: {
       containedIn: {

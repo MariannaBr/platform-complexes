@@ -91,30 +91,7 @@ export const MetaDataComplex = ({ complex }) => {
       {
         url: url,
         description: metaDescription,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: street,
-          addressLocality: "San Francisco",
-          addressRegion: "CA",
-          postalCode: postal,
-          addressCountry: "USA",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: latitude,
-          longitude: longitude,
-        },
         image: image,
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: rating,
-          ratingCount: rateCount,
-          itemReviewed: {
-            "@type": "ApartmentComplex",
-            name: metaTitle,
-            "@id": url,
-          },
-        },
         containsPlace: {
           "@type": "Apartment",
           petsAllowed: true,

@@ -1,4 +1,5 @@
 import { linkHome } from "../defaults";
+import { parseCurrency } from "../functions";
 
 export const MetaDataComplex = ({ complex }) => {
   const metaTitle = complex.metaTitle;
@@ -18,21 +19,28 @@ export const MetaDataComplex = ({ complex }) => {
   const apartments = complex.apartments;
 
   let prices = [];
-  apartments.forEach((apartment) => {
-    if (apartment.price) {
-      prices.push(apartment.price);
-    }
-  });
+  let lowPrice = "";
+  let highPrice = "";
 
-  function parseCurrency(value) {
-    return parseFloat(value.replace(/[\$,]/g, ""));
+  if (apartments && apartments.length > 0) {
+    apartments.forEach((apartment) => {
+      if (apartment.price) {
+        prices.push(apartment.price);
+      }
+    });
   }
 
-  prices.sort((a, b) => parseCurrency(a) - parseCurrency(b));
-  const lowPrice = prices[0];
-  const highPrice = prices[-1];
+  if (prices && prices.length > 0) {
+    if (prices.length > 1) {
+      prices.sort((a, b) => parseCurrency(a) - parseCurrency(b));
+      lowPrice = prices[0];
+      highPrice = prices[-1];
+    }
+    lowPrice = prices[0];
+    highPrice = prices[0];
+  }
 
-  const price = prices[0] + "-" + prices[-1];
+  const price = lowPrice + "-" + highPrice;
 
   return {
     "@context": "http://schema.org",

@@ -33,3 +33,7 @@ export function getSortedApartments(
   }
   return sortedArray;
 }
+
+export function parseCurrency(value) {
+  return parseFloat(value.replace(/[\$,]/g, ""));
+}

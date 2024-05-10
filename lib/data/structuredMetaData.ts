@@ -22,12 +22,12 @@ export const MetaDataComplex = ({ complex }) => {
   return {
     "@context": "http://schema.org",
     "@type": "ItemPage",
-    logo: logo,
     about: {
       "@type": "LocalBusiness",
       name: metaTitle,
       "@id": url,
       url: url,
+      logo: logo,
       image: image,
       description: metaDescription,
       address: {

@@ -18,6 +18,24 @@ export const MetaDataComplex = ({ complex }) => {
   const latitude = coordinates[1];
   const longitude = coordinates[0];
   const amenitiesList = amenities.concat(apartmentAmenities);
+  const apartments = complex.apartments;
+
+  let prices = [];
+  apartments.forEach((apartment) => {
+    if (apartment.price) {
+      prices.push(apartment.price);
+    }
+  });
+
+  function parseCurrency(value) {
+    return parseFloat(value.replace(/[\$,]/g, ""));
+  }
+
+  prices.sort((a, b) => parseCurrency(a) - parseCurrency(b));
+  const lowPrice = prices[0];
+  const highPrice = prices[-1];
+
+  const priceRange = prices[0] + "-" + prices[-1];
 
   return {
     "@context": "http://schema.org",
@@ -43,6 +61,13 @@ export const MetaDataComplex = ({ complex }) => {
         latitude: latitude,
         longitude: longitude,
       },
+      priceRange: priceRange,
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "USD",
+        lowPrice: lowPrice,
+        highPrice: highPrice,
+      },
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: rating,
@@ -55,6 +80,59 @@ export const MetaDataComplex = ({ complex }) => {
       },
       amenityFeature: amenitiesList,
     },
+    mainEntity: [
+      {
+        url: url,
+        description: metaDescription,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: street,
+          addressLocality: "San Francisco",
+          addressRegion: "CA",
+          postalCode: postal,
+          addressCountry: "USA",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: latitude,
+          longitude: longitude,
+        },
+        image: image,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: rating,
+          ratingCount: rateCount,
+          itemReviewed: {
+            "@type": "ApartmentComplex",
+            name: metaTitle,
+            "@id": url,
+          },
+        },
+        containsPlace: {
+          "@type": "Apartment",
+          petsAllowed: true,
+        },
+        containedInPlace: {
+          "@type": "LocalBusiness",
+          priceRange: priceRange,
+          amenityFeature: amenitiesList,
+          image: image,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: street,
+            addressLocality: "San Francisco",
+            addressRegion: "CA",
+            postalCode: postal,
+            addressCountry: "USA",
+          },
+          name: metaTitle,
+          "@id": url,
+        },
+        "@type": "ApartmentComplex",
+        name: metaTitle,
+        "@id": url,
+      },
+    ],
   };
 };
 

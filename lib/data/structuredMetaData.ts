@@ -1,5 +1,7 @@
 import { linkHome } from "../defaults";
-import logo from "../../public/favicon.png";
+
+const logo =
+  "https://storage.googleapis.com/communitiesplatform-pictures/logo_color.png";
 
 export const MetaDataComplex = ({ complex }) => {
   const metaTitle = complex.metaTitle;

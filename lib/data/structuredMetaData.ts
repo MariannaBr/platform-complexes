@@ -1,8 +1,5 @@
 import { linkHome } from "../defaults";
 
-const logo =
-  "https://storage.googleapis.com/communitiesplatform-pictures/logo_color.png";
-
 export const MetaDataComplex = ({ complex }) => {
   const metaTitle = complex.metaTitle;
   const metaDescription = complex.metaDescription;
@@ -35,7 +32,7 @@ export const MetaDataComplex = ({ complex }) => {
   const lowPrice = prices[0];
   const highPrice = prices[-1];
 
-  const priceRange = prices[0] + "-" + prices[-1];
+  const price = prices[0] + "-" + prices[-1];
 
   return {
     "@context": "http://schema.org",
@@ -45,7 +42,6 @@ export const MetaDataComplex = ({ complex }) => {
       name: metaTitle,
       "@id": url,
       url: url,
-      logo: logo,
       image: image,
       description: metaDescription,
       address: {
@@ -61,7 +57,7 @@ export const MetaDataComplex = ({ complex }) => {
         latitude: latitude,
         longitude: longitude,
       },
-      priceRange: priceRange,
+      priceRange: price,
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",
@@ -114,7 +110,7 @@ export const MetaDataComplex = ({ complex }) => {
         },
         containedInPlace: {
           "@type": "LocalBusiness",
-          priceRange: priceRange,
+          priceRange: price,
           amenityFeature: amenitiesList,
           image: image,
           address: {

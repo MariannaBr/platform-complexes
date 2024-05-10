@@ -78,7 +78,6 @@ export const PageMetaData = ({
     "@id": metaUrl,
     url: metaUrl,
     image: metaImage,
-    logo: logo,
     description: description,
     contentLocation: {
       containedIn: {

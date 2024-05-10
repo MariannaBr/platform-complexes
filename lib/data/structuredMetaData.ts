@@ -32,12 +32,15 @@ export const MetaDataComplex = ({ complex }) => {
 
   if (prices && prices.length > 0) {
     if (prices.length > 1) {
-      prices.sort((a, b) => parseCurrency(a) - parseCurrency(b));
+      const pricesSorted = prices.sort(
+        (a, b) => parseCurrency(a) - parseCurrency(b)
+      );
+      lowPrice = pricesSorted[0];
+      highPrice = pricesSorted.at(-1);
+    } else {
       lowPrice = prices[0];
-      highPrice = prices[-1];
+      highPrice = prices[0];
     }
-    lowPrice = prices[0];
-    highPrice = prices[0];
   }
 
   const price = lowPrice + "-" + highPrice;

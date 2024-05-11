@@ -86,6 +86,14 @@ export const MetaDataComplex = ({ complex }) => {
         url: url,
         description: metaDescription,
         image: image,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: street,
+          addressLocality: "San Francisco",
+          addressRegion: "CA",
+          postalCode: postal,
+          addressCountry: "US",
+        },
         containsPlace: {
           "@type": "Apartment",
           petsAllowed: true,

@@ -100,6 +100,14 @@ export const MetaDataComplex = ({ complex }) => {
         },
         containedInPlace: {
           "@type": "LocalBusiness",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: street,
+            addressLocality: "San Francisco",
+            addressRegion: "CA",
+            postalCode: postal,
+            addressCountry: "US",
+          },
           priceRange: price,
           amenityFeature: amenitiesList,
           image: image,

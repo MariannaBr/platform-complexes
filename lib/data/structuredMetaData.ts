@@ -69,12 +69,6 @@ export const MetaDataComplex = ({ complex }) => {
         longitude: longitude,
       },
       priceRange: price,
-      // offers: {
-      //   "@type": "AggregateOffer",
-      //   priceCurrency: "USD",
-      //   lowPrice: lowPrice,
-      //   highPrice: highPrice,
-      // },
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: rating,
@@ -99,6 +93,12 @@ export const MetaDataComplex = ({ complex }) => {
         containedInPlace: {
           "@type": "LocalBusiness",
           priceRange: price,
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "USD",
+            lowPrice: lowPrice,
+            highPrice: highPrice,
+          },
           amenityFeature: amenitiesList,
           image: image,
           name: metaTitle,

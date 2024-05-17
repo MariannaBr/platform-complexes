@@ -33,12 +33,12 @@ const SignupPage: React.FC = () => {
         throw new Error(`Error: ${response.status}`);
       }
 
-      // Handle success - maybe clear the form or show a success message
+      // Handle success
       setIsSuccess(true);
       setFeedbackMessage("Thank you for subscribing!");
       event.target.reset();
     } catch (error) {
-      // Handle errors - show error message to the user
+      // Handle errors
       setIsSuccess(false);
       setFeedbackMessage(error.toString());
       console.error("Failed to submit form", error);
@@ -105,7 +105,6 @@ const SignupPage: React.FC = () => {
             </div>
           </div>
         </div>
-
         <Footer />
       </Layout>
     </>

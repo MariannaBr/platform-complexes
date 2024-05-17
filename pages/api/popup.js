@@ -4,26 +4,25 @@ const prisma = new PrismaClient();
 
 export default async function handle(req, res) {
   if (req.method === "POST") {
-    const { email } = req.body;
+    const { email, district } = req.body;
 
     try {
-      // check if the user already exists
-      const existingUser = await prisma.user.findFirst({
+      // Create a new user in the database
+      const user = await prisma.user.upsert({
         where: {
           email: email,
         },
+        update: {
+          district: district,
+        },
+        create: {
+          email: email,
+          district: district,
+        },
       });
-      if (existingUser) {
-        res.status(200).json({ userExist: true });
-      } else {
-        // Create a new user in the database
-        const user = await prisma.user.create({
-          data: {
-            email,
-          },
-        });
-        res.status(200).json({ id: user.id, email: user.email });
-      }
+      res
+        .status(200)
+        .json({ id: user.id, email: user.email, district: user.district });
     } catch (error) {
       console.error("Request error", error);
       res.status(500).json({ error: "Error creating user" });

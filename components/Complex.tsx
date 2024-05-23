@@ -102,7 +102,7 @@ const Complex: React.FC<{
           href={`/${complex.slug}`}
           className="cursor-pointer relative"
         >
-          <div className="relative w-full rounded-2xl bg-gray-100 object-cover aspect-[16/9] sm:aspect-[2/1] lg:aspect-[3/2]">
+          <div className="relative w-full rounded-t-2xl bg-gray-100 object-cover aspect-[16/9] sm:aspect-[2/1] lg:aspect-[3/2]">
             <Image
               src={complex.image}
               alt={complex.title}
@@ -110,7 +110,7 @@ const Complex: React.FC<{
               sizes="(max-width: 768px) 100vw, 33vw"
               priority={true}
               style={{ objectFit: "cover" }}
-              className="rounded-2xl"
+              className="rounded-t-2xl"
             />
             <button
               className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-10"
@@ -128,7 +128,7 @@ const Complex: React.FC<{
           </div>
         </a>
       </div>
-      <div className="group relative max-w-xl">
+      <div className="group relative max-w-xl px-3 pb-3">
         <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
           <a
             onClick={() => Router.push("/[slug]", `/${complex.slug}`)}

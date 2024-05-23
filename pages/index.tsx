@@ -116,12 +116,12 @@ const Homepage: React.FC<Props> = (props) => {
         )}
         {!showMap && (
           <div className="flex content_height">
-            <div className="mx-auto w-full md:w-2/3 px-6 hide_scrollbar">
+            <div className="mx-auto w-full md:w-2/3 px-6 hide_scrollbar pb-6">
               <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 md:grid-cols-2 lg:grid-cols-3">
                 {props.feed.map((complex) => (
                   <div
                     key={complex.id}
-                    className="flex flex-col items-start justify-between"
+                    className="flex flex-col items-start justify-between shadow-lg rounded-2xl"
                   >
                     <Complex complex={complex} />
                   </div>

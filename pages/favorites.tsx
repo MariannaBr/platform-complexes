@@ -153,7 +153,7 @@ const FavoritesPage: React.FC<Props> = (props) => {
             {favorites.map((complex) => (
               <article
                 key={complex.id}
-                className="flex flex-col items-start justify-between"
+                className="flex flex-col items-start justify-between shadow-lg rounded-2xl"
               >
                 <Complex complex={complex} isFavoritesPage={true} />
               </article>

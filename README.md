@@ -51,6 +51,12 @@ https://excalidraw.com/
 
 # Testing
 
+## Run js files
+
+```
+node file.js
+```
+
 ## Run ts files
 
 ```

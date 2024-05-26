@@ -36,23 +36,21 @@ const CallToActionPopupSucess: React.FC<Props> = ({ isOpen, onClose }) => {
               >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                   <div>
-                    <img
-                      src="/favicon.png"
-                      className="w-6 h-6 md:w-8 md:h-8 mx-auto flex items-center justify-center"
-                      alt="logo"
-                    />
+                    <div className="flex justify-center">
+                      <img
+                        src="/favicon.png"
+                        className="w-6 h-6 md:w-8 md:h-8 mr-2 md:mr-4"
+                        alt="logo"
+                      />
+                      <h2 className="text-center text-2xl font-bold tracking-tight text-pink-600">
+                        Success!
+                      </h2>
+                    </div>
 
-                    <div className="mt-3 text-center sm:mt-5">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-base font-semibold leading-6 text-gray-900"
-                      >
-                        Submit successful
-                      </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                          Thank you. We will notify you when we have updates
-                          relevant for you!
+                    <div className="text-center">
+                      <div className="mt-4">
+                        <p className="text-sm text-gray-500 md:text-lg">
+                          Thank you! You will be notify with updates.
                         </p>
                       </div>
                     </div>
@@ -60,7 +58,7 @@ const CallToActionPopupSucess: React.FC<Props> = ({ isOpen, onClose }) => {
                   <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-green-100 px-3 py-2 text-sm font-semibold text-gray-600 shadow-sm hover:bg-green-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-200"
+                      className="inline-flex w-full justify-center rounded-md bg-green-100 px-3 py-2 text-sm md:text-md font-semibold text-gray-600 shadow-sm hover:bg-green-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-200"
                       onClick={onClose}
                     >
                       Close

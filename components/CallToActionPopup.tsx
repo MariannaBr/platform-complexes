@@ -136,8 +136,7 @@ const CallToActionPopup: React.FC<Props> = ({ onSubmit }) => {
                         type="email"
                         autoComplete="email"
                         required
-                        className="min-w-0 flex-auto rounded-md border-0 bg-gray-200 mr-8 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset
-           ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white text-sm leading-6 placeholder-gray-500"
+                        className="block w-full mr-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6"
                         placeholder="Enter your email"
                       />
 

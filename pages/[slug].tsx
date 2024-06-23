@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import HeaderComplex from "../components/HeaderComplex";
 import Devider from "../components/Devider";
 import Category from "../components/Category";
+import Complex from "../components/Complex";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { ComplexProps } from "../components/Complex";
@@ -16,6 +17,7 @@ import {
   titleApartmentAmenities,
   titleNeighborhood,
   titleApartments,
+  titleSimilarCommunitites,
 } from "../lib/defaults";
 import { getSortedApartments } from "../lib/functions";
 
@@ -60,12 +62,64 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     },
   });
+
+  const complexes = await prisma.complex.findMany({
+    where: {
+      location: String("Dogpatch"),
+      show: Boolean(true),
+      slug: {
+        not: String(params?.slug),
+      },
+    },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      rating: true,
+      rateCount: true,
+      link: true,
+      image: true,
+      description: true,
+      placeId: true,
+      coordinates: true,
+      metaTitle: true,
+      metaDescription: true,
+      street: true,
+      postal: true,
+      amenities: true,
+      apartmentAmenities: true,
+      apartments: {
+        select: {
+          id: true,
+          complexId: true,
+          beds: true,
+          baths: true,
+          area: true,
+          price: true,
+          image: true,
+          link: true,
+        },
+      },
+    },
+    orderBy: {
+      title: "asc",
+    },
+  });
+
   return {
-    props: complex,
+    props: {
+      complex,
+      complexes,
+    },
   };
 };
 
-const Complex: React.FC<ComplexProps> = (props) => {
+type Props = {
+  complex: ComplexProps;
+  complexes: ComplexProps[];
+};
+
+const ComplexPage: React.FC<Props> = (props) => {
   const {
     id,
     title,
@@ -82,7 +136,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
     neighborhoodImgs,
     neighborhood,
     apartments,
-  } = props;
+  } = props.complex;
 
   const [showContent, setShowContent] = useState(false);
 
@@ -94,7 +148,7 @@ const Complex: React.FC<ComplexProps> = (props) => {
 
   return (
     <>
-      <MetaData complex={props} />
+      <MetaData complex={props.complex} />
       <Layout>
         <Header addClass="max-w-7xl mx-auto xl:px-0" />
         <Devider />
@@ -155,6 +209,19 @@ const Complex: React.FC<ComplexProps> = (props) => {
             images={neighborhoodImgs}
             amenities={neighborhood}
           />
+          <CategoryTitle title={titleSimilarCommunitites} />
+          <div className="mx-auto w-full hide_scrollbar pb-6">
+            <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 md:grid-cols-2 lg:grid-cols-3">
+              {props.complexes.map((complex) => (
+                <div
+                  key={complex.id}
+                  className="flex flex-col items-start justify-between shadow-lg rounded-2xl"
+                >
+                  <Complex complex={complex} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
         <Footer />
       </Layout>
@@ -162,4 +229,4 @@ const Complex: React.FC<ComplexProps> = (props) => {
   );
 };
 
-export default Complex;
+export default ComplexPage;

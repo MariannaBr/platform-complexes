@@ -13,6 +13,7 @@ export const titleTable = "Communities Comparison";
 export const titleTableNav = "Comparison Table";
 export const titleSignup = "Sign up";
 export const titleHome = "Home";
+export const titleSimilarCommunitites = "Similar communities";
 export const linkHome = "https://www.dogpatchapartments.com/";
 export const metaImageHome =
   "https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp";

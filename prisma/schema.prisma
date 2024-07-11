@@ -41,6 +41,7 @@ model User {
   name          String?
   email         String?   @unique
   district      String?
+  message       String?
   emailVerified DateTime?
   favorites     UsersOnComplexes[]
   accounts      Account[]

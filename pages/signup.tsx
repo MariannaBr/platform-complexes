@@ -18,6 +18,7 @@ const SignupPage: React.FC = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const email = formData.get("email");
+    const message = formData.get("message");
 
     try {
       const response = await fetch("/api/subscribe", {
@@ -25,7 +26,7 @@ const SignupPage: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, message }),
       });
 
       const data = await response.json();
@@ -35,7 +36,7 @@ const SignupPage: React.FC = () => {
 
       // Handle success
       setIsSuccess(true);
-      setFeedbackMessage("Thank you for subscribing!");
+      setFeedbackMessage("Thank you!");
       event.target.reset();
     } catch (error) {
       // Handle errors
@@ -62,8 +63,8 @@ const SignupPage: React.FC = () => {
               <h2 className="mx-auto mb-8 max-w-2xl text-center text-3xl font-bold tracking-tight text-black sm:text-4xl">
                 We appreciate your interest. Thank you!
               </h2>
-              <p className="mx-2 sm:mx-auto mb-4 max-w-xl text-center text-lg leading-8 text-gray-800">
-                Register now, and we'll keep you updated with the latest news!
+              <p className="mx-2 sm:mx-auto mb-20 max-w-xl text-center text-lg leading-8 text-gray-800">
+                Leave us a message and we will get to you as fast as possible!
               </p>
 
               {feedbackMessage ? (
@@ -76,7 +77,7 @@ const SignupPage: React.FC = () => {
                 </div>
               ) : (
                 <form
-                  className="sm:mx-auto mx-2 my-4 flex max-w-md gap-x-4"
+                  className="sm:mx-auto mx-2 my-4 max-w-xl gap-x-4"
                   onSubmit={handleSubmit}
                 >
                   <label htmlFor="email-address" className="sr-only">
@@ -88,17 +89,28 @@ const SignupPage: React.FC = () => {
                     type="email"
                     autoComplete="email"
                     required
-                    className="min-w-0 flex-auto rounded-md border-0 bg-gray-200 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset
-                 ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 placeholder-gray-500"
+                    className="flex-auto w-full rounded-md border-0 bg-gray-200 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset
+                 ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white text-sm leading-6 placeholder-gray-500"
                     placeholder="Enter your email"
+                  />
+                  <label htmlFor="message" className="sr-only">
+                    Your message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full rounded-md border-0 bg-gray-200 px-3.5 py-2 mt-6 text-gray-800 shadow-sm ring-1 ring-inset
+                 ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white text-sm leading-6 placeholder-gray-500"
+                    placeholder="Type your message"
                   />
                   <button
                     type="submit"
-                    className="flex-none rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm
+                    className="flex-none rounded-md bg-pink-600 px-3.5 py-2.5 mt-4 text-sm font-semibold text-white shadow-sm
                  hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
                   focus-visible:outline-white"
                   >
-                    Notify me
+                    Submit
                   </button>
                 </form>
               )}

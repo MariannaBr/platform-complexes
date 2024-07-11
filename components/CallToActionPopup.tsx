@@ -23,6 +23,7 @@ const CallToActionPopup: React.FC<Props> = ({ onSubmit }) => {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const district = formData.get("location");
+    const message = formData.get("message");
 
     try {
       const response = await fetch("/api/popup", {
@@ -30,7 +31,7 @@ const CallToActionPopup: React.FC<Props> = ({ onSubmit }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, district }),
+        body: JSON.stringify({ email, district, message }),
       });
 
       if (!response.ok) {
@@ -136,19 +137,32 @@ const CallToActionPopup: React.FC<Props> = ({ onSubmit }) => {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full mr-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
+                         ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 text-sm leading-6"
                         placeholder="Enter your email"
                       />
-
-                      <button
-                        type="submit"
-                        className="flex rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm
+                    </div>
+                    <div>
+                      <label htmlFor="message" className="sr-only">
+                        Your message
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={2}
+                        className="w-full rounded-md border-0 px-3.5 py-2 mt-8 text-gray-900 shadow-sm ring-1 ring-inset
+                 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-gray-400 text-sm leading-6 placeholder:text-gray-400"
+                        placeholder="Type your message if you want"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="flex rounded-md bg-pink-600 px-3.5 py-2.5 mt-4 text-sm font-semibold text-white shadow-sm
            hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
             focus-visible:outline-white"
-                      >
-                        Submit
-                      </button>
-                    </div>
+                    >
+                      Submit
+                    </button>
                   </form>
                 </Dialog.Panel>
               </Transition.Child>

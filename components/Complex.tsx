@@ -128,7 +128,7 @@ const Complex: React.FC<{
           </div>
         </a>
       </div>
-      <div className="group relative max-w-xl px-3 pb-3">
+      <div className="group relative px-3 pb-3">
         <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
           <a
             onClick={() => Router.push("/[slug]", `/${complex.slug}`)}

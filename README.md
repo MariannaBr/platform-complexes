@@ -54,5 +54,9 @@ https://excalidraw.com/
 ## Run ts files
 
 ```
-npx ts-node file.ts || npx ts-node file.mjs
+npx ts-node file.ts || npx ts-node file.mjs // seams stopped working
+```
+
+```
+npx tsx file.tsx
 ```

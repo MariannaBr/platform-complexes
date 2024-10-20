@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
@@ -14,17 +14,44 @@ import {
   metaImageHome,
   showMapText,
   showListText,
+  domainDogpatch,
+  domainMissionBay,
+  locationDogpatch,
+  locationMissionBay,
 } from "../lib/defaults";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMap, IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
 
-export const getStaticProps: GetStaticProps = async () => {
-  //await saveApartments();
+// export const getStaticPaths = async () => {
+//   // Define paths for each domain
+//   return {
+//     paths: [
+//       { params: { domain: domainDogpatch } },
+//       { params: { domain: domainMissionBay } },
+//     ],
+//     fallback: false, // Pre-render at build time
+//   };
+// };
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context;
+  const host = req.headers.host;
+
+  let location = "";
+
+  // Check the domain and set location accordingly
+  if (host === domainDogpatch) {
+    location = locationDogpatch;
+  } else if (host === domainMissionBay) {
+    location = locationMissionBay;
+  } else if (host === "localhost:3000") {
+    location = locationMissionBay;
+  }
   const feed = await prisma.complex.findMany({
     where: {
-      location: String("Dogpatch"),
+      location: String(location),
       show: Boolean(true),
     },
     select: {
@@ -64,9 +91,65 @@ export const getStaticProps: GetStaticProps = async () => {
   const show = process.env.VERCEL_ENV === "development";
   return {
     props: { feed, show },
-    revalidate: 10,
+    //revalidate: 10,
   };
 };
+
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//   //await saveApartments();
+//   const { domain } = params;
+//   let location = "";
+//   if (domain === domainDogpatch) {
+//     location = locationDogpatch;
+//   } else if (domain === domainMissionBay) {
+//     location = locationMissionBay;
+//   }
+
+//   const feed = await prisma.complex.findMany({
+//     where: {
+//       location: String(location),
+//       show: Boolean(true),
+//     },
+//     select: {
+//       id: true,
+//       title: true,
+//       slug: true,
+//       rating: true,
+//       rateCount: true,
+//       link: true,
+//       image: true,
+//       description: true,
+//       placeId: true,
+//       coordinates: true,
+//       metaTitle: true,
+//       metaDescription: true,
+//       street: true,
+//       postal: true,
+//       amenities: true,
+//       apartmentAmenities: true,
+//       apartments: {
+//         select: {
+//           id: true,
+//           complexId: true,
+//           beds: true,
+//           baths: true,
+//           area: true,
+//           price: true,
+//           image: true,
+//           link: true,
+//         },
+//       },
+//     },
+//     orderBy: {
+//       title: "asc",
+//     },
+//   });
+//   const show = process.env.VERCEL_ENV === "development";
+//   return {
+//     props: { feed, show },
+//     revalidate: 10,
+//   };
+// };
 
 type Props = {
   feed: ComplexProps[];

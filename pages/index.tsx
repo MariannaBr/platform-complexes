@@ -24,16 +24,7 @@ import { faMap, IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
 
-// export const getStaticPaths = async () => {
-//   // Define paths for each domain
-//   return {
-//     paths: [
-//       { params: { domain: domainDogpatch } },
-//       { params: { domain: domainMissionBay } },
-//     ],
-//     fallback: false, // Pre-render at build time
-//   };
-// };
+//saveApartments();
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
@@ -47,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } else if (host === domainMissionBay) {
     location = locationMissionBay;
   } else if (host === "localhost:3000") {
-    location = locationMissionBay;
+    location = locationDogpatch;
   }
   const feed = await prisma.complex.findMany({
     where: {
@@ -91,65 +82,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const show = process.env.VERCEL_ENV === "development";
   return {
     props: { feed, show },
-    //revalidate: 10,
   };
 };
-
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-//   //await saveApartments();
-//   const { domain } = params;
-//   let location = "";
-//   if (domain === domainDogpatch) {
-//     location = locationDogpatch;
-//   } else if (domain === domainMissionBay) {
-//     location = locationMissionBay;
-//   }
-
-//   const feed = await prisma.complex.findMany({
-//     where: {
-//       location: String(location),
-//       show: Boolean(true),
-//     },
-//     select: {
-//       id: true,
-//       title: true,
-//       slug: true,
-//       rating: true,
-//       rateCount: true,
-//       link: true,
-//       image: true,
-//       description: true,
-//       placeId: true,
-//       coordinates: true,
-//       metaTitle: true,
-//       metaDescription: true,
-//       street: true,
-//       postal: true,
-//       amenities: true,
-//       apartmentAmenities: true,
-//       apartments: {
-//         select: {
-//           id: true,
-//           complexId: true,
-//           beds: true,
-//           baths: true,
-//           area: true,
-//           price: true,
-//           image: true,
-//           link: true,
-//         },
-//       },
-//     },
-//     orderBy: {
-//       title: "asc",
-//     },
-//   });
-//   const show = process.env.VERCEL_ENV === "development";
-//   return {
-//     props: { feed, show },
-//     revalidate: 10,
-//   };
-// };
 
 type Props = {
   feed: ComplexProps[];

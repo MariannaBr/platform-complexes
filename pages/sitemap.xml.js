@@ -1,11 +1,12 @@
 import prisma from "../lib/prisma";
+import locationDogpatch from "../lib/defaults";
 const EXTERNAL_DATA_URL = "https://www.dogpatchapartments.com";
 
 export async function getServerSideProps({ res }) {
   // We make an API call to gather slugs values of all complexes in DB
   const complexes = await prisma.complex.findMany({
     where: {
-      location: String("Dogpatch"),
+      location: String(locationDogpatch),
     },
     select: {
       slug: true,

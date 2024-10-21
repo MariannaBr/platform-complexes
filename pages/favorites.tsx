@@ -20,6 +20,7 @@ import {
   metaDescriptionFavorites,
   metaLinkFavorites,
   metaImageHome,
+  locationDogpatch,
 } from "../lib/defaults";
 import { ApartmentProps } from "../components/Apartment";
 import { getSortedApartments } from "../lib/functions";
@@ -27,7 +28,7 @@ import { getSortedApartments } from "../lib/functions";
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.complex.findMany({
     where: {
-      location: String("Dogpatch"),
+      location: String(locationDogpatch),
       show: Boolean(true),
     },
     select: {

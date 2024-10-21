@@ -18,6 +18,7 @@ import {
   titleNeighborhood,
   titleApartments,
   titleSimilarCommunitites,
+  locationDogpatch,
 } from "../lib/defaults";
 import { getSortedApartments } from "../lib/functions";
 
@@ -65,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   const complexes = await prisma.complex.findMany({
     where: {
-      location: String("Dogpatch"),
+      location: String(locationDogpatch),
       show: Boolean(true),
       slug: {
         not: String(params?.slug),

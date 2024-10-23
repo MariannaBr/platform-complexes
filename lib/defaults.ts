@@ -3,6 +3,7 @@ export const domainMissionBay = "www.missionbay-apartments.com";
 export const locationDogpatch = "Dogpatch";
 export const locationMissionBay = "Mission Bay";
 export const titleDogpatch = "Dogpatch Apartment Communities";
+export const titleMissionBay = "Mission Bay Apartment Communities";
 export const titleCommunityWeb = "Community's website";
 export const titleCommunityAmenities = "Comunity Amenities";
 export const titleApartmentAmenities = "Apartment Amenities";

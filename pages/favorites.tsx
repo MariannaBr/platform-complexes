@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Category from "../components/Category";
@@ -20,15 +20,31 @@ import {
   metaDescriptionFavorites,
   metaLinkFavorites,
   metaImageHome,
+  domainDogpatch,
+  domainMissionBay,
   locationDogpatch,
+  locationMissionBay,
 } from "../lib/defaults";
 import { ApartmentProps } from "../components/Apartment";
 import { getSortedApartments } from "../lib/functions";
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context;
+  const host = req.headers.host;
+
+  let location = "";
+
+  // Check the domain and set location accordingly
+  if (host === domainDogpatch) {
+    location = locationDogpatch;
+  } else if (host === domainMissionBay) {
+    location = locationMissionBay;
+  } else if (host === "localhost:3000") {
+    location = locationMissionBay;
+  }
   const feed = await prisma.complex.findMany({
     where: {
-      location: String(locationDogpatch),
+      location: String(location),
       show: Boolean(true),
     },
     select: {
@@ -89,7 +105,6 @@ export const getStaticProps: GetStaticProps = async () => {
   });
   return {
     props: { feed },
-    revalidate: 10,
   };
 };
 

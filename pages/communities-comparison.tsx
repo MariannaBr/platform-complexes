@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
@@ -13,13 +13,29 @@ import {
   metaDescriptionComparison,
   metaImageHome,
   metaLinkTable,
+  domainDogpatch,
+  domainMissionBay,
   locationDogpatch,
+  locationMissionBay,
 } from "../lib/defaults";
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context;
+  const host = req.headers.host;
+
+  let location = "";
+
+  // Check the domain and set location accordingly
+  if (host === domainDogpatch) {
+    location = locationDogpatch;
+  } else if (host === domainMissionBay) {
+    location = locationMissionBay;
+  } else if (host === "localhost:3000") {
+    location = locationMissionBay;
+  }
   const feed = await prisma.complex.findMany({
     where: {
-      location: String(locationDogpatch),
+      location: String(location),
       show: Boolean(true),
     },
     select: {
@@ -64,7 +80,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const show = process.env.VERCEL_ENV === "development";
   return {
     props: { feed, show },
-    revalidate: 10,
   };
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GetStaticProps, GetServerSideProps } from "next";
+import { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } else if (host === domainMissionBay) {
     location = locationMissionBay;
   } else if (host === "localhost:3000") {
-    location = locationDogpatch;
+    location = locationMissionBay;
   }
   const feed = await prisma.complex.findMany({
     where: {
@@ -81,13 +81,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   });
   const show = process.env.VERCEL_ENV === "development";
   return {
-    props: { feed, show },
+    props: { feed, show, location },
   };
 };
 
 type Props = {
   feed: ComplexProps[];
   show: boolean;
+  location: string;
 };
 
 const Homepage: React.FC<Props> = (props) => {
@@ -112,7 +113,7 @@ const Homepage: React.FC<Props> = (props) => {
         complexes={props.feed}
       />
       <Layout>
-        <Header isHomepage={true} />
+        <Header isHomepage={true} location={props.location} />
         <Devider />
         <div className="relative md:hidden">
           <button

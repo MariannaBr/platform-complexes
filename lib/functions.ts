@@ -1,4 +1,10 @@
 import { ApartmentProps } from "../components/Apartment";
+import {
+  domainDogpatch,
+  domainMissionBay,
+  locationDogpatch,
+  locationMissionBay,
+} from "./defaults";
 
 export function getLocalStorageFavorites() {
   if (typeof window !== "undefined") {
@@ -36,4 +42,18 @@ export function getSortedApartments(
 
 export function parseCurrency(value) {
   return parseFloat(value.replace(/[\$,]/g, ""));
+}
+
+export function getLocation(host: string): string {
+  let location = "";
+
+  // Check the domain and set location accordingly
+  if (host === domainDogpatch) {
+    location = locationDogpatch;
+  } else if (host === domainMissionBay) {
+    location = locationMissionBay;
+  } else if (host === "localhost:3000") {
+    location = locationMissionBay;
+  }
+  return location;
 }

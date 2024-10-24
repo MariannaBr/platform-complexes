@@ -10,27 +10,14 @@ import {
   metaDescriptionSignup,
   metaLinkSignup,
   metaImageHome,
-  domainDogpatch,
-  domainMissionBay,
-  locationDogpatch,
-  locationMissionBay,
 } from "../lib/defaults";
+import { getLocation } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context;
   const { req } = context;
   const host = req.headers.host;
-
-  let location = "";
-
-  // Check the domain and set location accordingly
-  if (host === domainDogpatch) {
-    location = locationDogpatch;
-  } else if (host === domainMissionBay) {
-    location = locationMissionBay;
-  } else if (host === "localhost:3000") {
-    location = locationMissionBay;
-  }
+  const location = getLocation(host);
 
   return {
     props: {

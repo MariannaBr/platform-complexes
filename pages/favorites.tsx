@@ -20,28 +20,16 @@ import {
   metaDescriptionFavorites,
   metaLinkFavorites,
   metaImageHome,
-  domainDogpatch,
-  domainMissionBay,
-  locationDogpatch,
-  locationMissionBay,
 } from "../lib/defaults";
 import { ApartmentProps } from "../components/Apartment";
 import { getSortedApartments } from "../lib/functions";
+import { getLocation } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
   const host = req.headers.host;
+  const location = getLocation(host);
 
-  let location = "";
-
-  // Check the domain and set location accordingly
-  if (host === domainDogpatch) {
-    location = locationDogpatch;
-  } else if (host === domainMissionBay) {
-    location = locationMissionBay;
-  } else if (host === "localhost:3000") {
-    location = locationMissionBay;
-  }
   const feed = await prisma.complex.findMany({
     where: {
       location: String(location),

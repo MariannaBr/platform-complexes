@@ -14,32 +14,20 @@ import {
   metaImageHome,
   showMapText,
   showListText,
-  domainDogpatch,
-  domainMissionBay,
-  locationDogpatch,
-  locationMissionBay,
 } from "../lib/defaults";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMap, IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
+import { getLocation } from "../lib/functions";
 
 //saveApartments();
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
   const host = req.headers.host;
+  const location = getLocation(host);
 
-  let location = "";
-
-  // Check the domain and set location accordingly
-  if (host === domainDogpatch) {
-    location = locationDogpatch;
-  } else if (host === domainMissionBay) {
-    location = locationMissionBay;
-  } else if (host === "localhost:3000") {
-    location = locationMissionBay;
-  }
   const feed = await prisma.complex.findMany({
     where: {
       location: String(location),

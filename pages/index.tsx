@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } else if (host === domainMissionBay) {
     location = locationMissionBay;
   } else if (host === "localhost:3000") {
-    location = locationDogpatch;
+    location = locationMissionBay;
   }
   const feed = await prisma.complex.findMany({
     where: {

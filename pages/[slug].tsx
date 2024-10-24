@@ -18,11 +18,28 @@ import {
   titleNeighborhood,
   titleApartments,
   titleSimilarCommunitites,
+  domainDogpatch,
+  domainMissionBay,
   locationDogpatch,
+  locationMissionBay,
 } from "../lib/defaults";
 import { getSortedApartments } from "../lib/functions";
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { params } = context;
+  const { req } = context;
+  const host = req.headers.host;
+
+  let location = "";
+
+  // Check the domain and set location accordingly
+  if (host === domainDogpatch) {
+    location = locationDogpatch;
+  } else if (host === domainMissionBay) {
+    location = locationMissionBay;
+  } else if (host === "localhost:3000") {
+    location = locationMissionBay;
+  }
   const complex = await prisma.complex.findUnique({
     where: {
       slug: String(params?.slug),
@@ -111,6 +128,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     props: {
       complex,
       complexes,
+      location,
     },
   };
 };
@@ -118,6 +136,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 type Props = {
   complex: ComplexProps;
   complexes: ComplexProps[];
+  location: string;
 };
 
 const ComplexPage: React.FC<Props> = (props) => {
@@ -151,7 +170,10 @@ const ComplexPage: React.FC<Props> = (props) => {
     <>
       <MetaData complex={props.complex} />
       <Layout>
-        <Header addClass="max-w-7xl mx-auto xl:px-0" />
+        <Header
+          addClass="max-w-7xl mx-auto xl:px-0"
+          location={props.location}
+        />
         <Devider />
         <HeaderComplex
           id={id}

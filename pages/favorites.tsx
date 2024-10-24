@@ -104,12 +104,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   });
   return {
-    props: { feed },
+    props: { feed, location },
   };
 };
 
 type Props = {
   feed: ComplexProps[];
+  location: string;
 };
 
 const FavoritesPage: React.FC<Props> = (props) => {
@@ -154,7 +155,11 @@ const FavoritesPage: React.FC<Props> = (props) => {
         complexes={favorites}
       />
       <Layout>
-        <Header isHomepage={true} addClass="max-w-7xl mx-auto xl:px-0" />
+        <Header
+          isHomepage={true}
+          addClass="max-w-7xl mx-auto xl:px-0"
+          location={props.location}
+        />
         <Devider />
         <div className="max-w-7xl px-6 mx-auto xl:px-0">
           {favorites && favorites.length > 0 && (

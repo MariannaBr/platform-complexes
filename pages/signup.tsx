@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
@@ -9,9 +10,40 @@ import {
   metaDescriptionSignup,
   metaLinkSignup,
   metaImageHome,
+  domainDogpatch,
+  domainMissionBay,
+  locationDogpatch,
+  locationMissionBay,
 } from "../lib/defaults";
 
-const SignupPage: React.FC = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { params } = context;
+  const { req } = context;
+  const host = req.headers.host;
+
+  let location = "";
+
+  // Check the domain and set location accordingly
+  if (host === domainDogpatch) {
+    location = locationDogpatch;
+  } else if (host === domainMissionBay) {
+    location = locationMissionBay;
+  } else if (host === "localhost:3000") {
+    location = locationMissionBay;
+  }
+
+  return {
+    props: {
+      location,
+    },
+  };
+};
+
+type Props = {
+  location: string;
+};
+
+const SignupPage: React.FC<Props> = (props) => {
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const handleSubmit = async (event) => {
@@ -55,7 +87,7 @@ const SignupPage: React.FC = () => {
         url={metaLinkSignup}
       />
       <Layout>
-        <Header isHomepage={true} />
+        <Header isHomepage={true} location={props.location} />
         <Devider />
         <div className="bg-white -my-6 sm:my-24">
           <div className="mx-auto max-w-2xl xl:max-w-7xl">

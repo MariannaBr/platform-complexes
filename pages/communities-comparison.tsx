@@ -79,13 +79,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   });
   const show = process.env.VERCEL_ENV === "development";
   return {
-    props: { feed, show },
+    props: { feed, show, location },
   };
 };
 
 type Props = {
   feed: ComplexProps[];
   show: boolean;
+  location: string;
 };
 
 const TablePage: React.FC<Props> = (props) => {
@@ -100,7 +101,7 @@ const TablePage: React.FC<Props> = (props) => {
         complexes={props.feed}
       />
       <Layout>
-        <Header isHomepage={true} />
+        <Header isHomepage={true} location={props.location} />
         <Devider />
         <div className="mx-6 pt-6">
           <Table complexes={props.feed} />

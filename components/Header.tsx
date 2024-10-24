@@ -9,6 +9,7 @@ import {
   titleTableNav,
   linkTable,
   locationDogpatch,
+  locationMissionBay,
 } from "../lib/defaults";
 import { usePathname } from "next/navigation";
 
@@ -32,7 +33,8 @@ type PropType = {
 const Header: React.FC<PropType> = ({ isHomepage, addClass, location }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const title = location === locationDogpatch ? titleDogpatch : titleMissionBay;
+  const title =
+    location === locationMissionBay ? titleMissionBay : titleDogpatch;
 
   return (
     <header className={`bg-white py-4 px-2 lg:py-6 lg:px-6 ${addClass}`}>

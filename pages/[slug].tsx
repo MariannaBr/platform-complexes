@@ -161,15 +161,17 @@ const ComplexPage: React.FC<Props> = (props) => {
           rateCount={rateCount}
         />
         <div className="max-w-7xl mx-auto px-6 xl:px-0 text-justify">
-          <div className="mb-2">
-            <a
-              href={link}
-              target="_blank"
-              className="underline text-pink-600 text-sm"
-            >
-              {titleCommunityWeb}
-            </a>
-          </div>
+          {link && (
+            <div className="mb-2">
+              <a
+                href={link}
+                target="_blank"
+                className="underline text-pink-600 text-sm"
+              >
+                {titleCommunityWeb}
+              </a>
+            </div>
+          )}
           <p className={`${!showContent && "line-clamp-3 lg:line-clamp-5"}`}>
             {description}
           </p>

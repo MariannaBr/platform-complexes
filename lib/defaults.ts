@@ -20,11 +20,33 @@ export const noImageFoundUrl =
   "https://storage.googleapis.com/communitiesplatform-pictures/General/Image_not_available.png";
 export const showMapText = "Show map";
 export const showListText = "Show list";
+
+export interface LocationData {
+  domain: string;
+  location: string;
+  title: string;
+  linkHome: string;
+  mapCoordinations: number[];
+  metaImageHome: string;
+  metaLinkFavorites: string;
+  metaLinkTable: string;
+  metaLinkSignup: string;
+  metaTitleHome: string;
+  metaDescriptionHome: string;
+  metaTitleFavorites: string;
+  metaDescriptionFavorites: string;
+  metaTitleComparison: string;
+  metaDescriptionComparison: string;
+  metaTitleSignup: string;
+  metaDescriptionSignup: string;
+}
+
 export const dogpatchData = {
   domain: "www.dogpatchapartments.com",
   location: "Dogpatch",
   title: "Dogpatch Apartment Communities",
   linkHome: "https://www.dogpatchapartments.com/",
+  mapCoordinations: [-122.38798378427391, 37.76000116642954],
   metaLinkTable: "https://www.dogpatchapartments.com/communities-comparison",
   metaImageHome:
     "https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp",
@@ -51,6 +73,7 @@ export const missionBayData = {
   location: "Mission Bay",
   title: "Mission Bay Apartment Communities",
   linkHome: "https://www.missionbay-apartments.com/",
+  mapCoordinations: [-122.389985784874, 37.77500116642974],
   metaImageHome:
     "https://storage.googleapis.com/communitiesplatform-pictures/Canyon/canyon_img.webp",
   metaLinkFavorites: "https://www.missionbay-apartments.com/favorites",

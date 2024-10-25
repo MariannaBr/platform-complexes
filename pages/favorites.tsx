@@ -12,12 +12,12 @@ import prisma from "../lib/prisma";
 import {
   titleMyFavoritesApartments,
   titleMyFavoritesComplexes,
+  LocationData,
 } from "../lib/defaults";
-import { getLocalStorageFavorites } from "../lib/functions";
+import { getLocalStorageFavorites, getLocationData } from "../lib/functions";
 import MetaData from "../components/MetaData";
 import { ApartmentProps } from "../components/Apartment";
 import { getSortedApartments } from "../lib/functions";
-import { getLocationData, LocationData } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;

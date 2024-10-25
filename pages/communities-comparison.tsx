@@ -8,7 +8,8 @@ import Table from "../components/Table";
 import { ComplexProps } from "../components/Complex";
 import MetaData from "../components/MetaData";
 import prisma from "../lib/prisma";
-import { getLocationData, LocationData } from "../lib/functions";
+import { getLocationData } from "../lib/functions";
+import { LocationData } from "../lib/defaults";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;

@@ -1,5 +1,5 @@
 import { ApartmentProps } from "../components/Apartment";
-import { dogpatchData, missionBayData } from "./defaults";
+import { dogpatchData, missionBayData, LocationData } from "./defaults";
 
 export function getLocalStorageFavorites() {
   if (typeof window !== "undefined") {
@@ -37,25 +37,6 @@ export function getSortedApartments(
 
 export function parseCurrency(value) {
   return parseFloat(value.replace(/[\$,]/g, ""));
-}
-
-export interface LocationData {
-  domain: string;
-  location: string;
-  title: string;
-  linkHome: string;
-  metaImageHome: string;
-  metaLinkFavorites: string;
-  metaLinkTable: string;
-  metaLinkSignup: string;
-  metaTitleHome: string;
-  metaDescriptionHome: string;
-  metaTitleFavorites: string;
-  metaDescriptionFavorites: string;
-  metaTitleComparison: string;
-  metaDescriptionComparison: string;
-  metaTitleSignup: string;
-  metaDescriptionSignup: string;
 }
 
 export function getLocationData(host: string): LocationData {

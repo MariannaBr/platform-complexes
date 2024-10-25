@@ -7,12 +7,12 @@ import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
 import MetaData from "../components/MetaData";
-import { showMapText, showListText } from "../lib/defaults";
+import { showMapText, showListText, LocationData } from "../lib/defaults";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMap, IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
-import { getLocationData, LocationData } from "../lib/functions";
+import { getLocationData } from "../lib/functions";
 
 //saveApartments();
 
@@ -110,7 +110,10 @@ const Homepage: React.FC<Props> = (props) => {
         </div>
         {showMap && (
           <div className="relative w-full content_height">
-            <Map complexes={props.feed} />
+            <Map
+              complexes={props.feed}
+              mapCoordinations={props.locationData.mapCoordinations}
+            />
           </div>
         )}
         {!showMap && (
@@ -128,7 +131,10 @@ const Homepage: React.FC<Props> = (props) => {
               </div>
             </div>
             <div className="hidden md:flex md:w-1/3">
-              <Map complexes={props.feed} />
+              <Map
+                complexes={props.feed}
+                mapCoordinations={props.locationData.mapCoordinations}
+              />
             </div>
           </div>
         )}

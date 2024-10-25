@@ -18,9 +18,9 @@ import {
   titleNeighborhood,
   titleApartments,
   titleSimilarCommunitites,
+  LocationData,
 } from "../lib/defaults";
-import { getSortedApartments } from "../lib/functions";
-import { getLocationData, LocationData } from "../lib/functions";
+import { getSortedApartments, getLocationData } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context;

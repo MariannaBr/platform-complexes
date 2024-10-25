@@ -4,7 +4,10 @@ import { ComplexProps } from "./Complex";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
-const Map: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
+const Map: React.FC<{
+  complexes: ComplexProps[];
+  mapCoordinations: number[];
+}> = ({ complexes, mapCoordinations }) => {
   const mapContainerRef = useRef(null);
   const [lng, setLng] = useState(5);
   const [lat, setLat] = useState(34);
@@ -15,7 +18,7 @@ const Map: React.FC<{ complexes: ComplexProps[] }> = ({ complexes }) => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [-122.38798378427391, 37.76000116642954],
+      center: mapCoordinations,
       zoom: 14,
     });
 

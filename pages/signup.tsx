@@ -5,7 +5,8 @@ import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 import MetaData from "../components/MetaData";
-import { getLocationData, LocationData } from "../lib/functions";
+import { getLocationData } from "../lib/functions";
+import { LocationData } from "../lib/defaults";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;

@@ -11,28 +11,22 @@ import Complex, { ComplexProps } from "../components/Complex";
 import prisma from "../lib/prisma";
 import {
   titleMyFavoritesApartments,
-  titleMyavoritesComplexes,
+  titleMyFavoritesComplexes,
 } from "../lib/defaults";
 import { getLocalStorageFavorites } from "../lib/functions";
 import MetaData from "../components/MetaData";
-import {
-  metaTitleFavorites,
-  metaDescriptionFavorites,
-  metaLinkFavorites,
-  metaImageHome,
-} from "../lib/defaults";
 import { ApartmentProps } from "../components/Apartment";
 import { getSortedApartments } from "../lib/functions";
-import { getLocation } from "../lib/functions";
+import { getLocationData, LocationData } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
   const host = req.headers.host;
-  const location = getLocation(host);
+  const locationData = getLocationData(host);
 
   const feed = await prisma.complex.findMany({
     where: {
-      location: String(location),
+      location: String(locationData.location),
       show: Boolean(true),
     },
     select: {
@@ -92,13 +86,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   });
   return {
-    props: { feed, location },
+    props: { feed, locationData },
   };
 };
 
 type Props = {
   feed: ComplexProps[];
-  location: string;
+  locationData: LocationData;
 };
 
 const FavoritesPage: React.FC<Props> = (props) => {
@@ -136,17 +130,17 @@ const FavoritesPage: React.FC<Props> = (props) => {
     <>
       <MetaData
         type="SearchResultsPage"
-        title={metaTitleFavorites}
-        description={metaDescriptionFavorites}
-        image={metaImageHome}
-        url={metaLinkFavorites}
+        title={props.locationData.metaTitleFavorites}
+        description={props.locationData.metaDescriptionFavorites}
+        image={props.locationData.metaImageHome}
+        url={props.locationData.metaLinkFavorites}
         complexes={favorites}
       />
       <Layout>
         <Header
           isHomepage={true}
           addClass="max-w-7xl mx-auto xl:px-0"
-          location={props.location}
+          title={props.locationData.title}
         />
         <Devider />
         <div className="max-w-7xl px-6 mx-auto xl:px-0">
@@ -157,7 +151,7 @@ const FavoritesPage: React.FC<Props> = (props) => {
               isFavorite={true}
             />
           )}
-          <CategoryTitle title={titleMyavoritesComplexes} />
+          <CategoryTitle title={titleMyFavoritesComplexes} />
           <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-y-20 lg:mx-0">
             {favorites.map((complex) => (
               <article

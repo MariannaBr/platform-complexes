@@ -1,15 +1,11 @@
 import React from "react";
 import {
-  titleDogpatch,
-  titleMissionBay,
   titleFavorites,
   linkFavorites,
   titleSignup,
   linkSignup,
   titleTableNav,
   linkTable,
-  locationDogpatch,
-  locationMissionBay,
 } from "../lib/defaults";
 import { usePathname } from "next/navigation";
 
@@ -27,14 +23,12 @@ const navigation = [
 type PropType = {
   addClass?: string;
   isHomepage?: boolean;
-  location?: string;
+  title?: string;
 };
 
-const Header: React.FC<PropType> = ({ isHomepage, addClass, location }) => {
+const Header: React.FC<PropType> = ({ isHomepage, addClass, title }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const title =
-    location === locationMissionBay ? titleMissionBay : titleDogpatch;
 
   return (
     <header className={`bg-white py-4 px-2 lg:py-6 lg:px-6 ${addClass}`}>

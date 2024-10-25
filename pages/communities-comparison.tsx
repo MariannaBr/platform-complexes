@@ -8,22 +8,16 @@ import Table from "../components/Table";
 import { ComplexProps } from "../components/Complex";
 import MetaData from "../components/MetaData";
 import prisma from "../lib/prisma";
-import {
-  metaTitleComparison,
-  metaDescriptionComparison,
-  metaImageHome,
-  metaLinkTable,
-} from "../lib/defaults";
-import { getLocation } from "../lib/functions";
+import { getLocationData, LocationData } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
   const host = req.headers.host;
-  const location = getLocation(host);
+  const locationData = getLocationData(host);
 
   const feed = await prisma.complex.findMany({
     where: {
-      location: String(location),
+      location: String(locationData.location),
       show: Boolean(true),
     },
     select: {
@@ -67,14 +61,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   });
   const show = process.env.VERCEL_ENV === "development";
   return {
-    props: { feed, show, location },
+    props: { feed, show, locationData },
   };
 };
 
 type Props = {
   feed: ComplexProps[];
   show: boolean;
-  location: string;
+  locationData: LocationData;
 };
 
 const TablePage: React.FC<Props> = (props) => {
@@ -82,14 +76,14 @@ const TablePage: React.FC<Props> = (props) => {
     <>
       <MetaData
         type="SearchResultsPage"
-        title={metaTitleComparison}
-        description={metaDescriptionComparison}
-        image={metaImageHome}
-        url={metaLinkTable}
+        title={props.locationData.metaTitleComparison}
+        description={props.locationData.metaDescriptionComparison}
+        image={props.locationData.metaImageHome}
+        url={props.locationData.metaLinkTable}
         complexes={props.feed}
       />
       <Layout>
-        <Header isHomepage={true} location={props.location} />
+        <Header isHomepage={true} title={props.locationData.title} />
         <Devider />
         <div className="mx-6 pt-6">
           <Table complexes={props.feed} />

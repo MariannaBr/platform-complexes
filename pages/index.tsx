@@ -7,30 +7,23 @@ import Devider from "../components/Devider";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
 import MetaData from "../components/MetaData";
-import {
-  metaTitleHome,
-  metaDescriptionHome,
-  linkHome,
-  metaImageHome,
-  showMapText,
-  showListText,
-} from "../lib/defaults";
+import { showMapText, showListText } from "../lib/defaults";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMap, IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
-import { getLocation } from "../lib/functions";
+import { getLocationData, LocationData } from "../lib/functions";
 
 //saveApartments();
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
   const host = req.headers.host;
-  const location = getLocation(host);
+  const locationData = getLocationData(host);
 
   const feed = await prisma.complex.findMany({
     where: {
-      location: String(location),
+      location: String(locationData.location),
       show: Boolean(true),
     },
     select: {
@@ -69,14 +62,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   });
   const show = process.env.VERCEL_ENV === "development";
   return {
-    props: { feed, show, location },
+    props: { feed, show, locationData },
   };
 };
 
 type Props = {
   feed: ComplexProps[];
   show: boolean;
-  location: string;
+  locationData: LocationData;
 };
 
 const Homepage: React.FC<Props> = (props) => {
@@ -94,14 +87,14 @@ const Homepage: React.FC<Props> = (props) => {
     <>
       <MetaData
         type="SearchResultsPage"
-        title={metaTitleHome}
-        description={metaDescriptionHome}
-        image={metaImageHome}
-        url={linkHome}
+        title={props.locationData.metaTitleHome}
+        description={props.locationData.metaDescriptionHome}
+        image={props.locationData.metaImageHome}
+        url={props.locationData.linkHome}
         complexes={props.feed}
       />
       <Layout>
-        <Header isHomepage={true} location={props.location} />
+        <Header isHomepage={true} title={props.locationData.title} />
         <Devider />
         <div className="relative md:hidden">
           <button

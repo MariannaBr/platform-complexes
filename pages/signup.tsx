@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
 import Footer from "../components/Footer";
 import MetaData from "../components/MetaData";
-import {
-  metaTitleSignup,
-  metaDescriptionSignup,
-  metaLinkSignup,
-  metaImageHome,
-} from "../lib/defaults";
-import { getLocation } from "../lib/functions";
+import { getLocationData, LocationData } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params } = context;
   const { req } = context;
   const host = req.headers.host;
-  const location = getLocation(host);
+  const locationData = getLocationData(host);
 
   return {
     props: {
-      location,
+      locationData,
     },
   };
 };
 
 type Props = {
-  location: string;
+  locationData: LocationData;
 };
 
 const SignupPage: React.FC<Props> = (props) => {
@@ -68,13 +61,13 @@ const SignupPage: React.FC<Props> = (props) => {
     <>
       <MetaData
         type="Signup"
-        title={metaTitleSignup}
-        description={metaDescriptionSignup}
-        image={metaImageHome}
-        url={metaLinkSignup}
+        title={props.locationData.metaTitleSignup}
+        description={props.locationData.metaDescriptionSignup}
+        image={props.locationData.metaImageHome}
+        url={props.locationData.metaLinkSignup}
       />
       <Layout>
-        <Header isHomepage={true} location={props.location} />
+        <Header isHomepage={true} title={props.locationData.title} />
         <Devider />
         <div className="bg-white -my-6 sm:my-24">
           <div className="mx-auto max-w-2xl xl:max-w-7xl">

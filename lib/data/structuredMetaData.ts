@@ -1,20 +1,24 @@
-import { linkHome } from "../defaults";
 import { parseCurrency } from "../functions";
+import { ComplexProps } from "../../components/Complex";
 
-export const MetaDataComplex = ({ complex }) => {
+type PropType = {
+  complex?: ComplexProps;
+  complexUrl?: string;
+  metaUrl?: string;
+};
+
+export const MetaDataComplex = ({ complex, complexUrl, metaUrl }: PropType) => {
   const metaTitle = complex.metaTitle;
   const metaDescription = complex.metaDescription;
   const image = complex.image;
-  const url = linkHome + complex.slug;
-  const coordinates = complex.coordinates;
+  const url = complexUrl ? complexUrl : metaUrl + complex.slug;
   const street = complex.street;
   const postal = complex.postal;
   const rating = complex.rating;
   const rateCount = complex.rateCount;
   const amenities = complex.amenities;
   const apartmentAmenities = complex.apartmentAmenities;
-  const latitude = coordinates[1];
-  const longitude = coordinates[0];
+  const [longitude, latitude] = complex.coordinates;
   const amenitiesList = amenities.concat(apartmentAmenities);
   const apartments = complex.apartments;
 
@@ -132,7 +136,7 @@ export const PageMetaData = ({
 }) => {
   let objects = [];
   if (complexes) {
-    objects = complexes.map((complex) => MetaDataComplex({ complex }));
+    objects = complexes.map((complex) => MetaDataComplex({ complex, metaUrl }));
   }
 
   return {

@@ -24,7 +24,7 @@ export type ComplexProps = {
   rating: string;
   rateCount: number;
   placeId: string;
-  coordinates: [];
+  coordinates: [number, number];
   communityMap: string;
   amenitiesImgs: string[];
   amenities: string[];

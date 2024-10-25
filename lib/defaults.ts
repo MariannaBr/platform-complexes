@@ -1,9 +1,3 @@
-export const domainDogpatch = "www.dogpatchapartments.com";
-export const domainMissionBay = "www.missionbay-apartments.com";
-export const locationDogpatch = "Dogpatch";
-export const locationMissionBay = "Mission Bay";
-export const titleDogpatch = "Dogpatch Apartment Communities";
-export const titleMissionBay = "Mission Bay Apartment Communities";
 export const titleCommunityWeb = "Community's website";
 export const titleCommunityAmenities = "Comunity Amenities";
 export const titleApartmentAmenities = "Apartment Amenities";
@@ -13,65 +7,71 @@ export const titleFavorites = "Favorites";
 export const titleSave = "Save";
 export const titleSaved = "Saved";
 export const titleMyFavoritesApartments = "Apartments in favorite Communities";
-export const titleMyavoritesComplexes = "Favorite Communities";
+export const titleMyFavoritesComplexes = "Favorite Communities";
 export const titleTable = "Communities Comparison";
 export const titleTableNav = "Comparison Table";
 export const titleSignup = "Sign up";
 export const titleHome = "Home";
 export const titleSimilarCommunitites = "Similar communities";
-export const linkHome = "https://www.dogpatchapartments.com/";
-export const linkHomeMissionBay = "https://www.missionbay-apartments.com/";
-export const metaImageHome =
-  "https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp";
-export const metaImageHomeMissionBay =
-  "https://storage.googleapis.com/communitiesplatform-pictures/Canyon/canyon_img.webp";
 export const linkFavorites = "/favorites";
-export const metaLinkFavorites = "https://www.dogpatchapartments.com/favorites";
-export const metaLinkFavoritesMissionBay =
-  "https://www.missionbay-apartments.com/favorites";
 export const linkTable = "/communities-comparison";
-export const metaLinkTable =
-  "https://www.dogpatchapartments.com/communities-comparison";
-export const metaLinkTableMissionBay =
-  "https://www.missionbay-apartments.com/communities-comparison";
 export const linkSignup = "/signup";
-export const metaLinkSignup = "https://www.dogpatchapartments.com/signup";
-export const metaLinkSignupMissionBay =
-  "https://www.missionbay-apartments.com/signup";
-export const metaTitleHome =
-  "Dogpatch Communities | apartments for rent | San Francisco, CA";
-export const metaTitleHomeMissionBay =
-  "Mission Bay Communities | apartments for rent | San Francisco, CA";
-export const metaDescriptionHome =
-  "Discover your perfect home in Dogpatch San Francisco, CA 94107. Get information about 1 bedroom, 1 bath, 2 bedroom, 2 baths or 3 bedroom apartments and townhomes for rent. Explore amenities, and exclusive photos for each complex to find your dream apartment in this vibrant neighborhood.";
-export const metaDescriptionHomeMissionBay =
-  "Discover your perfect home in Mission Bay, San Francisco, CA 94158. Get information about 1-bedroom, 1-bath, 2-bedroom, 2-bath, and 3-bedroom apartments and townhomes for rent. Explore amenities and exclusive photos for each complex to find your dream apartment in this vibrant waterfront community.";
-export const metaTitleFavorites =
-  "Your favorite apartment communities in Dogpatch";
-export const metaTitleFavoritesMissionBay =
-  "Your favorite apartment communities in Mission Bay";
-export const metaDescriptionFavorites =
-  "List of your favorite apartment communities in Dogpatch. Compare complexes' amenities.";
-export const metaTitleComparison =
-  "Comparison table for all Dogpatch Apartments Communities";
-export const metaTitleComparisonMissionBay =
-  "Comparison table for all Mission Bay Apartments Communities";
-export const metaDescriptionComparison =
-  "Find out which amenities do the apartment communities in Dogpatch have. Compare the complexes in the table";
-export const metaDescriptionComparisonMissionBay =
-  "Find out which amenities do the apartment communities in Mission Bay have. Compare the complexes in the table";
-export const metaTitleSignup =
-  "Sign up for getting updates about Apartment communitites in Dogpatch";
-export const metaTitleSignupMissionBay =
-  "Sign up for getting updates about Apartment communitites in Mission Bay";
-export const metaDescriptionSignup =
-  "We will notify you when there are new updates about apartment communities in Dogpatch";
-export const metaDescriptionSignupMissionBay =
-  "We will notify you when there are new updates about apartment communities in Mission Bay";
 export const noImageFoundUrl =
   "https://storage.googleapis.com/communitiesplatform-pictures/General/Image_not_available.png";
 export const showMapText = "Show map";
 export const showListText = "Show list";
+export const dogpatchData = {
+  domain: "www.dogpatchapartments.com",
+  location: "Dogpatch",
+  title: "Dogpatch Apartment Communities",
+  linkHome: "https://www.dogpatchapartments.com/",
+  metaLinkTable: "https://www.dogpatchapartments.com/communities-comparison",
+  metaImageHome:
+    "https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp",
+  metaLinkFavorites: "https://www.dogpatchapartments.com/favorites",
+  metaLinkSignup: "https://www.dogpatchapartments.com/signup",
+  metaTitleHome:
+    "Dogpatch Communities | apartments for rent | San Francisco, CA",
+  metaDescriptionHome:
+    "Discover your perfect home in Dogpatch San Francisco, CA 94107. Get information about 1 bedroom, 1 bath, 2 bedroom, 2 baths or 3 bedroom apartments and townhomes for rent. Explore amenities, and exclusive photos for each complex to find your dream apartment in this vibrant neighborhood.",
+  metaTitleFavorites: "Your favorite apartment communities in Dogpatch",
+  metaDescriptionFavorites:
+    "List of your favorite apartment communities in Dogpatch. Compare complexes' amenities.",
+  metaTitleComparison:
+    "Comparison table for all Dogpatch Apartments Communities",
+  metaDescriptionComparison:
+    "Find out which amenities do the apartment communities in Dogpatch have. Compare the complexes in the table",
+  metaTitleSignup:
+    "Sign up for getting updates about Apartment communitites in Dogpatch",
+  metaDescriptionSignup:
+    "We will notify you when there are new updates about apartment communities in Dogpatch",
+};
+export const missionBayData = {
+  domain: "www.missionbay-apartments.com",
+  location: "Mission Bay",
+  title: "Mission Bay Apartment Communities",
+  linkHome: "https://www.missionbay-apartments.com/",
+  metaImageHome:
+    "https://storage.googleapis.com/communitiesplatform-pictures/Canyon/canyon_img.webp",
+  metaLinkFavorites: "https://www.missionbay-apartments.com/favorites",
+  metaLinkTable: "https://www.missionbay-apartments.com/communities-comparison",
+  metaLinkSignup: "https://www.missionbay-apartments.com/signup",
+  metaTitleHome:
+    "Mission Bay Communities | apartments for rent | San Francisco, CA",
+  metaDescriptionHome:
+    "Discover your perfect home in Mission Bay, San Francisco, CA 94158. Get information about 1-bedroom, 1-bath, 2-bedroom, 2-bath, and 3-bedroom apartments and townhomes for rent. Explore amenities and exclusive photos for each complex to find your dream apartment in this vibrant waterfront community.",
+  metaTitleFavorites: "Your favorite apartment communities in Mission Bay",
+  metaDescriptionFavorites:
+    "List of your favorite apartment communities in Mission Bay. Compare complexes' amenities.",
+  metaTitleComparison:
+    "Comparison table for all Mission Bay Apartments Communities",
+  metaDescriptionComparison:
+    "Find out which amenities do the apartment communities in Mission Bay have. Compare the complexes in the table",
+  metaTitleSignup:
+    "Sign up for getting updates about Apartment communitites in Mission Bay",
+  metaDescriptionSignup:
+    "We will notify you when there are new updates about apartment communities in Mission Bay",
+};
 export const neighborhoods = [
   "Alamo Square",
   "Anza Vista",

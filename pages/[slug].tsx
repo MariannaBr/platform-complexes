@@ -18,16 +18,15 @@ import {
   titleNeighborhood,
   titleApartments,
   titleSimilarCommunitites,
-  locationDogpatch,
 } from "../lib/defaults";
 import { getSortedApartments } from "../lib/functions";
-import { getLocation } from "../lib/functions";
+import { getLocationData, LocationData } from "../lib/functions";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context;
   const { req } = context;
   const host = req.headers.host;
-  const location = getLocation(host);
+  const locationData = getLocationData(host);
 
   const complex = await prisma.complex.findUnique({
     where: {
@@ -72,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const complexes = await prisma.complex.findMany({
     where: {
-      location: String(locationDogpatch),
+      location: String(locationData.location),
       show: Boolean(true),
       slug: {
         not: String(params?.slug),
@@ -117,7 +116,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       complex,
       complexes,
-      location,
+      locationData,
     },
   };
 };
@@ -125,7 +124,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 type Props = {
   complex: ComplexProps;
   complexes: ComplexProps[];
-  location: string;
+  locationData: LocationData;
 };
 
 const ComplexPage: React.FC<Props> = (props) => {
@@ -157,11 +156,11 @@ const ComplexPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <MetaData complex={props.complex} />
+      <MetaData complex={props.complex} url={props.locationData.linkHome} />
       <Layout>
         <Header
           addClass="max-w-7xl mx-auto xl:px-0"
-          location={props.location}
+          title={props.locationData.title}
         />
         <Devider />
         <HeaderComplex

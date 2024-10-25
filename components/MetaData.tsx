@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { MetaDataComplex, PageMetaData } from "../lib/data/structuredMetaData";
-import { linkHome } from "../lib/defaults";
 import { ComplexProps } from "../components/Complex";
 
 type PropType = {
@@ -40,8 +39,8 @@ const MetaData: React.FC<PropType> = ({
     metaTitle = complex.metaTitle;
     metaDescription = complex.metaDescription;
     metaImage = complex.image;
-    metaUrl = linkHome + complex.slug;
-    jsonLd = MetaDataComplex({ complex });
+    let complexUrl = url + complex.slug;
+    jsonLd = MetaDataComplex({ complex, complexUrl });
   }
 
   return (

@@ -1,10 +1,5 @@
 import { ApartmentProps } from "../components/Apartment";
-import {
-  domainDogpatch,
-  domainMissionBay,
-  locationDogpatch,
-  locationMissionBay,
-} from "./defaults";
+import { dogpatchData, missionBayData } from "./defaults";
 
 export function getLocalStorageFavorites() {
   if (typeof window !== "undefined") {
@@ -44,16 +39,27 @@ export function parseCurrency(value) {
   return parseFloat(value.replace(/[\$,]/g, ""));
 }
 
-export function getLocation(host: string): string {
-  let location = "";
+export interface LocationData {
+  domain: string;
+  location: string;
+  title: string;
+  linkHome: string;
+  metaImageHome: string;
+  metaLinkFavorites: string;
+  metaLinkTable: string;
+  metaLinkSignup: string;
+  metaTitleHome: string;
+  metaDescriptionHome: string;
+  metaTitleFavorites: string;
+  metaDescriptionFavorites: string;
+  metaTitleComparison: string;
+  metaDescriptionComparison: string;
+  metaTitleSignup: string;
+  metaDescriptionSignup: string;
+}
 
-  // Check the domain and set location accordingly
-  if (host === domainDogpatch) {
-    location = locationDogpatch;
-  } else if (host === domainMissionBay) {
-    location = locationMissionBay;
-  } else if (host === "localhost:3000") {
-    location = locationMissionBay;
-  }
-  return location;
+export function getLocationData(host: string): LocationData {
+  if (host === dogpatchData.domain) return dogpatchData;
+  if (host === missionBayData.domain) return missionBayData;
+  if (host === "localhost:3000") return missionBayData;
 }

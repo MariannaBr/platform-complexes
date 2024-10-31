@@ -152,7 +152,7 @@ const CallToActionPopup: React.FC<Props> = ({ onSubmit }) => {
                         rows={2}
                         className="w-full rounded-md border-0 px-3.5 py-2 mt-8 text-gray-900 shadow-sm ring-1 ring-inset
                  ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-gray-400 text-sm leading-6 placeholder:text-gray-400"
-                        placeholder="Type your message if you want"
+                        placeholder="What is your biggest pain point when looking for an apartment?"
                       />
                     </div>
                     <button

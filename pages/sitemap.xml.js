@@ -51,7 +51,7 @@ function generateSiteMap(host, complexes) {
        .map((complex) => {
          return `
       <url>
-          <loc>${`${EXTERNAL_DATA_URL}/${complex.slug}`}</loc>
+          <loc>${`${host}/${complex.slug}`}</loc>
           <image:image>
             <image:loc>${complex.image}</image:loc>
           </image:image>

@@ -1,4 +1,5 @@
 import { SessionProvider } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import Script from "next/script";
 import Head from "next/head";
@@ -9,25 +10,46 @@ import "../lib/mapStyle.css";
 import "../lib/emblaStyle.css";
 import "../lib/customCSS.css";
 import "../lib/tableCSS.css";
+import { dogpatchData, missionBayData } from "../lib/defaults";
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const [gtmId, setGtmId] = useState(""); // Initialize Google Tag Manager ID
+
+  useEffect(() => {
+    const host = window.location.host;
+    console.log(host);
+
+    // Adjust GTM ID based on the host
+    if (host.includes(dogpatchData.domain)) {
+      setGtmId("G-E65RTQKQZB");
+    } else if (host.includes(missionBayData.domain)) {
+      setGtmId("");
+    } else {
+      setGtmId("G-E65RTQKQZB"); // Default GTM ID - Dogpatch
+    }
+  }, []);
+
   return (
     // <SessionProvider session={pageProps.session}>
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-E65RTQKQZB"
-      />
-      <Script id="google-analytics">
-        {`window.dataLayer = window.dataLayer || [];
+      {gtmId && (
+        <>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${gtmId}`}
+          />
+          <Script id="google-analytics">
+            {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-E65RTQKQZB');`}
-      </Script>
+          gtag('config', '${gtmId}');`}
+          </Script>
+        </>
+      )}
       <Component {...pageProps} />
     </>
     // </SessionProvider>

@@ -8,10 +8,11 @@ import {
   linkTable,
 } from "../lib/defaults";
 import { usePathname } from "next/navigation";
-
+import { getLinkingData } from "../lib/functions";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import LinkingButton from "./LinkingButton";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -29,6 +30,7 @@ type PropType = {
 const Header: React.FC<PropType> = ({ isHomepage, addClass, title }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const linkingData = getLinkingData(title);
 
   return (
     <header className={`bg-white py-4 px-2 lg:py-6 lg:px-6 ${addClass}`}>
@@ -62,7 +64,11 @@ const Header: React.FC<PropType> = ({ isHomepage, addClass, title }) => {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-12 items-center">
+          <LinkingButton
+            linkTitle={linkingData.linkTitle}
+            link={linkingData.link}
+          />
           {navigation.map((item) => (
             <a
               key={item.name}

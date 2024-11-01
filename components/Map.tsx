@@ -75,7 +75,7 @@ const Map: React.FC<{
 
   return (
     <div
-      className="absolute top-0 md:top-28 bottom-0 right-0 w-full md:w-1/3"
+      className="absolute top-0 lg:top-28 bottom-0 right-0 w-full lg:w-1/3"
       ref={mapContainerRef}
     />
   );

@@ -4,6 +4,7 @@ import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Devider from "../components/Devider";
+import LinkingButton from "../components/LinkingButton";
 import Complex, { ComplexProps } from "../components/Complex";
 import Map from "../components/Map";
 import MetaData from "../components/MetaData";
@@ -12,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMap, IconDefinition } from "@fortawesome/free-regular-svg-icons";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { saveApartments } from "../lib/data/apartmentsScrape.mjs";
-import { getLocationData } from "../lib/functions";
+import { getLocationData, getLinkingData } from "../lib/functions";
 
 //saveApartments();
 
@@ -83,6 +84,8 @@ const Homepage: React.FC<Props> = (props) => {
     setIcon(icon === faMap ? faList : faMap);
   };
 
+  const linkingData = getLinkingData(props.locationData.title);
+
   return (
     <>
       <MetaData
@@ -96,7 +99,13 @@ const Homepage: React.FC<Props> = (props) => {
       <Layout>
         <Header isHomepage={true} title={props.locationData.title} />
         <Devider />
-        <div className="relative md:hidden">
+        <div className="flex lg:hidden justify-center mb-6 px-6">
+          <LinkingButton
+            linkTitle={linkingData.linkTitle}
+            link={linkingData.link}
+          />
+        </div>
+        <div className="relative lg:hidden">
           <button
             onClick={changeShowMap}
             type="button"
@@ -118,8 +127,8 @@ const Homepage: React.FC<Props> = (props) => {
         )}
         {!showMap && (
           <div className="flex content_height">
-            <div className="mx-auto w-full md:w-2/3 px-6 hide_scrollbar pb-6">
-              <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto w-full lg:w-2/3 px-6 hide_scrollbar pb-6">
+              <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 lg:grid-cols-2 xl:grid-cols-3">
                 {props.feed.map((complex) => (
                   <div
                     key={complex.id}
@@ -130,7 +139,7 @@ const Homepage: React.FC<Props> = (props) => {
                 ))}
               </div>
             </div>
-            <div className="hidden md:flex md:w-1/3">
+            <div className="hidden lg:flex lg:w-1/3">
               <Map
                 complexes={props.feed}
                 mapCoordinations={props.locationData.mapCoordinations}

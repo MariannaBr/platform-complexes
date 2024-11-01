@@ -42,5 +42,26 @@ export function parseCurrency(value) {
 export function getLocationData(host: string): LocationData {
   if (host === dogpatchData.domain) return dogpatchData;
   if (host === missionBayData.domain) return missionBayData;
-  if (host === "localhost:3000") return missionBayData;
+  if (host === "localhost:3000") return dogpatchData;
+}
+
+interface Data {
+  linkTitle: string;
+  link: string;
+}
+
+export function getLinkingData(title: string): Data {
+  var linkTitle = dogpatchData.title;
+  var link = dogpatchData.linkHome;
+
+  if (title === dogpatchData.title) {
+    linkTitle = missionBayData.title;
+    link = missionBayData.linkHome;
+  }
+
+  const data = {
+    linkTitle: linkTitle,
+    link: link,
+  };
+  return data;
 }

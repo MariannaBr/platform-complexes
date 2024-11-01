@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 type PropType = {
   link: string;
@@ -10,9 +12,13 @@ const LinkingButton: React.FC<PropType> = ({ link, linkTitle }) => {
     <a href={link} target="_blank">
       <button
         type="button"
-        className="rounded bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-lg hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
+        className="inline-flex items-center rounded px-3 py-2 text-sm font-semibold shadow-lg text-pink-600 ring-1 ring-inset ring-pink-600 hover:bg-gray-100"
       >
         {linkTitle}
+        <FontAwesomeIcon
+          icon={faArrowRight}
+          className="lg:hidden w-6 h-6 pl-2"
+        />
       </button>
     </a>
   );

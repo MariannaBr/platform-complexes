@@ -4,9 +4,16 @@ const EXTERNAL_DATA_URL = "https://www.dogpatchapartments.com";
 
 export async function getServerSideProps({ req, res }) {
   const host = req.headers.host;
+
+  // Dogpatch data as default
   var location = "Dogpatch";
-  if (host === dogpatchData.domain) location = dogpatchData.location;
-  if (host === missionBayData.domain) location = missionBayData.location;
+  var linkHome = dogpatchData.linkHome;
+
+  // Mission Bay
+  if (host === missionBayData.domain) {
+    linkHome = missionBayData.linkHome;
+    location = missionBayData.location;
+  }
 
   // We make an API call to gather slugs values of all complexes in DB
   const complexes = await prisma.complex.findMany({
@@ -20,7 +27,7 @@ export async function getServerSideProps({ req, res }) {
   });
 
   // We generate the XML sitemap with the complexes data
-  const sitemap = generateSiteMap(host, complexes);
+  const sitemap = generateSiteMap(linkHome, complexes);
 
   res.setHeader("Content-Type", "text/xml");
   // we send the XML to the browser
@@ -32,26 +39,26 @@ export async function getServerSideProps({ req, res }) {
   };
 }
 
-function generateSiteMap(host, complexes) {
+function generateSiteMap(linkHome, complexes) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.sitemaps.org/schemas/sitemap-image/1.1">
      <url>
-       <loc>${host}</loc>
+       <loc>${linkHome}</loc>
      </url>
      <url>
-       <loc>${host}/favorites</loc>
+       <loc>${linkHome}/favorites</loc>
      </url>
      <url>
-       <loc>${host}/signup</loc>
+       <loc>${linkHome}/signup</loc>
      </url>
      <url>
-       <loc>${host}/communities-comparison</loc>
+       <loc>${linkHome}/communities-comparison</loc>
      </url>
      ${complexes
        .map((complex) => {
          return `
       <url>
-          <loc>${`${host}/${complex.slug}`}</loc>
+          <loc>${`${linkHome}/${complex.slug}`}</loc>
           <image:image>
             <image:loc>${complex.image}</image:loc>
           </image:image>

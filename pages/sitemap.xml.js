@@ -46,19 +46,19 @@ function generateSiteMap(linkHome, complexes) {
        <loc>${linkHome}</loc>
      </url>
      <url>
-       <loc>${linkHome}/favorites</loc>
+       <loc>${linkHome}favorites</loc>
      </url>
      <url>
-       <loc>${linkHome}/signup</loc>
+       <loc>${linkHome}signup</loc>
      </url>
      <url>
-       <loc>${linkHome}/communities-comparison</loc>
+       <loc>${linkHome}communities-comparison</loc>
      </url>
      ${complexes
        .map((complex) => {
          return `
       <url>
-          <loc>${`${linkHome}/${complex.slug}`}</loc>
+          <loc>${`${linkHome}${complex.slug}`}</loc>
           <image:image>
             <image:loc>${complex.image}</image:loc>
           </image:image>

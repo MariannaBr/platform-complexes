@@ -95,6 +95,33 @@ export const missionBayData = {
   metaDescriptionSignup:
     "We will notify you when there are new updates about apartment communities in Mission Bay",
 };
+export const rinconHillData = {
+  domain: "www.rinconhill-apartments.com",
+  location: "Rincon Hill",
+  title: "Rincon Hill Apartment Communities",
+  linkHome: "https://www.rinconhill-apartments.com/",
+  mapCoordinations: [-122.395989785874, 37.78500116642974],
+  metaImageHome:
+    "https://storage.googleapis.com/communitiesplatform-pictures/Canyon/canyon_img.webp",
+  metaLinkFavorites: "https://www.rinconhill-apartments.com/favorites",
+  metaLinkTable: "https://www.rinconhill-apartments.com/communities-comparison",
+  metaLinkSignup: "https://www.rinconhill-apartments.com/signup",
+  metaTitleHome:
+    "Rincon Hill Communities | apartments for rent | San Francisco, CA",
+  metaDescriptionHome:
+    "Discover your perfect home in Rincon Hill, San Francisco, CA. Get information about 1-bedroom, 1-bath, 2-bedroom, 2-bath, and 3-bedroom apartments and townhomes for rent. Explore amenities and exclusive photos for each complex to find your dream apartment in this vibrant waterfront community.",
+  metaTitleFavorites: "Your favorite apartment communities in Rincon Hill",
+  metaDescriptionFavorites:
+    "List of your favorite apartment communities in Rincon Hill. Compare complexes' amenities.",
+  metaTitleComparison:
+    "Comparison table for all Rincon Hill Apartments Communities",
+  metaDescriptionComparison:
+    "Find out which amenities do the apartment communities in Rincon Hill have. Compare the complexes in the table",
+  metaTitleSignup:
+    "Sign up for getting updates about Apartment communitites in Rincon Hill",
+  metaDescriptionSignup:
+    "We will notify you when there are new updates about apartment communities in Rincon Hill",
+};
 export const neighborhoods = [
   "Alamo Square",
   "Anza Vista",

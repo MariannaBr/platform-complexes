@@ -1,5 +1,10 @@
 import { ApartmentProps } from "../components/Apartment";
-import { dogpatchData, missionBayData, LocationData } from "./defaults";
+import {
+  dogpatchData,
+  missionBayData,
+  rinconHillData,
+  LocationData,
+} from "./defaults";
 
 export function getLocalStorageFavorites() {
   if (typeof window !== "undefined") {
@@ -42,7 +47,7 @@ export function parseCurrency(value) {
 export function getLocationData(host: string): LocationData {
   if (host === dogpatchData.domain) return dogpatchData;
   if (host === missionBayData.domain) return missionBayData;
-  if (host === "localhost:3000") return dogpatchData;
+  if (host === "localhost:3000") return rinconHillData;
 }
 
 interface Data {

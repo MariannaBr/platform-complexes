@@ -1,18 +1,23 @@
 import prisma from "../lib/prisma";
-import { dogpatchData, missionBayData } from "../lib/defaults";
-const EXTERNAL_DATA_URL = "https://www.dogpatchapartments.com";
+import { dogpatchData, missionBayData, rinconHillData } from "../lib/defaults";
 
 export async function getServerSideProps({ req, res }) {
   const host = req.headers.host;
 
   // Dogpatch data as default
-  var location = "Dogpatch";
+  var location = dogpatchData.location;
   var linkHome = dogpatchData.linkHome;
 
   // Mission Bay
   if (host === missionBayData.domain) {
     linkHome = missionBayData.linkHome;
     location = missionBayData.location;
+  }
+
+  // Rincon Hill
+  if (host === rinconHillData.domain) {
+    linkHome = rinconHillData.linkHome;
+    location = rinconHillData.location;
   }
 
   // We make an API call to gather slugs values of all complexes in DB

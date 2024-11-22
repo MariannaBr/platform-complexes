@@ -197,13 +197,9 @@ const ComplexPage: React.FC<Props> = (props) => {
 
           {communityMap && (
             <div>
-              <CategoryTitle title="Community map" />
+              <CategoryTitle title="Complex map" />
               <div className="flex max-w-7xl mx-auto pt-6">
-                <img
-                  src={communityMap}
-                  alt="community map"
-                  className="w-full"
-                />
+                <img src={communityMap} alt="complex map" className="w-full" />
               </div>
             </div>
           )}

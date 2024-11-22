@@ -47,6 +47,7 @@ export function parseCurrency(value) {
 export function getLocationData(host: string): LocationData {
   if (host === dogpatchData.domain) return dogpatchData;
   if (host === missionBayData.domain) return missionBayData;
+  if (host === rinconHillData.domain) return rinconHillData;
   if (host === "localhost:3000") return rinconHillData;
 }
 
@@ -60,6 +61,11 @@ export function getLinkingData(title: string): Data {
   var link = dogpatchData.linkHome;
 
   if (title === dogpatchData.title) {
+    linkTitle = missionBayData.title;
+    link = missionBayData.linkHome;
+  }
+
+  if (title === rinconHillData.title) {
     linkTitle = missionBayData.title;
     link = missionBayData.linkHome;
   }

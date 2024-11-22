@@ -1,18 +1,18 @@
-export const titleCommunityWeb = "Community's website";
-export const titleCommunityAmenities = "Comunity Amenities";
+export const titleCommunityWeb = "Complex's website";
+export const titleCommunityAmenities = "Complex Amenities";
 export const titleApartmentAmenities = "Apartment Amenities";
 export const titleNeighborhood = "Neighborhood";
 export const titleApartments = "Apartments";
 export const titleFavorites = "Favorites";
 export const titleSave = "Save";
 export const titleSaved = "Saved";
-export const titleMyFavoritesApartments = "Apartments in favorite Communities";
-export const titleMyFavoritesComplexes = "Favorite Communities";
-export const titleTable = "Communities Comparison";
+export const titleMyFavoritesApartments = "Apartments in Favorite Complexes";
+export const titleMyFavoritesComplexes = "Favorite Apartment Complexes";
+export const titleTable = "Complexes Comparison";
 export const titleTableNav = "Comparison Table";
 export const titleSignup = "Sign up";
 export const titleHome = "Home";
-export const titleSimilarCommunitites = "Similar communities";
+export const titleSimilarCommunitites = "Similar Complexes";
 export const linkFavorites = "/favorites";
 export const linkTable = "/communities-comparison";
 export const linkSignup = "/signup";
@@ -44,7 +44,7 @@ export interface LocationData {
 export const dogpatchData = {
   domain: "www.dogpatchapartments.com",
   location: "Dogpatch",
-  title: "Dogpatch Apartment Communities",
+  title: "Dogpatch Apartment Complexes",
   linkHome: "https://www.dogpatchapartments.com/",
   mapCoordinations: [-122.38798378427391, 37.76000116642954],
   metaLinkTable: "https://www.dogpatchapartments.com/communities-comparison",
@@ -52,26 +52,24 @@ export const dogpatchData = {
     "https://storage.googleapis.com/communitiesplatform-pictures/Winsdor/windsor_overview.webp",
   metaLinkFavorites: "https://www.dogpatchapartments.com/favorites",
   metaLinkSignup: "https://www.dogpatchapartments.com/signup",
-  metaTitleHome:
-    "Dogpatch Communities | apartments for rent | San Francisco, CA",
+  metaTitleHome: "Dogpatch Complexes | apartments for rent | San Francisco, CA",
   metaDescriptionHome:
     "Discover your perfect home in Dogpatch San Francisco, CA 94107. Get information about 1 bedroom, 1 bath, 2 bedroom, 2 baths or 3 bedroom apartments and townhomes for rent. Explore amenities, and exclusive photos for each complex to find your dream apartment in this vibrant neighborhood.",
-  metaTitleFavorites: "Your favorite apartment communities in Dogpatch",
+  metaTitleFavorites: "Your favorite apartment complexes in Dogpatch",
   metaDescriptionFavorites:
-    "List of your favorite apartment communities in Dogpatch. Compare complexes' amenities.",
-  metaTitleComparison:
-    "Comparison table for all Dogpatch Apartments Communities",
+    "List of your favorite apartment complexes in Dogpatch. Compare complexes' amenities.",
+  metaTitleComparison: "Comparison table for all Dogpatch Apartments Complexes",
   metaDescriptionComparison:
-    "Find out which amenities do the apartment communities in Dogpatch have. Compare the complexes in the table",
+    "Find out which amenities do the apartment complexes in Dogpatch have. Compare the complexes in the table",
   metaTitleSignup:
-    "Sign up for getting updates about Apartment communitites in Dogpatch",
+    "Sign up for getting updates about Apartment complexes in Dogpatch",
   metaDescriptionSignup:
-    "We will notify you when there are new updates about apartment communities in Dogpatch",
+    "We will notify you when there are new updates about apartment complexes in Dogpatch",
 };
 export const missionBayData = {
   domain: "www.missionbay-apartments.com",
   location: "Mission Bay",
-  title: "Mission Bay Apartment Communities",
+  title: "Mission Bay Apartment Complexes",
   linkHome: "https://www.missionbay-apartments.com/",
   mapCoordinations: [-122.389985784874, 37.77500116642974],
   metaImageHome:
@@ -80,25 +78,25 @@ export const missionBayData = {
   metaLinkTable: "https://www.missionbay-apartments.com/communities-comparison",
   metaLinkSignup: "https://www.missionbay-apartments.com/signup",
   metaTitleHome:
-    "Mission Bay Communities | apartments for rent | San Francisco, CA",
+    "Mission Bay Complexes | apartments for rent | San Francisco, CA",
   metaDescriptionHome:
     "Discover your perfect home in Mission Bay, San Francisco, CA 94158. Get information about 1-bedroom, 1-bath, 2-bedroom, 2-bath, and 3-bedroom apartments and townhomes for rent. Explore amenities and exclusive photos for each complex to find your dream apartment in this vibrant waterfront community.",
-  metaTitleFavorites: "Your favorite apartment communities in Mission Bay",
+  metaTitleFavorites: "Your favorite apartment complexes in Mission Bay",
   metaDescriptionFavorites:
-    "List of your favorite apartment communities in Mission Bay. Compare complexes' amenities.",
+    "List of your favorite apartment complexes in Mission Bay. Compare complexes' amenities.",
   metaTitleComparison:
-    "Comparison table for all Mission Bay Apartments Communities",
+    "Comparison table for all Mission Bay Apartments Complexes",
   metaDescriptionComparison:
-    "Find out which amenities do the apartment communities in Mission Bay have. Compare the complexes in the table",
+    "Find out which amenities do the apartment complexes in Mission Bay have. Compare the complexes in the table",
   metaTitleSignup:
-    "Sign up for getting updates about Apartment communitites in Mission Bay",
+    "Sign up for getting updates about Apartment complexes in Mission Bay",
   metaDescriptionSignup:
-    "We will notify you when there are new updates about apartment communities in Mission Bay",
+    "We will notify you when there are new updates about apartment complexes in Mission Bay",
 };
 export const rinconHillData = {
   domain: "www.rinconhill-apartments.com",
   location: "Rincon Hill",
-  title: "Rincon Hill Apartment Communities",
+  title: "Rincon Hill Apartment Complexes",
   linkHome: "https://www.rinconhill-apartments.com/",
   mapCoordinations: [-122.395989785874, 37.78500116642974],
   metaImageHome:
@@ -107,20 +105,20 @@ export const rinconHillData = {
   metaLinkTable: "https://www.rinconhill-apartments.com/communities-comparison",
   metaLinkSignup: "https://www.rinconhill-apartments.com/signup",
   metaTitleHome:
-    "Rincon Hill Communities | apartments for rent | San Francisco, CA",
+    "Rincon Hill Complexes | apartments for rent | San Francisco, CA",
   metaDescriptionHome:
     "Discover your perfect home in Rincon Hill, San Francisco, CA. Get information about 1-bedroom, 1-bath, 2-bedroom, 2-bath, and 3-bedroom apartments and townhomes for rent. Explore amenities and exclusive photos for each complex to find your dream apartment in this vibrant waterfront community.",
-  metaTitleFavorites: "Your favorite apartment communities in Rincon Hill",
+  metaTitleFavorites: "Your favorite apartment complexes in Rincon Hill",
   metaDescriptionFavorites:
-    "List of your favorite apartment communities in Rincon Hill. Compare complexes' amenities.",
+    "List of your favorite apartment complexes in Rincon Hill. Compare complexes' amenities.",
   metaTitleComparison:
-    "Comparison table for all Rincon Hill Apartments Communities",
+    "Comparison table for all Rincon Hill Apartments Complexes",
   metaDescriptionComparison:
-    "Find out which amenities do the apartment communities in Rincon Hill have. Compare the complexes in the table",
+    "Find out which amenities do the apartment complexes in Rincon Hill have. Compare the complexes in the table",
   metaTitleSignup:
-    "Sign up for getting updates about Apartment communitites in Rincon Hill",
+    "Sign up for getting updates about Apartment complexes in Rincon Hill",
   metaDescriptionSignup:
-    "We will notify you when there are new updates about apartment communities in Rincon Hill",
+    "We will notify you when there are new updates about apartment complexes in Rincon Hill",
 };
 export const neighborhoods = [
   "Alamo Square",

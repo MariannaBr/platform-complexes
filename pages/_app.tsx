@@ -10,7 +10,7 @@ import "../lib/mapStyle.css";
 import "../lib/emblaStyle.css";
 import "../lib/customCSS.css";
 import "../lib/tableCSS.css";
-import { dogpatchData, missionBayData } from "../lib/defaults";
+import { dogpatchData, missionBayData, rinconHillData } from "../lib/defaults";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [gtmId, setGtmId] = useState(""); // Initialize Google Tag Manager ID
@@ -21,11 +21,13 @@ const App = ({ Component, pageProps }: AppProps) => {
 
     // Adjust GTM ID based on the host
     if (host.includes(dogpatchData.domain)) {
-      setGtmId("G-E65RTQKQZB");
+      setGtmId(dogpatchData.gtmId);
     } else if (host.includes(missionBayData.domain)) {
-      setGtmId("G-CGNHXSKG2S");
+      setGtmId(missionBayData.gtmId);
+    } else if (host.includes(rinconHillData.domain)) {
+      setGtmId(rinconHillData.gtmId);
     } else {
-      setGtmId("G-E65RTQKQZB"); // Default GTM ID - Dogpatch
+      setGtmId(dogpatchData.gtmId); // Default GTM ID - Dogpatch
     }
   }, []);
 

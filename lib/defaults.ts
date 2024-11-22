@@ -24,6 +24,7 @@ export const showListText = "Show list";
 export interface LocationData {
   domain: string;
   location: string;
+  gtmId: string;
   title: string;
   linkHome: string;
   mapCoordinations: number[];
@@ -44,6 +45,7 @@ export interface LocationData {
 export const dogpatchData = {
   domain: "www.dogpatchapartments.com",
   location: "Dogpatch",
+  gtmId: "G-E65RTQKQZB",
   title: "Dogpatch Apartment Complexes",
   linkHome: "https://www.dogpatchapartments.com/",
   mapCoordinations: [-122.38798378427391, 37.76000116642954],
@@ -69,6 +71,7 @@ export const dogpatchData = {
 export const missionBayData = {
   domain: "www.missionbay-apartments.com",
   location: "Mission Bay",
+  gtmId: "G-CGNHXSKG2S",
   title: "Mission Bay Apartment Complexes",
   linkHome: "https://www.missionbay-apartments.com/",
   mapCoordinations: [-122.389985784874, 37.77500116642974],
@@ -96,6 +99,7 @@ export const missionBayData = {
 export const rinconHillData = {
   domain: "www.rinconhill-apartments.com",
   location: "Rincon Hill",
+  gtmId: "G-3782RCYN9P",
   title: "Rincon Hill Apartment Complexes",
   linkHome: "https://www.rinconhill-apartments.com/",
   mapCoordinations: [-122.395989785874, 37.78500116642974],

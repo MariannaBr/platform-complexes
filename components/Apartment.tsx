@@ -23,7 +23,10 @@ const Apartment: React.FC<{
   const bedrooms = apartment.beds ? apartment.beds + " | " : "";
   const baths = apartment.baths ? apartment.baths + " | " : "";
   const area = apartment.area ?? "";
-  const apartmentImage = apartment.image ?? noImageFoundUrl;
+  const apartmentImage =
+    apartment.image && apartment.image.trim() !== ""
+      ? apartment.image
+      : noImageFoundUrl;
   const link = apartment.link ?? "";
 
   return (

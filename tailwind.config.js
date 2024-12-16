@@ -9,7 +9,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        '3xl': '2400px',
+      },
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

@@ -128,7 +128,7 @@ const Homepage: React.FC<Props> = (props) => {
         {!showMap && (
           <div className="flex content_height">
             <div className="mx-auto w-full lg:w-2/3 px-6 hide_scrollbar pb-6">
-              <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 lg:grid-cols-2 xl:grid-cols-3">
+              <div className="mx-auto grid grid-cols-1 gap-x-8 3xl:gap-x-16 gap-y-8 lg:gap-y-20 3xl:gap-y-24 lg:mx-0 lg:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4">
                 {props.feed.map((complex) => (
                   <div
                     key={complex.id}

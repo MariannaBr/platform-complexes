@@ -99,11 +99,14 @@ const Homepage: React.FC<Props> = (props) => {
       <Layout>
         <Header isHomepage={true} title={props.locationData.title} />
         <Devider />
-        <div className="flex lg:hidden justify-center mb-6 px-6">
-          <LinkingButton
-            linkTitle={linkingData.linkTitle}
-            link={linkingData.link}
+        <div className="flex lg:hidden justify-center mb-6">
+          {linkingData.map((item) => (
+            <LinkingButton
+            key={item.linkTitle}
+            linkTitle={item.linkTitle}
+            link={item.link}
           />
+          ))}
         </div>
         <div className="relative lg:hidden">
           <button

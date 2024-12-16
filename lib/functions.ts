@@ -56,23 +56,35 @@ interface Data {
   link: string;
 }
 
-export function getLinkingData(title: string): Data {
-  var linkTitle = dogpatchData.title;
-  var link = dogpatchData.linkHome;
+export function getLinkingData(title: string): Data[] {
 
-  if (title === dogpatchData.title) {
-    linkTitle = missionBayData.title;
-    link = missionBayData.linkHome;
-  }
-
-  if (title === rinconHillData.title) {
-    linkTitle = missionBayData.title;
-    link = missionBayData.linkHome;
-  }
-
-  const data = {
-    linkTitle: linkTitle,
-    link: link,
+  const dogpatchLinkingData = {
+    linkTitle: dogpatchData.linkTitle,
+    link: dogpatchData.linkHome,
   };
+
+  const missionBayLinkingData = {
+    linkTitle: missionBayData.linkTitle,
+    link: missionBayData.linkHome,
+  };
+
+  const rinconHillLinkingData = {
+    linkTitle: rinconHillData.linkTitle,
+    link: rinconHillData.linkHome,
+  }
+
+  // homepage is Mission Bay
+  var data: Data[] = [dogpatchLinkingData, rinconHillLinkingData];
+
+  // homepage is Dogpatch
+  if (title === dogpatchData.title) {
+   data = [missionBayLinkingData, rinconHillLinkingData] 
+  }
+
+  // homepage is Rincon Hill
+  if (title === rinconHillData.title) {
+    data = [dogpatchLinkingData, missionBayLinkingData] 
+  }
+
   return data;
 }

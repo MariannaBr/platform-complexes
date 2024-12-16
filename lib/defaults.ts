@@ -26,6 +26,7 @@ export interface LocationData {
   location: string;
   gtmId: string;
   title: string;
+  linkTitle: string;
   linkHome: string;
   mapCoordinations: number[];
   metaImageHome: string;
@@ -47,6 +48,7 @@ export const dogpatchData = {
   location: "Dogpatch",
   gtmId: "G-E65RTQKQZB",
   title: "Dogpatch Apartment Complexes",
+  linkTitle: "Dogpatch",
   linkHome: "https://www.dogpatchapartments.com/",
   mapCoordinations: [-122.38798378427391, 37.76000116642954],
   metaLinkTable: "https://www.dogpatchapartments.com/communities-comparison",
@@ -73,6 +75,7 @@ export const missionBayData = {
   location: "Mission Bay",
   gtmId: "G-CGNHXSKG2S",
   title: "Mission Bay Apartment Complexes",
+  linkTitle: "Mission Bay",
   linkHome: "https://www.missionbay-apartments.com/",
   mapCoordinations: [-122.389985784874, 37.77500116642974],
   metaImageHome:
@@ -101,6 +104,7 @@ export const rinconHillData = {
   location: "Rincon Hill",
   gtmId: "G-3782RCYN9P",
   title: "Rincon Hill Apartment Complexes",
+  linkTitle: "Rincon Hill",
   linkHome: "https://www.rinconhill-apartments.com/",
   mapCoordinations: [-122.395989785874, 37.78500116642974],
   metaImageHome:

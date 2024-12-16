@@ -65,10 +65,13 @@ const Header: React.FC<PropType> = ({ isHomepage, addClass, title }) => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12 items-center">
-          <LinkingButton
-            linkTitle={linkingData.linkTitle}
-            link={linkingData.link}
+        {linkingData.map((item) => (
+            <LinkingButton
+            key={item.linkTitle}
+            linkTitle={item.linkTitle}
+            link={item.link}
           />
+          ))}
           {navigation.map((item) => (
             <a
               key={item.name}

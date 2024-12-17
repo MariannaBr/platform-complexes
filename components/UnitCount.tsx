@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type PropType = {
   count: number;
+  units?: string;
 };
 
-const UnitCount: React.FC<PropType> = ({ count }) => {
+const UnitCount: React.FC<PropType> = ({ count, units = "Units" }) => {
   const OPTIONS: EmblaOptionsType = { loop: false, slidesToScroll: "auto" };
 
   return (
@@ -15,7 +16,9 @@ const UnitCount: React.FC<PropType> = ({ count }) => {
       <div className="w-3 h-3">
         <FontAwesomeIcon icon={faBuilding} className="text-pink-500" />
       </div>
-      <div className="text-sm text-gray-600 pl-2">{count} Units</div>
+      <div className="text-sm text-gray-600 pl-2">
+        {count} {units}
+      </div>
     </div>
   );
 };

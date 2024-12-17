@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
-import Image from "next/image";
 import Rating from "./Rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +14,7 @@ export type ComplexProps = {
   title: string;
   metaTitle: string;
   slug: string;
+  location: string;
   street: string;
   postal: string;
   description: string;
@@ -59,7 +59,8 @@ export type ComplexProps = {
 const Complex: React.FC<{
   complex: ComplexProps;
   isFavoritesPage?: boolean;
-}> = ({ complex, isFavoritesPage }) => {
+  showDescription?: boolean;
+}> = ({ complex, isFavoritesPage, showDescription = true }) => {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState<boolean>(
     getIsFavorite(complex.id)
@@ -95,23 +96,15 @@ const Complex: React.FC<{
   }, []);
 
   return (
-    <div>
+    <div onClick={() => Router.push("/[slug]", `/${complex.slug}`)}>
       <div className="relative w-full">
-        <a
-          onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
-          href={`/${complex.slug}`}
-          className="cursor-pointer relative"
-        >
-          <div className="relative w-full rounded-t-2xl bg-gray-100 object-cover aspect-[16/9] sm:aspect-[2/1] lg:aspect-[3/2]">
-            <Image
+        <a href={`/${complex.slug}`} className="cursor-pointer relative">
+          <div className="relative w-full rounded-t-2xl bg-gray-100 object-cover aspect-video">
+            <img
               src={complex.image}
-              alt={complex.title}
-              fill={true}
-              sizes="(max-width: 768px) 100vw, 33vw"
-              priority={true}
-              style={{ objectFit: "cover" }}
-              className="rounded-t-2xl"
+              className="rounded-t-2xl object-cover h-full w-full"
             />
+
             <button
               className="w-6 h-6 absolute right-4 top-4 text-pink-600 z-10"
               aria-label="save"
@@ -130,30 +123,27 @@ const Complex: React.FC<{
       </div>
       <div className="group relative px-3 pb-3">
         <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
-          <a
-            onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
-            href={`/${complex.slug}`}
-            className="cursor-pointer relative"
-          >
+          <a href={`/${complex.slug}`} className="cursor-pointer relative">
             <h2 className="text-lg font-semibold leading-6 text-gray-900">
               {complex.title}
             </h2>
           </a>
+        </div>
+
+        <div className="mt-3 mx-1 flex items-center justify-between text-xs">
+          <UnitCount count={sortedApartments.length} />
           <Rating
             placeId={complex.placeId}
             rating={complex.rating}
             rateCount={complex.rateCount}
           />
         </div>
-        <a
-          onClick={() => Router.push("/[slug]", `/${complex.slug}`)}
-          href={`/${complex.slug}`}
-          className="cursor-pointer relative"
-        >
-          <UnitCount count={sortedApartments.length} />
-          <p className="mt-3 mx-1 line-clamp-3 text-left text-sm leading-6 text-gray-600">
-            {complex.description}
-          </p>
+        <a href={`/${complex.slug}`} className="cursor-pointer relative">
+          {showDescription && (
+            <p className="mt-3 mx-1 line-clamp-3 text-left text-sm leading-6 text-gray-600">
+              {complex.description}
+            </p>
+          )}
         </a>
       </div>
     </div>

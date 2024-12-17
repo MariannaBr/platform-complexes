@@ -20,6 +20,9 @@ export const noImageFoundUrl =
   "https://storage.googleapis.com/communitiesplatform-pictures/General/Image_not_available.png";
 export const showMapText = "Show map";
 export const showListText = "Show list";
+export const titleTopComplexesSF = "The Most Liked Apartment Complexes";
+export const titleDistrictsSF =
+  "Discover Ditricts with Apartment Complexes in San Francisco";
 
 export interface LocationData {
   domain: string;
@@ -68,7 +71,7 @@ export const dogpatchData = {
   metaTitleSignup:
     "Sign up for getting updates about Apartment complexes in Dogpatch",
   metaDescriptionSignup:
-    "We will notify you when there are new updates about apartment complexes in Dogpatch",
+    "We will notify you when there are new updates about apartment complexes in Dogpatch"
 };
 export const missionBayData = {
   domain: "www.missionbay-apartments.com",
@@ -97,7 +100,7 @@ export const missionBayData = {
   metaTitleSignup:
     "Sign up for getting updates about Apartment complexes in Mission Bay",
   metaDescriptionSignup:
-    "We will notify you when there are new updates about apartment complexes in Mission Bay",
+    "We will notify you when there are new updates about apartment complexes in Mission Bay"
 };
 export const rinconHillData = {
   domain: "www.rinconhill-apartments.com",
@@ -126,7 +129,30 @@ export const rinconHillData = {
   metaTitleSignup:
     "Sign up for getting updates about Apartment complexes in Rincon Hill",
   metaDescriptionSignup:
-    "We will notify you when there are new updates about apartment complexes in Rincon Hill",
+    "We will notify you when there are new updates about apartment complexes in Rincon Hill"
+};
+export const SFData = {
+  domain: "www.apartment-complexes-sf.com",
+  location: "SF Apartment Complexes",
+  gtmId: "",
+  title: "SF Apartment Complexes",
+  linkTitle: "San Francisco",
+  linkHome: "https://www.apartment-complexes-sf.com/",
+  mapCoordinations: [],
+  metaImageHome: "",
+  metaLinkFavorites: "",
+  metaLinkTable: "",
+  metaLinkSignup: "",
+  metaTitleHome:
+    "San Francisco Complexes | apartments for rent | San Francisco, CA",
+  metaDescriptionHome:
+    "Discover your perfect home in San Francisco, CA. Discover popular districts. Get information about 1-bedroom, 1-bath, 2-bedroom, 2-bath, and 3-bedroom apartments and townhomes for rent. Explore amenities and exclusive photos for each complex to find your dream apartment in this vibrant city.",
+  metaTitleFavorites: "",
+  metaDescriptionFavorites: "",
+  metaTitleComparison: "",
+  metaDescriptionComparison: "",
+  metaTitleSignup: "",
+  metaDescriptionSignup: ""
 };
 export const neighborhoods = [
   "Alamo Square",
@@ -188,5 +214,5 @@ export const neighborhoods = [
   "West Portal",
   "Western Addition",
   "Yerba Buena",
-  "Yerba Buena Island",
+  "Yerba Buena Island"
 ];

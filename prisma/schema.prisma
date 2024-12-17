@@ -108,6 +108,8 @@ model Complex {
   favUsers  UsersOnComplexes[]
   apartments    Apartment[]
   apartmentsAll    ApartmentRaw[]
+  districtId  String? @map("district_id")
+  district  District? @relation(fields:[districtId], references:[id], onDelete: Cascade)
   }
 
   model Apartment {
@@ -145,3 +147,12 @@ model UsersOnComplexes {
 
   @@id([complexId, userId])
 }
+
+model District {
+    id        String   @id @default(cuid())
+    title      String?
+    complexes Complex[]
+    image     String?
+    link      String?
+    createdAt  DateTime   @default(now())
+  }

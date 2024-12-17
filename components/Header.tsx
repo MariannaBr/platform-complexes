@@ -5,7 +5,7 @@ import {
   titleSignup,
   linkSignup,
   titleTableNav,
-  linkTable,
+  linkTable
 } from "../lib/defaults";
 import { usePathname } from "next/navigation";
 import { getLinkingData } from "../lib/functions";
@@ -18,16 +18,22 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: titleTableNav, href: linkTable },
   { name: titleFavorites, href: linkFavorites },
-  { name: titleSignup, href: linkSignup },
+  { name: titleSignup, href: linkSignup }
 ];
 
 type PropType = {
   addClass?: string;
   isHomepage?: boolean;
+  isSFHomepage?: boolean;
   title?: string;
 };
 
-const Header: React.FC<PropType> = ({ isHomepage, addClass, title }) => {
+const Header: React.FC<PropType> = ({
+  isHomepage,
+  isSFHomepage = false,
+  addClass,
+  title
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const linkingData = getLinkingData(title);
@@ -65,24 +71,25 @@ const Header: React.FC<PropType> = ({ isHomepage, addClass, title }) => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12 items-center">
-        {linkingData.map((item) => (
+          {linkingData.map((item) => (
             <LinkingButton
-            key={item.linkTitle}
-            linkTitle={item.linkTitle}
-            link={item.link}
-          />
+              key={item.linkTitle}
+              linkTitle={item.linkTitle}
+              link={item.link}
+            />
           ))}
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={`text-sm font-semibold leading-6 text-gray-900 ${
-                pathname === item.href && "underline"
-              }`}
-            >
-              {item.name}
-            </a>
-          ))}
+          {!isSFHomepage &&
+            navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`text-sm font-semibold leading-6 text-gray-900 ${
+                  pathname === item.href && "underline"
+                }`}
+              >
+                {item.name}
+              </a>
+            ))}
         </div>
       </nav>
       <Dialog
@@ -106,15 +113,16 @@ const Header: React.FC<PropType> = ({ isHomepage, addClass, title }) => {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                {!isSFHomepage &&
+                  navigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
               </div>
             </div>
           </div>

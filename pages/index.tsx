@@ -62,6 +62,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           image: true,
           link: true
         }
+      },
+      district: {
+        select: {
+          id: true,
+          title: true,
+          link: true
+        }
       }
     },
     orderBy: {

@@ -8,6 +8,7 @@ import { getLocalStorageFavorites, getIsFavorite } from "../lib/functions";
 import { ApartmentProps } from "../components/Apartment";
 import UnitCount from "./UnitCount";
 import { getSortedApartments } from "../lib/functions";
+import { DistrictProps } from "./District";
 
 export type ComplexProps = {
   id: string;
@@ -54,13 +55,16 @@ export type ComplexProps = {
   storage: boolean;
   inclEnergies: boolean;
   apartments: ApartmentProps[];
+  districtId: string;
+  district: DistrictProps;
 };
 
 const Complex: React.FC<{
   complex: ComplexProps;
   isFavoritesPage?: boolean;
   showDescription?: boolean;
-}> = ({ complex, isFavoritesPage, showDescription = true }) => {
+  districtLink?: string;
+}> = ({ complex, isFavoritesPage, showDescription = true, districtLink }) => {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState<boolean>(
     getIsFavorite(complex.id)
@@ -95,10 +99,24 @@ const Complex: React.FC<{
     setSortedApartments(getSortedApartments(complex.apartments, "price"));
   }, []);
 
+  const complexLink = districtLink
+    ? districtLink + complex.slug
+    : "/" + complex.slug;
+
   return (
-    <div onClick={() => Router.push("/[slug]", `/${complex.slug}`)}>
+    <div
+      onClick={
+        districtLink
+          ? undefined
+          : () => Router.push("/[slug]", `/${complex.slug}`)
+      }
+    >
       <div className="relative w-full">
-        <a href={`/${complex.slug}`} className="cursor-pointer relative">
+        <a
+          href={complexLink}
+          target={districtLink ? "_blank" : ""}
+          className="cursor-pointer relative"
+        >
           <div className="relative w-full rounded-t-2xl bg-gray-100 object-cover aspect-video">
             <img
               src={complex.image}
@@ -123,7 +141,11 @@ const Complex: React.FC<{
       </div>
       <div className="group relative px-3 pb-3">
         <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
-          <a href={`/${complex.slug}`} className="cursor-pointer relative">
+          <a
+            href={complexLink}
+            target={districtLink ? "_blank" : ""}
+            className="cursor-pointer relative"
+          >
             <h2 className="text-lg font-semibold leading-6 text-gray-900">
               {complex.title}
             </h2>
@@ -138,7 +160,11 @@ const Complex: React.FC<{
             rateCount={complex.rateCount}
           />
         </div>
-        <a href={`/${complex.slug}`} className="cursor-pointer relative">
+        <a
+          href={complexLink}
+          target={districtLink ? "_blank" : ""}
+          className="cursor-pointer relative"
+        >
           {showDescription && (
             <p className="mt-3 mx-1 line-clamp-3 text-left text-sm leading-6 text-gray-600">
               {complex.description}

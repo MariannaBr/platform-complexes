@@ -1,5 +1,10 @@
 import prisma from "../lib/prisma";
-import { dogpatchData, missionBayData, rinconHillData } from "../lib/defaults";
+import {
+  dogpatchData,
+  missionBayData,
+  rinconHillData,
+  SFData
+} from "../lib/defaults";
 
 export async function getServerSideProps({ req, res }) {
   const host = req.headers.host;
@@ -7,6 +12,7 @@ export async function getServerSideProps({ req, res }) {
   // Dogpatch data as default
   var location = dogpatchData.location;
   var linkHome = dogpatchData.linkHome;
+  var hasDistricts = false;
 
   // Mission Bay
   if (host === missionBayData.domain) {
@@ -20,19 +26,46 @@ export async function getServerSideProps({ req, res }) {
     location = rinconHillData.location;
   }
 
+  // SF Homepage
+  if (host === SFData.domain) {
+    linkHome = SFData.linkHome;
+    location = null;
+    hasDistricts = true;
+  }
+
   // We make an API call to gather slugs values of all complexes in DB
-  const complexes = await prisma.complex.findMany({
-    where: {
-      location: String(location),
-    },
-    select: {
-      slug: true,
-      image: true,
-    },
-  });
+  var complexes = null;
+  var districts = null;
+  if (location) {
+    complexes = await prisma.complex.findMany({
+      where: {
+        location: String(location)
+      },
+      select: {
+        slug: true,
+        image: true
+      }
+    });
+  } else {
+    complexes = await prisma.complex.findMany({
+      select: {
+        slug: true,
+        image: true
+      }
+    });
+  }
+
+  if (hasDistricts) {
+    districts = await prisma.district.findMany({
+      select: {
+        link: true,
+        image: true
+      }
+    });
+  }
 
   // We generate the XML sitemap with the complexes data
-  const sitemap = generateSiteMap(linkHome, complexes);
+  const sitemap = generateSiteMap(linkHome, complexes, districts);
 
   res.setHeader("Content-Type", "text/xml");
   // we send the XML to the browser
@@ -40,11 +73,11 @@ export async function getServerSideProps({ req, res }) {
   res.end();
 
   return {
-    props: {},
+    props: {}
   };
 }
 
-function generateSiteMap(linkHome, complexes) {
+function generateSiteMap(linkHome, complexes, districts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
      <url>
@@ -59,9 +92,11 @@ function generateSiteMap(linkHome, complexes) {
      <url>
        <loc>${linkHome}communities-comparison</loc>
      </url>
-     ${complexes
-       .map((complex) => {
-         return `
+     ${
+       complexes &&
+       complexes
+         .map((complex) => {
+           return `
       <url>
           <loc>${`${linkHome}${complex.slug}`}</loc>
           <image:image>
@@ -69,8 +104,24 @@ function generateSiteMap(linkHome, complexes) {
           </image:image>
       </url>
     `;
-       })
-       .join("")}
+         })
+         .join("")
+     }
+     ${
+       districts &&
+       districts
+         .map((district) => {
+           return `
+     <url>
+         <loc>${district.link}</loc>
+         <image:image>
+           <image:loc>${district.image}</image:loc>
+         </image:image>
+     </url>
+   `;
+         })
+         .join("")
+     }
    </urlset>
  `;
 }

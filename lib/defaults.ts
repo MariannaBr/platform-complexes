@@ -133,7 +133,7 @@ export const rinconHillData = {
 export const SFData = {
   domain: "www.apartment-complexes-sf.com",
   location: "SF Apartment Complexes",
-  gtmId: "",
+  gtmId: "G-6QXE79W75S",
   title: "San Francisco Apartment Complexes",
   linkTitle: "San Francisco",
   linkHome: "https://www.apartment-complexes-sf.com/",

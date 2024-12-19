@@ -10,7 +10,12 @@ import "../lib/mapStyle.css";
 import "../lib/emblaStyle.css";
 import "../lib/customCSS.css";
 import "../lib/tableCSS.css";
-import { dogpatchData, missionBayData, rinconHillData } from "../lib/defaults";
+import {
+  dogpatchData,
+  missionBayData,
+  rinconHillData,
+  SFData
+} from "../lib/defaults";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [gtmId, setGtmId] = useState(""); // Initialize Google Tag Manager ID
@@ -26,6 +31,8 @@ const App = ({ Component, pageProps }: AppProps) => {
       setGtmId(missionBayData.gtmId);
     } else if (host.includes(rinconHillData.domain)) {
       setGtmId(rinconHillData.gtmId);
+    } else if (host.includes(SFData.domain)) {
+      setGtmId(SFData.gtmId);
     } else {
       setGtmId(dogpatchData.gtmId); // Default GTM ID - Dogpatch
     }

@@ -20,8 +20,8 @@ export const noImageFoundUrl =
   "https://storage.googleapis.com/communitiesplatform-pictures/General/Image_not_available.png";
 export const showMapText = "Show map";
 export const showListText = "Show list";
-export const titleTopComplexesSF = "The Most Liked Apartment Complexes";
-export const titleDistrictsSF = "Explore Districts in San Francisco";
+export const titleTopComplexesSF = "Popular Apartment Complexes";
+export const titleDistrictsSF = "Popular Districts";
 
 export interface LocationData {
   domain: string;
@@ -134,7 +134,7 @@ export const SFData = {
   domain: "www.apartment-complexes-sf.com",
   location: "SF Apartment Complexes",
   gtmId: "",
-  title: "SF Apartment Complexes",
+  title: "San Francisco Apartment Complexes",
   linkTitle: "San Francisco",
   linkHome: "https://www.apartment-complexes-sf.com/",
   mapCoordinations: [],

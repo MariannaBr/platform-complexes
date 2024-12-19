@@ -16,7 +16,11 @@ const District: React.FC<{
   return (
     <div>
       <div className="relative w-full">
-        <a href={`/${district.link}`} className="cursor-pointer relative">
+        <a
+          href={district.link}
+          target="_blank"
+          className="cursor-pointer relative"
+        >
           <div className="relative w-full rounded-t-2xl bg-gray-100 object-cover aspect-video">
             <img
               src={district.image}
@@ -27,7 +31,11 @@ const District: React.FC<{
       </div>
       <div className="group relative px-3 pb-3">
         <div className="mt-3 mx-1 flex items-center justify-between gap-x-4 text-xs">
-          <a href={`/${district.link}`} className="cursor-pointer relative">
+          <a
+            href={district.link}
+            target="_blank"
+            className="cursor-pointer relative"
+          >
             <h2 className="text-lg font-semibold leading-6 text-gray-900">
               {district.title}
             </h2>
@@ -37,7 +45,11 @@ const District: React.FC<{
         <div className="mt-3 mx-1 flex items-center justify-between text-xs">
           <UnitCount count={district.complexes.length} units="Complexes" />
         </div>
-        <a href={`/${district.link}`} className="cursor-pointer relative"></a>
+        <a
+          href={district.link}
+          target="_blank"
+          className="cursor-pointer relative"
+        ></a>
       </div>
     </div>
   );

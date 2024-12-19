@@ -27,6 +27,7 @@
     "axios": "^1.7.7",
     "braces": "^3.0.3",
     "cheerio": "^1.0.0-rc.12",
+    "cookie": "^1.0.2",
     "cross-spawn": "^7.0.6",
     "embla-carousel-react": "^8.0.0-rc23",
     "json2csv": "^6.0.0-alpha.2",

@@ -31,7 +31,7 @@
     "json2csv": "^6.0.0-alpha.2",
     "mapbox-gl": "^3.1.2",
     "micromatch": "^4.0.8",
-    "next": "^14.2.12",
+    "next": "^14.2.21",
     "next-auth": "^4.24.6",
     "proxy-chain": "^2.4.0",
     "puppeteer": "^22.6.1",

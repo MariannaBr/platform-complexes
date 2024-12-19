@@ -61,8 +61,7 @@ export async function getServerSideProps({ req, res }) {
     districts = await prisma.district.findMany({
       select: {
         link: true,
-        image: true,
-        district: true
+        image: true
       }
     });
   }

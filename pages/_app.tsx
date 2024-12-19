@@ -22,7 +22,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     const host = window.location.host;
-    console.log(host);
 
     // Adjust GTM ID based on the host
     if (host.includes(dogpatchData.domain)) {

@@ -43,14 +43,16 @@ export async function getServerSideProps({ req, res }) {
       },
       select: {
         slug: true,
-        image: true
+        image: true,
+        district: true
       }
     });
   } else {
     complexes = await prisma.complex.findMany({
       select: {
         slug: true,
-        image: true
+        image: true,
+        district: true
       }
     });
   }
@@ -59,7 +61,8 @@ export async function getServerSideProps({ req, res }) {
     districts = await prisma.district.findMany({
       select: {
         link: true,
-        image: true
+        image: true,
+        district: true
       }
     });
   }
@@ -98,7 +101,7 @@ function generateSiteMap(linkHome, complexes, districts) {
          .map((complex) => {
            return `
       <url>
-          <loc>${`${linkHome}${complex.slug}`}</loc>
+          <loc>${`${complex.district.link}${complex.slug}`}</loc>
           <image:image>
             <image:loc>${complex.image}</image:loc>
           </image:image>

@@ -34,7 +34,12 @@ const SFHomepage: React.FC<{
           <CategoryTitle title={titleDistrictsSF} />
           <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-y-20 lg:mx-0 md:grid-cols-2 lg:grid-cols-3">
             {districts.map((district) => (
-              <District key={district.id} district={district} />
+              <div
+                key={district.id}
+                className="flex flex-col items-start justify-between shadow-lg rounded-2xl"
+              >
+                <District district={district} />
+              </div>
             ))}
           </div>
         </>

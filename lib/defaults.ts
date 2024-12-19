@@ -21,8 +21,7 @@ export const noImageFoundUrl =
 export const showMapText = "Show map";
 export const showListText = "Show list";
 export const titleTopComplexesSF = "The Most Liked Apartment Complexes";
-export const titleDistrictsSF =
-  "Discover Ditricts with Apartment Complexes in San Francisco";
+export const titleDistrictsSF = "Explore Districts in San Francisco";
 
 export interface LocationData {
   domain: string;

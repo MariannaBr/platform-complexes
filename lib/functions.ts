@@ -49,6 +49,7 @@ export function getLocationData(host: string): LocationData {
   if (host === dogpatchData.domain) return dogpatchData;
   if (host === missionBayData.domain) return missionBayData;
   if (host === rinconHillData.domain) return rinconHillData;
+  if (host === SFData.domain) return SFData;
   if (host === "localhost:3000") return SFData;
 }
 

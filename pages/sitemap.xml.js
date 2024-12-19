@@ -49,6 +49,9 @@ export async function getServerSideProps({ req, res }) {
     });
   } else {
     complexes = await prisma.complex.findMany({
+      where: {
+        show: Boolean(true)
+      },
       select: {
         slug: true,
         image: true,

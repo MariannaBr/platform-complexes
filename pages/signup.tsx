@@ -15,8 +15,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      locationData,
-    },
+      locationData
+    }
   };
 };
 
@@ -37,9 +37,9 @@ const SignupPage: React.FC<Props> = (props) => {
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email, message }),
+        body: JSON.stringify({ email, message })
       });
 
       const data = await response.json();
